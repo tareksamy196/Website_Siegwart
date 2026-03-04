@@ -80,7 +80,7 @@ namespace Website.Siegwart.PL.Controllers
                 }
 
                 var signInResult = await _signInManager.PasswordSignInAsync(
-                    userName: user.UserName,
+                    userName: user.UserName ?? string.Empty,
                     password: model.Password,
                     isPersistent: model.RememberMe,
                     lockoutOnFailure: true);
@@ -147,7 +147,7 @@ namespace Website.Siegwart.PL.Controllers
         // POST: /Account/SignOut
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SignOut()
+        public new async Task<IActionResult> SignOut()
         {
             var user = await _userManager.GetUserAsync(User);
             if (user != null)
@@ -197,7 +197,7 @@ namespace Website.Siegwart.PL.Controllers
 
                     var emailMessage = new Email
                     {
-                        To = user.Email,
+                        To = user.Email ?? string.Empty,
                         Subject = "Reset your password",
                         Body = $@"<p>Hello {user.UserName},</p>
                                   <p>To reset your password click the link below:</p>

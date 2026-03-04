@@ -86,7 +86,7 @@ namespace Website.Siegwart.BLL.Services.Classes
                 ? (_settings.Port == 465 ? SecureSocketOptions.SslOnConnect : SecureSocketOptions.StartTls)
                 : SecureSocketOptions.Auto;
 
-            Exception lastEx = null;
+            Exception? lastEx = null;
 
             // Try using resolved IPs first (sanitize IPv6)
             if (addrs.Length > 0)
@@ -122,7 +122,7 @@ namespace Website.Siegwart.BLL.Services.Classes
             // Try sanitized host candidates
             var candidates = new List<string>();
             candidates.Add(SanitizeCandidateHost(hostToTry));
-            if (!string.Equals(hostToTry, _settings.Host, StringComparison.OrdinalIgnoreCase))
+            if (!string.Equals(hostToTry, _settings.Host, StringComparison.OrdinalIgnoreCase) && _settings.Host != null)
                 candidates.Add(SanitizeCandidateHost(_settings.Host));
 
             candidates = candidates.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct(StringComparer.OrdinalIgnoreCase).ToList();

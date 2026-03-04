@@ -91,10 +91,10 @@ namespace Website.Siegwart.PL.Controllers
                 if (IsAjaxRequest())
                 {
                     var errors = ModelState
-                        .Where(kvp => kvp.Value.Errors.Any())
+                        .Where(kvp => kvp.Value?.Errors.Any() == true)
                         .ToDictionary(
                             kvp => kvp.Key,
-                            kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                            kvp => kvp.Value!.Errors.Select(e => e.ErrorMessage).ToArray()
                         );
 
                     return BadRequest(new { success = false, errors });
@@ -164,7 +164,7 @@ namespace Website.Siegwart.PL.Controllers
         /// 404 Not Found page
         /// </summary>
         [HttpGet]
-        public IActionResult NotFound()
+        public new IActionResult NotFound()
         {
             Response.StatusCode = 404;
             return View();
