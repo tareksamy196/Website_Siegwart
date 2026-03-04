@@ -406,7 +406,8 @@
     .sig-cta:hover {
         background: var(--h-white);
         color: var(--h-navy);
-        transform: translateY(-1px);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 45, 98, 0.15);
     }
 
     .sig-cta:focus-visible {

@@ -4,6 +4,28 @@
    Single source of truth for colors, spacing, typography, and effects
    ========================================================================== */
 
+/* ========== Smooth Scroll Behavior ========== */
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* ========== Global Focus Styles for Accessibility ========== */
+:focus-visible {
+    outline: 3px solid var(--brand-accent, #0096FF);
+    outline-offset: 2px;
+}
+
+/* Remove default focus ring for mouse users */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
 :root {
     /* ========== Color Palette ========== */
     /* Primary Colors */
