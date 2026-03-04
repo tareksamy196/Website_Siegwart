@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.Net.Http.Headers;
+using System.Threading.RateLimiting;
 using Serilog;
 using System.IO.Compression;
 using System.Reflection;
@@ -112,6 +113,19 @@ public class Program
 
         // Security
         ConfigureSecurity(services);
+
+        // Rate Limiting
+        services.AddRateLimiter(options =>
+        {
+            options.AddFixedWindowLimiter("contact", opt =>
+            {
+                opt.PermitLimit = 5;
+                opt.Window = TimeSpan.FromMinutes(1);
+                opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+                opt.QueueLimit = 0;
+            });
+            options.RejectionStatusCode = 429;
+        });
 
         Log.Information("✓ All services configured successfully");
     }
@@ -422,6 +436,7 @@ public class Program
         ConfigureRequestLocalization(app);
 
         app.UseAuthentication();
+        app.UseRateLimiter();
         app.UseAuthorization();
 
         ConfigureRoutes(app);
@@ -482,6 +497,18 @@ public class Program
 
             headers.Add("X-DNS-Prefetch-Control", "on");
 
+            headers.Add("Content-Security-Policy",
+                "default-src 'self'; " +
+                "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com; " +
+                "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com; " +
+                "font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; " +
+                "img-src 'self' data: https://www.google.com https://maps.googleapis.com https://maps.gstatic.com; " +
+                "frame-src https://www.google.com; " +
+                "connect-src 'self'; " +
+                "object-src 'none'; " +
+                "base-uri 'self'; " +
+                "form-action 'self';");
+
             if (!environment.IsDevelopment())
             {
                 headers.Add("Link",
@@ -532,11 +559,44 @@ public class Program
     {
         app.Use(async (context, next) =>
         {
-            context.Response.GetTypedHeaders().CacheControl = new CacheControlHeaderValue
+            // Skip cache-control header injection for static file requests
+            var path = context.Request.Path.Value ?? "";
+            var isStaticFile = path.StartsWith("/css/", StringComparison.OrdinalIgnoreCase)
+                || path.StartsWith("/js/", StringComparison.OrdinalIgnoreCase)
+                || path.StartsWith("/lib/", StringComparison.OrdinalIgnoreCase)
+                || path.StartsWith("/Resources/", StringComparison.OrdinalIgnoreCase)
+                || path.StartsWith("/images/", StringComparison.OrdinalIgnoreCase)
+                || path.StartsWith("/fonts/", StringComparison.OrdinalIgnoreCase);
+
+            if (isStaticFile)
             {
-                Public = true,
-                MaxAge = TimeSpan.FromSeconds(10)
-            };
+                await next();
+                return;
+            }
+
+            var headers = context.Response.GetTypedHeaders();
+
+            var isAdminOrAccount = path.StartsWith("/Admin", StringComparison.OrdinalIgnoreCase)
+                || path.StartsWith("/SuperAdmin", StringComparison.OrdinalIgnoreCase)
+                || path.StartsWith("/Account", StringComparison.OrdinalIgnoreCase);
+
+            if (isAdminOrAccount)
+            {
+                headers.CacheControl = new CacheControlHeaderValue
+                {
+                    NoStore = true,
+                    NoCache = true
+                };
+            }
+            else
+            {
+                headers.CacheControl = new CacheControlHeaderValue
+                {
+                    Public = true,
+                    MaxAge = TimeSpan.FromSeconds(300),
+                    MustRevalidate = true
+                };
+            }
 
             context.Response.Headers[HeaderNames.Vary] = new string[] { "Accept-Encoding", "Accept-Language" };
 

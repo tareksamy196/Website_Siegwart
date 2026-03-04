@@ -135,11 +135,29 @@ namespace Website.Siegwart.PL.Controllers
             // Success response
             if (IsAjaxRequest())
             {
-                return Json(new { success = true, message = "Thank you — your message has been received." });
+                return Json(new { success = true, message = "Thank you ï¿½ your message has been received." });
             }
 
-            TempData["Success"] = "Thank you — your message has been received.";
+            TempData["Success"] = "Thank you ï¿½ your message has been received.";
             return RedirectToAction(nameof(Contact));
+        }
+
+        /// <summary>
+        /// Privacy Policy page
+        /// </summary>
+        [HttpGet]
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Terms of Service page
+        /// </summary>
+        [HttpGet]
+        public IActionResult Terms()
+        {
+            return View();
         }
 
         /// <summary>

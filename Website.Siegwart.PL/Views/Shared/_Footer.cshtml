@@ -1,4 +1,4 @@
-﻿@using Website.Siegwart.PL.Helper
+@using Website.Siegwart.PL.Helper
 @inject IStaticTextService T
 
 @{
@@ -16,7 +16,9 @@
                     <a asp-controller="Home" asp-action="Index" class="footer-logo">
                         <img src="~/Resources/images/logo.png"
                              alt="@T.Footer("brand_name")"
-                             loading="lazy">
+                             loading="lazy"
+                             width="120"
+                             height="40">
                     </a>
 
                     <p class="footer-desc">
@@ -66,12 +68,6 @@
                         <a asp-controller="UserProducts" asp-action="Index">
                             <i class="bi bi-chevron-@(isAr ? "left" : "right")"></i>
                             @T.Footer("link_products")
-                        </a>
-                    </li>
-                    <li>
-                        <a asp-controller="Projects" asp-action="Index">
-                            <i class="bi bi-chevron-@(isAr ? "left" : "right")"></i>
-                            @T.Footer("link_projects")
                         </a>
                     </li>
                     <li>
@@ -153,31 +149,18 @@
                         © @currentYear <strong>@T.Footer("brand_name")</strong>. @T.Footer("copyright_text")
                     </p>
                 </div>
-                <div class="col-md-6 text-center text-md-@(isAr ? "start" : "end")">
-                    <ul class="footer-legal">
-                        <li>
-                            <a asp-controller="Home" asp-action="Privacy">
-                                @T.Footer("privacy_policy")
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-controller="Home" asp-action="Terms">
-                                @T.Footer("terms_service")
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+
             </div>
         </div>
     </div>
 </footer>
 
 @section Styles {
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" crossorigin="anonymous">
 }
 
 @section Scripts {
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" crossorigin="anonymous" defer></script>
     <script>
         AOS.init({
             duration: 800,

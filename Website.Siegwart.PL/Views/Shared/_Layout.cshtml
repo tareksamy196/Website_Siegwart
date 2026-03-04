@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.WebUtilities
+@using Microsoft.AspNetCore.WebUtilities
 @using Website.Siegwart.PL.Helper
 @inject IStaticTextService T
 @{
@@ -14,11 +14,20 @@
     var title = ViewData["Title"] as string;
     var description = ViewData["Description"] as string ?? T.Seo("default_description");
     var keywords = ViewData["Keywords"] as string ?? T.Seo("default_keywords");
-    var ogImage = ViewData["OgImage"] as string ?? Url.Content("~/Resources/images/og-default.jpg");
 
-    var canonicalUrl = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}";
-    var siteName = ViewData["site_name"] as string;
+    var baseUrl = $"{Context.Request.Scheme}://{Context.Request.Host}";
+    var ogImage = ViewData["OgImage"] as string
+                  ?? $"{baseUrl}/Resources/images/preview.png";
+
+    var canonicalUrl = $"{baseUrl}{Context.Request.Path}";
+    var siteName = ViewData["SiteName"] as string ?? T.Seo("site_name") ?? "Siegwart";
     var fullTitle = string.IsNullOrWhiteSpace(title) ? siteName : $"{title} | {siteName}";
+
+    var isAdminArea = controller.StartsWith("Admin") ||
+                      controller == "SuperAdmin" ||
+                      controller == "Account";
+    var robotsContent = (ViewData["Robots"] as string)
+                        ?? (isAdminArea ? "noindex, nofollow" : "index, follow");
 }
 <!DOCTYPE html>
 <html lang="@lang" dir="@dir" prefix="og: http://ogp.me/ns#">
@@ -35,8 +44,14 @@
     <meta name="description" content="@description" />
     <meta name="keywords" content="@keywords" />
     <meta name="author" content="Siegwart - Egyptian Company for Pipes & Cement Products" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="@robotsContent" />
     <meta name="language" content="@(isAr ? "Arabic" : "English")" />
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="EG-C" />
+    <meta name="geo.placename" content="Cairo, Egypt" />
+    <meta name="geo.position" content="29.9792;31.1342" />
+    <meta name="ICBM" content="29.9792, 31.1342" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -44,7 +59,12 @@
     <meta property="og:title" content="@fullTitle" />
     <meta property="og:description" content="@description" />
     <meta property="og:image" content="@ogImage" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="@fullTitle" />
     <meta property="og:site_name" content="@siteName" />
+    <meta property="og:locale" content="@(isAr ? "ar_EG" : "en_US")" />
+    <meta property="og:locale:alternate" content="@(isAr ? "en_US" : "ar_EG")" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -52,9 +72,15 @@
     <meta name="twitter:title" content="@fullTitle" />
     <meta name="twitter:description" content="@description" />
     <meta name="twitter:image" content="@ogImage" />
+    <meta name="twitter:image:alt" content="@fullTitle" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="@canonicalUrl" />
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="en" href="@(baseUrl)/en@(Context.Request.Path)" />
+    <link rel="alternate" hreflang="ar" href="@(baseUrl)/ar@(Context.Request.Path)" />
+    <link rel="alternate" hreflang="x-default" href="@canonicalUrl" />
 
     <!-- ═══════════════════════════════════════════════════════════════════
          FAVICONS - HIGH QUALITY & VISIBLE
@@ -97,6 +123,9 @@
     <!-- ═══════════════════════════════════════════════════════════════════
          PRECONNECT & DNS PREFETCH
          ═══════════════════════════════════════════════════════════════════ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;400;500;600;700&family=Cairo:wght@300;400;500;600;700;800&display=swap" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
@@ -185,8 +214,6 @@
     <!-- ═══════════════════════════════════════════════════════════════════
          JAVASCRIPT - OPTIMIZED LOADING
          ═══════════════════════════════════════════════════════════════════ -->
-    <!-- jQuery -->
-    <script src="~/lib/jquery/dist/jquery.min.js" defer></script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -230,5 +257,7 @@
             "industry": "Railway & Infrastructure Manufacturing"
         }
     </script>
+
+    @await RenderSectionAsync("SchemaLD", required: false)
 </body>
 </html>
