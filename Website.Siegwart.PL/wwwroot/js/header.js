@@ -133,20 +133,20 @@
     const MobileMenu = {
         toggle: null,
         menu: null,
-        close: null,
+        closeBtn: null,
         overlay: null,
         accordions: [],
 
         init() {
             this.toggle = document.getElementById('mobileToggle');
             this.menu = document.getElementById('mobileMenu');
-            this.close = document.getElementById('mobileClose');
+            this.closeBtn = document.getElementById('mobileClose');
             this.overlay = document.getElementById('mobileOverlay');
 
             if (!this.menu || !this.overlay || !this.toggle) return;
 
             this.toggle.addEventListener('click', () => this.open());
-            this.close?.addEventListener('click', () => this.close());
+            this.closeBtn?.addEventListener('click', () => this.closeMenu());
             this.overlay.addEventListener('click', () => this.closeMenu());
 
             this.initAccordions();
