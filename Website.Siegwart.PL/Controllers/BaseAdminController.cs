@@ -56,7 +56,7 @@ namespace Website.Siegwart.PL.Controllers
         protected string GetCurrentUserEmail()
         {
             var emailClaim = User?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-            return !string.IsNullOrWhiteSpace(emailClaim) ? emailClaim : (User.Identity?.Name ?? "Unknown");
+            return !string.IsNullOrWhiteSpace(emailClaim) ? emailClaim : (User?.Identity?.Name ?? "Unknown");
         }
 
         protected bool IsInRole(string roleName)

@@ -490,14 +490,14 @@ public class Program
         {
             var headers = context.Response.Headers;
 
-            headers.Add("X-Content-Type-Options", "nosniff");
-            headers.Add("X-Frame-Options", "SAMEORIGIN");
-            headers.Add("X-XSS-Protection", "1; mode=block");
-            headers.Add("Referrer-Policy", "strict-origin-when-cross-origin");
+            headers["X-Content-Type-Options"] = "nosniff";
+            headers["X-Frame-Options"] = "SAMEORIGIN";
+            headers["X-XSS-Protection"] = "1; mode=block";
+            headers["Referrer-Policy"] = "strict-origin-when-cross-origin";
 
-            headers.Add("X-DNS-Prefetch-Control", "on");
+            headers["X-DNS-Prefetch-Control"] = "on";
 
-            headers.Add("Content-Security-Policy",
+            headers["Content-Security-Policy"] =
                 "default-src 'self'; " +
                 "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com; " +
                 "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com; " +
@@ -507,13 +507,13 @@ public class Program
                 "connect-src 'self'; " +
                 "object-src 'none'; " +
                 "base-uri 'self'; " +
-                "form-action 'self';");
+                "form-action 'self';";
 
             if (!environment.IsDevelopment())
             {
-                headers.Add("Link",
+                headers["Link"] =
                     "<https://unpkg.com>; rel=preconnect; crossorigin, " +
-                    "<https://cdnjs.cloudflare.com>; rel=preconnect; crossorigin");
+                    "<https://cdnjs.cloudflare.com>; rel=preconnect; crossorigin";
             }
 
             await next();
