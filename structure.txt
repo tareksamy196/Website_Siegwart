@@ -1,0 +1,1475 @@
+Folder PATH listing for volume work
+Volume serial number is 663D-E82C
+D:.
+|   architecture.txt
+|   structure.txt
+|   Website.Siegwart.sln
+|   
++---Website.Siegwart.BLL
+|   |   GlobalUsing.cs
+|   |   Website.Siegwart.BLL.csproj
+|   |   
+|   +---bin
+|   |   +---Debug
+|   |   |   \---net8.0
+|   |   |           Website.Siegwart.BLL.deps.json
+|   |   |           Website.Siegwart.BLL.dll
+|   |   |           Website.Siegwart.BLL.pdb
+|   |   |           Website.Siegwart.DAL.dll
+|   |   |           Website.Siegwart.DAL.pdb
+|   |   |           
+|   |   \---Release
+|   |       \---net8.0
+|   +---Dtos
+|   |   +---Admin
+|   |   |   |   AdminAccount.cs
+|   |   |   |   
+|   |   |   +---AccountDtos
+|   |   |   |       ForgetPasswordDto.cs
+|   |   |   |       LoginAdminDto.cs
+|   |   |   |       ResetPasswordDto.cs
+|   |   |   |       
+|   |   |   +---CategoryDtos
+|   |   |   |       CategoryDetailsDto.cs
+|   |   |   |       CategoryDto.cs
+|   |   |   |       CreateCategoryDto.cs
+|   |   |   |       UpdateCategoryDto.cs
+|   |   |   |       
+|   |   |   +---NewsDtos
+|   |   |   |       CreateNewsDto.cs
+|   |   |   |       NewsDetailsDto.cs
+|   |   |   |       NewsListDto.cs
+|   |   |   |       UpdateNewsDto.cs
+|   |   |   |       
+|   |   |   +---ProductDtos
+|   |   |   |       CreateProductDto.cs
+|   |   |   |       ProductDetailsDto.cs
+|   |   |   |       ProductListDto.cs
+|   |   |   |       UpdateProductDto.cs
+|   |   |   |       
+|   |   |   +---SuperAdminAccount
+|   |   |   |       AdminChangePasswordDto.cs
+|   |   |   |       CreateAdminDto.cs
+|   |   |   |       EditAdminDto.cs
+|   |   |   |       UserDetailsDto.cs
+|   |   |   |       UserListItemDto.cs
+|   |   |   |       
+|   |   |   +---TeamMember
+|   |   |   |       AdminTeamMemberDto.cs
+|   |   |   |       CreateTeamMemberDto.cs
+|   |   |   |       UpdateTeamMemberDto.cs
+|   |   |   |       
+|   |   |   \---VideoMedia
+|   |   |           PagedResult.cs
+|   |   |           VideoMediaCreateDto.cs
+|   |   |           VideoMediaDto.cs
+|   |   |           VideoMediaListItemDto.cs
+|   |   |           VideoMediaUpdateDto.cs
+|   |   |           
+|   |   \---User
+|   |           ErrorDto.cs
+|   |           UserCategoryDto.cs
+|   |           UserContactFormDto.cs
+|   |           UserNewsDto.cs
+|   |           UserProductDto.cs
+|   |           UserTeamMemberDetailsDto.cs
+|   |           UserTeamMemberListDto.cs
+|   |           UserVideoGalleryDto.cs
+|   |           
+|   +---obj
+|   |   |   project.assets.json
+|   |   |   project.nuget.cache
+|   |   |   Website.Siegwart.BLL.csproj.nuget.dgspec.json
+|   |   |   Website.Siegwart.BLL.csproj.nuget.g.props
+|   |   |   Website.Siegwart.BLL.csproj.nuget.g.targets
+|   |   |   
+|   |   +---Debug
+|   |   |   \---net8.0
+|   |   |       |   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+|   |   |       |   Website..DEF76E12.Up2Date
+|   |   |       |   Website.Siegwart.BLL.AssemblyInfo.cs
+|   |   |       |   Website.Siegwart.BLL.AssemblyInfoInputs.cache
+|   |   |       |   Website.Siegwart.BLL.assets.cache
+|   |   |       |   Website.Siegwart.BLL.csproj.AssemblyReference.cache
+|   |   |       |   Website.Siegwart.BLL.csproj.BuildWithSkipAnalyzers
+|   |   |       |   Website.Siegwart.BLL.csproj.CoreCompileInputs.cache
+|   |   |       |   Website.Siegwart.BLL.csproj.FileListAbsolute.txt
+|   |   |       |   Website.Siegwart.BLL.dll
+|   |   |       |   Website.Siegwart.BLL.GeneratedMSBuildEditorConfig.editorconfig
+|   |   |       |   Website.Siegwart.BLL.GlobalUsings.g.cs
+|   |   |       |   Website.Siegwart.BLL.pdb
+|   |   |       |   
+|   |   |       +---ref
+|   |   |       |       Website.Siegwart.BLL.dll
+|   |   |       |       
+|   |   |       \---refint
+|   |   |               Website.Siegwart.BLL.dll
+|   |   |               
+|   |   \---Release
+|   |       \---net8.0
+|   |           |   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+|   |           |   Website.Siegwart.BLL.AssemblyInfo.cs
+|   |           |   Website.Siegwart.BLL.AssemblyInfoInputs.cache
+|   |           |   Website.Siegwart.BLL.assets.cache
+|   |           |   Website.Siegwart.BLL.csproj.AssemblyReference.cache
+|   |           |   Website.Siegwart.BLL.GeneratedMSBuildEditorConfig.editorconfig
+|   |           |   Website.Siegwart.BLL.GlobalUsings.g.cs
+|   |           |   
+|   |           +---ref
+|   |           \---refint
+|   +---Profiles
+|   |       CategoryProfile.cs
+|   |       EntityMappingProfile.cs
+|   |       NewsProfile.cs
+|   |       ProductProfile.cs
+|   |       TeamMemberProfile.cs
+|   |       VideoMediaProfile.cs
+|   |       
+|   \---Services
+|       +---Classes
+|       |       AttachmentService.cs
+|       |       AuditService.cs
+|       |       CategoryService.cs
+|       |       ContactService.cs
+|       |       NewsService.cs
+|       |       ProductService.cs
+|       |       ServiceCollectionExtensions.cs
+|       |       SmtpEmailSender.cs
+|       |       TeamMemberService.cs
+|       |       UserNewsService.cs
+|       |       UserProductService.cs
+|       |       UserTeamMemberService.cs
+|       |       VideoMediaService.cs
+|       |       
+|       \---Interfaces
+|               IAppEmailSender.cs
+|               IAttachmentService.cs
+|               IAuditService.cs
+|               ICategoryService.cs
+|               IContactService.cs
+|               INewsService.cs
+|               IProductService.cs
+|               ITeamMemberService.cs
+|               IUserNewsService.cs
+|               IUserProductService.cs
+|               IUserTeamMemberService.cs
+|               IVideoMediaService.cs
+|               
++---Website.Siegwart.DAL
+|   |   GlobalUsing.cs
+|   |   Website.Siegwart.DAL.csproj
+|   |   
+|   +---bin
+|   |   +---Debug
+|   |   |   \---net8.0
+|   |   |           Website.Siegwart.DAL.deps.json
+|   |   |           Website.Siegwart.DAL.dll
+|   |   |           Website.Siegwart.DAL.pdb
+|   |   |           Website.Siegwart.DAL.runtimeconfig.json
+|   |   |           
+|   |   \---Release
+|   |       \---net8.0
+|   +---Data
+|   |   +---Configurations
+|   |   |       CategoryConfiguration.cs
+|   |   |       ContactMessageConfiguration.cs
+|   |   |       EntityTypeBuilderExtensions.cs
+|   |   |       NewsConfiguration.cs
+|   |   |       ProductConfiguration.cs
+|   |   |       SmtpSettings.cs
+|   |   |       TeamMemberConfiguration.cs
+|   |   |       VideoMediaConfiguration.cs
+|   |   |       
+|   |   \---Contexts
+|   |           AppDbContext.cs
+|   |           
+|   +---Enums
+|   |       TeamCategory.cs
+|   |       VideoCategory.cs
+|   |       
+|   +---Helpers
+|   |       YouTubehelper.cs
+|   |       
+|   +---Migrations
+|   |       20260301084001_Refactor.cs
+|   |       20260301084001_Refactor.Designer.cs
+|   |       20260304070109_intial_create.cs
+|   |       20260304070109_intial_create.Designer.cs
+|   |       AppDbContextModelSnapshot.cs
+|   |       
+|   +---Models
+|   |       BaseEntity.cs
+|   |       Category.cs
+|   |       ContactMessage.cs
+|   |       Email.cs
+|   |       News.cs
+|   |       Product.cs
+|   |       SeoEntity.cs
+|   |       TeamMember.cs
+|   |       VideoMedia.cs
+|   |       
+|   +---obj
+|   |   |   project.assets.json
+|   |   |   project.nuget.cache
+|   |   |   Website.Siegwart.DAL.csproj.nuget.dgspec.json
+|   |   |   Website.Siegwart.DAL.csproj.nuget.g.props
+|   |   |   Website.Siegwart.DAL.csproj.nuget.g.targets
+|   |   |   
+|   |   +---Debug
+|   |   |   \---net8.0
+|   |   |       |   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+|   |   |       |   Website.Siegwart.DAL.AssemblyInfo.cs
+|   |   |       |   Website.Siegwart.DAL.AssemblyInfoInputs.cache
+|   |   |       |   Website.Siegwart.DAL.assets.cache
+|   |   |       |   Website.Siegwart.DAL.csproj.AssemblyReference.cache
+|   |   |       |   Website.Siegwart.DAL.csproj.BuildWithSkipAnalyzers
+|   |   |       |   Website.Siegwart.DAL.csproj.CoreCompileInputs.cache
+|   |   |       |   Website.Siegwart.DAL.csproj.FileListAbsolute.txt
+|   |   |       |   Website.Siegwart.DAL.dll
+|   |   |       |   Website.Siegwart.DAL.GeneratedMSBuildEditorConfig.editorconfig
+|   |   |       |   Website.Siegwart.DAL.genruntimeconfig.cache
+|   |   |       |   Website.Siegwart.DAL.GlobalUsings.g.cs
+|   |   |       |   Website.Siegwart.DAL.pdb
+|   |   |       |   
+|   |   |       +---ref
+|   |   |       |       Website.Siegwart.DAL.dll
+|   |   |       |       
+|   |   |       \---refint
+|   |   |               Website.Siegwart.DAL.dll
+|   |   |               
+|   |   \---Release
+|   |       \---net8.0
+|   |           |   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+|   |           |   Website.Siegwart.DAL.AssemblyInfo.cs
+|   |           |   Website.Siegwart.DAL.AssemblyInfoInputs.cache
+|   |           |   Website.Siegwart.DAL.assets.cache
+|   |           |   Website.Siegwart.DAL.csproj.AssemblyReference.cache
+|   |           |   Website.Siegwart.DAL.GeneratedMSBuildEditorConfig.editorconfig
+|   |           |   Website.Siegwart.DAL.GlobalUsings.g.cs
+|   |           |   
+|   |           +---ref
+|   |           \---refint
+|   \---Repositories
+|       +---Classes
+|       |       CategoryRepository.cs
+|       |       GenericRepository.cs
+|       |       NewsRepository.cs
+|       |       ProductRepository.cs
+|       |       SeoRepository.cs
+|       |       TeamMemberRepository.cs
+|       |       UnitOfWork.cs
+|       |       VideoMediaRepository.cs
+|       |       
+|       \---Interfaces
+|               ICategoryRepository.cs
+|               IGenericRepository.cs
+|               INewsRepository.cs
+|               IProductRepository.cs
+|               ISeoRepository.cs
+|               ITeamMemberRepository.cs
+|               IUnitOfWork.cs
+|               IVideoMediaRepository.cs
+|               
+\---Website.Siegwart.PL
+    |   appsettings.Development.json
+    |   appsettings.json
+    |   Program.cs
+    |   SeedData.cs
+    |   Website.Siegwart.PL.csproj
+    |   Website.Siegwart.PL.csproj.user
+    |   _ViewImports.cshtml
+    |   
+    +---bin
+    |   +---Debug
+    |   |   \---net8.0
+    |   |       |   appsettings.Development.json
+    |   |       |   appsettings.json
+    |   |       |   AutoMapper.dll
+    |   |       |   AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+    |   |       |   Azure.Core.dll
+    |   |       |   Azure.Identity.dll
+    |   |       |   BouncyCastle.Cryptography.dll
+    |   |       |   dotnet-aspnet-codegenerator-design.dll
+    |   |       |   Humanizer.dll
+    |   |       |   MailKit.dll
+    |   |       |   Microsoft.AspNetCore.Cryptography.Internal.dll
+    |   |       |   Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+    |   |       |   Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+    |   |       |   Microsoft.AspNetCore.Identity.UI.dll
+    |   |       |   Microsoft.AspNetCore.Razor.Language.dll
+    |   |       |   Microsoft.Bcl.AsyncInterfaces.dll
+    |   |       |   Microsoft.Build.dll
+    |   |       |   Microsoft.Build.Framework.dll
+    |   |       |   Microsoft.CodeAnalysis.AnalyzerUtilities.dll
+    |   |       |   Microsoft.CodeAnalysis.CSharp.dll
+    |   |       |   Microsoft.CodeAnalysis.CSharp.Features.dll
+    |   |       |   Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+    |   |       |   Microsoft.CodeAnalysis.dll
+    |   |       |   Microsoft.CodeAnalysis.Elfie.dll
+    |   |       |   Microsoft.CodeAnalysis.Features.dll
+    |   |       |   Microsoft.CodeAnalysis.Razor.dll
+    |   |       |   Microsoft.CodeAnalysis.Scripting.dll
+    |   |       |   Microsoft.CodeAnalysis.Workspaces.dll
+    |   |       |   Microsoft.Data.SqlClient.dll
+    |   |       |   Microsoft.DiaSymReader.dll
+    |   |       |   Microsoft.DotNet.Scaffolding.Shared.dll
+    |   |       |   Microsoft.EntityFrameworkCore.Abstractions.dll
+    |   |       |   Microsoft.EntityFrameworkCore.Design.dll
+    |   |       |   Microsoft.EntityFrameworkCore.dll
+    |   |       |   Microsoft.EntityFrameworkCore.Relational.dll
+    |   |       |   Microsoft.EntityFrameworkCore.SqlServer.dll
+    |   |       |   Microsoft.Extensions.Caching.Memory.dll
+    |   |       |   Microsoft.Extensions.DependencyInjection.Abstractions.dll
+    |   |       |   Microsoft.Extensions.DependencyInjection.dll
+    |   |       |   Microsoft.Extensions.DependencyModel.dll
+    |   |       |   Microsoft.Extensions.FileProviders.Embedded.dll
+    |   |       |   Microsoft.Extensions.Identity.Core.dll
+    |   |       |   Microsoft.Extensions.Identity.Stores.dll
+    |   |       |   Microsoft.Extensions.Logging.Abstractions.dll
+    |   |       |   Microsoft.Extensions.Logging.dll
+    |   |       |   Microsoft.Extensions.Options.dll
+    |   |       |   Microsoft.Identity.Client.dll
+    |   |       |   Microsoft.Identity.Client.Extensions.Msal.dll
+    |   |       |   Microsoft.IdentityModel.Abstractions.dll
+    |   |       |   Microsoft.IdentityModel.JsonWebTokens.dll
+    |   |       |   Microsoft.IdentityModel.Logging.dll
+    |   |       |   Microsoft.IdentityModel.Protocols.dll
+    |   |       |   Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+    |   |       |   Microsoft.IdentityModel.Tokens.dll
+    |   |       |   Microsoft.NET.StringTools.dll
+    |   |       |   Microsoft.SqlServer.Server.dll
+    |   |       |   Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+    |   |       |   Microsoft.VisualStudio.Web.CodeGeneration.dll
+    |   |       |   Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+    |   |       |   Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+    |   |       |   Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+    |   |       |   Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+    |   |       |   MimeKit.dll
+    |   |       |   Mono.TextTemplating.dll
+    |   |       |   Newtonsoft.Json.dll
+    |   |       |   NuGet.Common.dll
+    |   |       |   NuGet.Configuration.dll
+    |   |       |   NuGet.DependencyResolver.Core.dll
+    |   |       |   NuGet.Frameworks.dll
+    |   |       |   NuGet.LibraryModel.dll
+    |   |       |   NuGet.Packaging.dll
+    |   |       |   NuGet.ProjectModel.dll
+    |   |       |   NuGet.Protocol.dll
+    |   |       |   NuGet.Versioning.dll
+    |   |       |   Serilog.AspNetCore.dll
+    |   |       |   Serilog.dll
+    |   |       |   Serilog.Extensions.Hosting.dll
+    |   |       |   Serilog.Extensions.Logging.dll
+    |   |       |   Serilog.Formatting.Compact.dll
+    |   |       |   Serilog.Settings.Configuration.dll
+    |   |       |   Serilog.Sinks.Console.dll
+    |   |       |   Serilog.Sinks.Debug.dll
+    |   |       |   Serilog.Sinks.File.dll
+    |   |       |   System.ClientModel.dll
+    |   |       |   System.CodeDom.dll
+    |   |       |   System.Composition.AttributedModel.dll
+    |   |       |   System.Composition.Convention.dll
+    |   |       |   System.Composition.Hosting.dll
+    |   |       |   System.Composition.Runtime.dll
+    |   |       |   System.Composition.TypedParts.dll
+    |   |       |   System.Configuration.ConfigurationManager.dll
+    |   |       |   System.IdentityModel.Tokens.Jwt.dll
+    |   |       |   System.Memory.Data.dll
+    |   |       |   System.Reflection.MetadataLoadContext.dll
+    |   |       |   System.Runtime.Caching.dll
+    |   |       |   System.Security.Cryptography.Pkcs.dll
+    |   |       |   System.Security.Cryptography.ProtectedData.dll
+    |   |       |   Website.Siegwart.BLL.dll
+    |   |       |   Website.Siegwart.BLL.pdb
+    |   |       |   Website.Siegwart.DAL.dll
+    |   |       |   Website.Siegwart.DAL.pdb
+    |   |       |   Website.Siegwart.PL.deps.json
+    |   |       |   Website.Siegwart.PL.dll
+    |   |       |   Website.Siegwart.PL.exe
+    |   |       |   Website.Siegwart.PL.pdb
+    |   |       |   Website.Siegwart.PL.runtimeconfig.json
+    |   |       |   Website.Siegwart.PL.staticwebassets.endpoints.json
+    |   |       |   Website.Siegwart.PL.staticwebassets.runtime.json
+    |   |       |   
+    |   |       +---af
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---ar
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---az
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---bg
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---bn-BD
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---cs
+    |   |       |       Humanizer.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |   |       |       
+    |   |       +---da
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---de
+    |   |       |       Humanizer.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |   |       |       
+    |   |       +---el
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---es
+    |   |       |       Humanizer.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |   |       |       
+    |   |       +---fa
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---fi-FI
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---fr
+    |   |       |       Humanizer.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |   |       |       
+    |   |       +---fr-BE
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---he
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---hr
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---hu
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---hy
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---id
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---is
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---it
+    |   |       |       Humanizer.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |   |       |       
+    |   |       +---ja
+    |   |       |       Humanizer.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |   |       |       
+    |   |       +---ko
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |   |       |       
+    |   |       +---ko-KR
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---ku
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---lv
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---ms-MY
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---mt
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---nb
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---nb-NO
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---nl
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---pl
+    |   |       |       Humanizer.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |   |       |       
+    |   |       +---pt
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---pt-BR
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |   |       |       
+    |   |       +---ro
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---ru
+    |   |       |       Humanizer.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |   |       |       
+    |   |       +---runtimes
+    |   |       |   +---unix
+    |   |       |   |   \---lib
+    |   |       |   |       \---net6.0
+    |   |       |   |               Microsoft.Data.SqlClient.dll
+    |   |       |   |               
+    |   |       |   +---win
+    |   |       |   |   \---lib
+    |   |       |   |       +---net6.0
+    |   |       |   |       |       Microsoft.Data.SqlClient.dll
+    |   |       |   |       |       System.Runtime.Caching.dll
+    |   |       |   |       |       
+    |   |       |   |       \---net8.0
+    |   |       |   |               System.Security.Cryptography.Pkcs.dll
+    |   |       |   |               
+    |   |       |   +---win-arm
+    |   |       |   |   \---native
+    |   |       |   |           Microsoft.Data.SqlClient.SNI.dll
+    |   |       |   |           
+    |   |       |   +---win-arm64
+    |   |       |   |   \---native
+    |   |       |   |           Microsoft.Data.SqlClient.SNI.dll
+    |   |       |   |           
+    |   |       |   +---win-x64
+    |   |       |   |   \---native
+    |   |       |   |           Microsoft.Data.SqlClient.SNI.dll
+    |   |       |   |           
+    |   |       |   \---win-x86
+    |   |       |       \---native
+    |   |       |               Microsoft.Data.SqlClient.SNI.dll
+    |   |       |               
+    |   |       +---sk
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---sl
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---sr
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---sr-Latn
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---sv
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---th-TH
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---tr
+    |   |       |       Humanizer.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |   |       |       
+    |   |       +---uk
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---uz-Cyrl-UZ
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---uz-Latn-UZ
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---vi
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---zh-CN
+    |   |       |       Humanizer.resources.dll
+    |   |       |       
+    |   |       +---zh-Hans
+    |   |       |       Humanizer.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Features.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |   |       |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |   |       |       
+    |   |       \---zh-Hant
+    |   |               Humanizer.resources.dll
+    |   |               Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |   |               Microsoft.CodeAnalysis.CSharp.resources.dll
+    |   |               Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |   |               Microsoft.CodeAnalysis.Features.resources.dll
+    |   |               Microsoft.CodeAnalysis.resources.dll
+    |   |               Microsoft.CodeAnalysis.Scripting.resources.dll
+    |   |               Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |   |               
+    |   \---Release
+    |       \---net8.0
+    |           |   appsettings.Development.json
+    |           |   appsettings.json
+    |           |   Azure.Core.dll
+    |           |   Azure.Identity.dll
+    |           |   dotnet-aspnet-codegenerator-design.dll
+    |           |   Humanizer.dll
+    |           |   Microsoft.AspNetCore.Cryptography.Internal.dll
+    |           |   Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+    |           |   Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+    |           |   Microsoft.AspNetCore.Razor.Language.dll
+    |           |   Microsoft.Bcl.AsyncInterfaces.dll
+    |           |   Microsoft.Build.dll
+    |           |   Microsoft.Build.Framework.dll
+    |           |   Microsoft.CodeAnalysis.AnalyzerUtilities.dll
+    |           |   Microsoft.CodeAnalysis.CSharp.dll
+    |           |   Microsoft.CodeAnalysis.CSharp.Features.dll
+    |           |   Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+    |           |   Microsoft.CodeAnalysis.dll
+    |           |   Microsoft.CodeAnalysis.Elfie.dll
+    |           |   Microsoft.CodeAnalysis.Features.dll
+    |           |   Microsoft.CodeAnalysis.Razor.dll
+    |           |   Microsoft.CodeAnalysis.Scripting.dll
+    |           |   Microsoft.CodeAnalysis.Workspaces.dll
+    |           |   Microsoft.Data.SqlClient.dll
+    |           |   Microsoft.DiaSymReader.dll
+    |           |   Microsoft.DotNet.Scaffolding.Shared.dll
+    |           |   Microsoft.EntityFrameworkCore.Abstractions.dll
+    |           |   Microsoft.EntityFrameworkCore.Design.dll
+    |           |   Microsoft.EntityFrameworkCore.dll
+    |           |   Microsoft.EntityFrameworkCore.Relational.dll
+    |           |   Microsoft.EntityFrameworkCore.SqlServer.dll
+    |           |   Microsoft.Extensions.Caching.Memory.dll
+    |           |   Microsoft.Extensions.DependencyInjection.Abstractions.dll
+    |           |   Microsoft.Extensions.DependencyInjection.dll
+    |           |   Microsoft.Extensions.DependencyModel.dll
+    |           |   Microsoft.Extensions.Identity.Core.dll
+    |           |   Microsoft.Extensions.Identity.Stores.dll
+    |           |   Microsoft.Extensions.Logging.Abstractions.dll
+    |           |   Microsoft.Extensions.Logging.dll
+    |           |   Microsoft.Extensions.Options.dll
+    |           |   Microsoft.Identity.Client.dll
+    |           |   Microsoft.Identity.Client.Extensions.Msal.dll
+    |           |   Microsoft.IdentityModel.Abstractions.dll
+    |           |   Microsoft.IdentityModel.JsonWebTokens.dll
+    |           |   Microsoft.IdentityModel.Logging.dll
+    |           |   Microsoft.IdentityModel.Protocols.dll
+    |           |   Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+    |           |   Microsoft.IdentityModel.Tokens.dll
+    |           |   Microsoft.NET.StringTools.dll
+    |           |   Microsoft.SqlServer.Server.dll
+    |           |   Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+    |           |   Microsoft.VisualStudio.Web.CodeGeneration.dll
+    |           |   Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+    |           |   Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+    |           |   Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+    |           |   Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+    |           |   Mono.TextTemplating.dll
+    |           |   Newtonsoft.Json.dll
+    |           |   NuGet.Common.dll
+    |           |   NuGet.Configuration.dll
+    |           |   NuGet.DependencyResolver.Core.dll
+    |           |   NuGet.Frameworks.dll
+    |           |   NuGet.LibraryModel.dll
+    |           |   NuGet.Packaging.dll
+    |           |   NuGet.ProjectModel.dll
+    |           |   NuGet.Protocol.dll
+    |           |   NuGet.Versioning.dll
+    |           |   System.ClientModel.dll
+    |           |   System.CodeDom.dll
+    |           |   System.Composition.AttributedModel.dll
+    |           |   System.Composition.Convention.dll
+    |           |   System.Composition.Hosting.dll
+    |           |   System.Composition.Runtime.dll
+    |           |   System.Composition.TypedParts.dll
+    |           |   System.Configuration.ConfigurationManager.dll
+    |           |   System.IdentityModel.Tokens.Jwt.dll
+    |           |   System.Memory.Data.dll
+    |           |   System.Reflection.MetadataLoadContext.dll
+    |           |   System.Runtime.Caching.dll
+    |           |   System.Security.Cryptography.ProtectedData.dll
+    |           |   Website.Siegwart.BLL.dll
+    |           |   Website.Siegwart.BLL.pdb
+    |           |   Website.Siegwart.DAL.dll
+    |           |   Website.Siegwart.DAL.pdb
+    |           |   Website.Siegwart.PL.deps.json
+    |           |   Website.Siegwart.PL.dll
+    |           |   Website.Siegwart.PL.exe
+    |           |   Website.Siegwart.PL.pdb
+    |           |   Website.Siegwart.PL.runtimeconfig.json
+    |           |   Website.Siegwart.PL.staticwebassets.endpoints.json
+    |           |   Website.Siegwart.PL.staticwebassets.runtime.json
+    |           |   
+    |           +---af
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---ar
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---az
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---bg
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---bn-BD
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---cs
+    |           |       Humanizer.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |           |       Microsoft.CodeAnalysis.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.resources.dll
+    |           |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |           |       
+    |           +---da
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---de
+    |           |       Humanizer.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |           |       Microsoft.CodeAnalysis.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.resources.dll
+    |           |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |           |       
+    |           +---el
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---es
+    |           |       Humanizer.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |           |       Microsoft.CodeAnalysis.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.resources.dll
+    |           |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |           |       
+    |           +---fa
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---fi-FI
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---fr
+    |           |       Humanizer.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |           |       Microsoft.CodeAnalysis.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.resources.dll
+    |           |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |           |       
+    |           +---fr-BE
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---he
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---hr
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---hu
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---hy
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---id
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---is
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---it
+    |           |       Humanizer.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |           |       Microsoft.CodeAnalysis.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.resources.dll
+    |           |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |           |       
+    |           +---ja
+    |           |       Humanizer.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |           |       Microsoft.CodeAnalysis.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.resources.dll
+    |           |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |           |       
+    |           +---ko
+    |           |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |           |       Microsoft.CodeAnalysis.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.resources.dll
+    |           |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |           |       
+    |           +---ko-KR
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---ku
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---lv
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---ms-MY
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---mt
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---nb
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---nb-NO
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---nl
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---pl
+    |           |       Humanizer.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |           |       Microsoft.CodeAnalysis.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.resources.dll
+    |           |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |           |       
+    |           +---pt
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---pt-BR
+    |           |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |           |       Microsoft.CodeAnalysis.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.resources.dll
+    |           |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |           |       
+    |           +---ro
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---ru
+    |           |       Humanizer.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |           |       Microsoft.CodeAnalysis.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.resources.dll
+    |           |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |           |       
+    |           +---runtimes
+    |           |   +---unix
+    |           |   |   \---lib
+    |           |   |       \---net6.0
+    |           |   |               Microsoft.Data.SqlClient.dll
+    |           |   |               
+    |           |   +---win
+    |           |   |   \---lib
+    |           |   |       \---net6.0
+    |           |   |               Microsoft.Data.SqlClient.dll
+    |           |   |               System.Runtime.Caching.dll
+    |           |   |               
+    |           |   +---win-arm
+    |           |   |   \---native
+    |           |   |           Microsoft.Data.SqlClient.SNI.dll
+    |           |   |           
+    |           |   +---win-arm64
+    |           |   |   \---native
+    |           |   |           Microsoft.Data.SqlClient.SNI.dll
+    |           |   |           
+    |           |   +---win-x64
+    |           |   |   \---native
+    |           |   |           Microsoft.Data.SqlClient.SNI.dll
+    |           |   |           
+    |           |   \---win-x86
+    |           |       \---native
+    |           |               Microsoft.Data.SqlClient.SNI.dll
+    |           |               
+    |           +---sk
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---sl
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---sr
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---sr-Latn
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---sv
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---th-TH
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---tr
+    |           |       Humanizer.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |           |       Microsoft.CodeAnalysis.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.resources.dll
+    |           |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |           |       
+    |           +---uk
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---uz-Cyrl-UZ
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---uz-Latn-UZ
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---vi
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---zh-CN
+    |           |       Humanizer.resources.dll
+    |           |       
+    |           +---zh-Hans
+    |           |       Humanizer.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.resources.dll
+    |           |       Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |           |       Microsoft.CodeAnalysis.Features.resources.dll
+    |           |       Microsoft.CodeAnalysis.resources.dll
+    |           |       Microsoft.CodeAnalysis.Scripting.resources.dll
+    |           |       Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |           |       
+    |           \---zh-Hant
+    |                   Humanizer.resources.dll
+    |                   Microsoft.CodeAnalysis.CSharp.Features.resources.dll
+    |                   Microsoft.CodeAnalysis.CSharp.resources.dll
+    |                   Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+    |                   Microsoft.CodeAnalysis.Features.resources.dll
+    |                   Microsoft.CodeAnalysis.resources.dll
+    |                   Microsoft.CodeAnalysis.Scripting.resources.dll
+    |                   Microsoft.CodeAnalysis.Workspaces.resources.dll
+    |                   
+    +---Controllers
+    |       AccountController.cs
+    |       AdminCategoriesController.cs
+    |       AdminDashboardController.cs
+    |       AdminNewsController.cs
+    |       AdminProductsController.cs
+    |       AdminTeamMemberController.cs
+    |       AdminVideoMediaController.cs
+    |       BaseAdminController.cs
+    |       HomeController.cs
+    |       SuperAdminController.cs
+    |       UserContactController.cs
+    |       UserNewsController.cs
+    |       UserProductsController.cs
+    |       UserTeamController.cs
+    |       UserVideoMediaController.cs
+    |       
+    +---Helper
+    |       LanguageExtensions.cs
+    |       LanguageMiddleware.cs
+    |       LanguageOptions.cs
+    |       LocalizedText.cs
+    |       StaticTextService.cs
+    |       TeamCategoryHelper.cs
+    |       
+    +---Logs
+    |       app-20260224_003.txt
+    |       app-20260224_004.txt
+    |       app-20260224_005.txt
+    |       app-20260224_006.txt
+    |       app-20260224_007.txt
+    |       app-20260224_008.txt
+    |       app-20260224_009.txt
+    |       app-20260224_010.txt
+    |       app-20260224_011.txt
+    |       app-20260224_012.txt
+    |       app-20260224_013.txt
+    |       app-20260225.txt
+    |       app-20260225_001.txt
+    |       app-20260225_002.txt
+    |       app-20260225_003.txt
+    |       app-20260225_004.txt
+    |       app-20260225_005.txt
+    |       app-20260301.txt
+    |       app-20260301_001.txt
+    |       app-20260301_002.txt
+    |       app-20260301_003.txt
+    |       app-20260301_004.txt
+    |       app-20260301_005.txt
+    |       app-20260301_006.txt
+    |       app-20260301_007.txt
+    |       app-20260301_008.txt
+    |       app-20260304.txt
+    |       app-20260304_001.txt
+    |       app-20260304_002.txt
+    |       app-20260304_003.txt
+    |       
+    +---obj
+    |   |   project.assets.json
+    |   |   project.nuget.cache
+    |   |   Website.Siegwart.PL.csproj.nuget.dgspec.json
+    |   |   Website.Siegwart.PL.csproj.nuget.g.props
+    |   |   Website.Siegwart.PL.csproj.nuget.g.targets
+    |   |   
+    |   +---Debug
+    |   |   \---net8.0
+    |   |       |   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+    |   |       |   ApiEndpoints.json
+    |   |       |   apphost.exe
+    |   |       |   rjimswa.dswa.cache.json
+    |   |       |   rjsmcshtml.dswa.cache.json
+    |   |       |   rjsmrazor.dswa.cache.json
+    |   |       |   rpswa.dswa.cache.json
+    |   |       |   staticwebassets.build.endpoints.json
+    |   |       |   staticwebassets.build.json
+    |   |       |   staticwebassets.build.json.cache
+    |   |       |   staticwebassets.development.json
+    |   |       |   staticwebassets.references.upToDateCheck.txt
+    |   |       |   staticwebassets.removed.txt
+    |   |       |   staticwebassets.upToDateCheck.txt
+    |   |       |   Website..29DD130E.Up2Date
+    |   |       |   Website.Siegwart.PL.AssemblyInfo.cs
+    |   |       |   Website.Siegwart.PL.AssemblyInfoInputs.cache
+    |   |       |   Website.Siegwart.PL.assets.cache
+    |   |       |   Website.Siegwart.PL.csproj.AssemblyReference.cache
+    |   |       |   Website.Siegwart.PL.csproj.BuildWithSkipAnalyzers
+    |   |       |   Website.Siegwart.PL.csproj.CoreCompileInputs.cache
+    |   |       |   Website.Siegwart.PL.csproj.FileListAbsolute.txt
+    |   |       |   Website.Siegwart.PL.dll
+    |   |       |   Website.Siegwart.PL.GeneratedMSBuildEditorConfig.editorconfig
+    |   |       |   Website.Siegwart.PL.genruntimeconfig.cache
+    |   |       |   Website.Siegwart.PL.GlobalUsings.g.cs
+    |   |       |   Website.Siegwart.PL.MvcApplicationPartsAssemblyInfo.cache
+    |   |       |   Website.Siegwart.PL.MvcApplicationPartsAssemblyInfo.cs
+    |   |       |   Website.Siegwart.PL.pdb
+    |   |       |   Website.Siegwart.PL.RazorAssemblyInfo.cache
+    |   |       |   Website.Siegwart.PL.RazorAssemblyInfo.cs
+    |   |       |   
+    |   |       +---ref
+    |   |       |       Website.Siegwart.PL.dll
+    |   |       |       
+    |   |       +---refint
+    |   |       |       Website.Siegwart.PL.dll
+    |   |       |       
+    |   |       +---scopedcss
+    |   |       |   +---bundle
+    |   |       |   |       Website.Siegwart.PL.styles.css
+    |   |       |   |       
+    |   |       |   +---projectbundle
+    |   |       |   |       Website.Siegwart.PL.bundle.scp.css
+    |   |       |   |       
+    |   |       |   \---Views
+    |   |       |       \---Shared
+    |   |       |               _Layout.cshtml.rz.scp.css
+    |   |       |               
+    |   |       \---staticwebassets
+    |   \---Release
+    |       \---net8.0
+    |           |   .NETCoreApp,Version=v8.0.AssemblyAttributes.cs
+    |           |   ApiEndpoints.json
+    |           |   apphost.exe
+    |           |   rjimswa.dswa.cache.json
+    |           |   rjsmcshtml.dswa.cache.json
+    |           |   rjsmrazor.dswa.cache.json
+    |           |   rpswa.dswa.cache.json
+    |           |   staticwebassets.build.endpoints.json
+    |           |   staticwebassets.build.json
+    |           |   staticwebassets.build.json.cache
+    |           |   staticwebassets.development.json
+    |           |   staticwebassets.references.upToDateCheck.txt
+    |           |   staticwebassets.removed.txt
+    |           |   staticwebassets.upToDateCheck.txt
+    |           |   Website..29DD130E.Up2Date
+    |           |   Website.Siegwart.PL.AssemblyInfo.cs
+    |           |   Website.Siegwart.PL.AssemblyInfoInputs.cache
+    |           |   Website.Siegwart.PL.assets.cache
+    |           |   Website.Siegwart.PL.csproj.AssemblyReference.cache
+    |           |   Website.Siegwart.PL.csproj.BuildWithSkipAnalyzers
+    |           |   Website.Siegwart.PL.csproj.CoreCompileInputs.cache
+    |           |   Website.Siegwart.PL.csproj.FileListAbsolute.txt
+    |           |   Website.Siegwart.PL.dll
+    |           |   Website.Siegwart.PL.GeneratedMSBuildEditorConfig.editorconfig
+    |           |   Website.Siegwart.PL.genruntimeconfig.cache
+    |           |   Website.Siegwart.PL.GlobalUsings.g.cs
+    |           |   Website.Siegwart.PL.MvcApplicationPartsAssemblyInfo.cache
+    |           |   Website.Siegwart.PL.pdb
+    |           |   Website.Siegwart.PL.RazorAssemblyInfo.cache
+    |           |   Website.Siegwart.PL.RazorAssemblyInfo.cs
+    |           |   Website.Siegwart.PL.sourcelink.json
+    |           |   
+    |           +---ref
+    |           |       Website.Siegwart.PL.dll
+    |           |       
+    |           +---refint
+    |           |       Website.Siegwart.PL.dll
+    |           |       
+    |           +---scopedcss
+    |           |   +---bundle
+    |           |   |       Website.Siegwart.PL.styles.css
+    |           |   |       
+    |           |   +---projectbundle
+    |           |   |       Website.Siegwart.PL.bundle.scp.css
+    |           |   |       
+    |           |   \---Views
+    |           |       \---Shared
+    |           |               _Layout.cshtml.rz.scp.css
+    |           |               
+    |           \---staticwebassets
+    +---Properties
+    |       launchSettings.json
+    |       
+    +---Views
+    |   |   _ViewImports.cshtml
+    |   |   _ViewStart.cshtml
+    |   |   
+    |   +---Account
+    |   |       AccessDenied.cshtml
+    |   |       ForgotPassword.cshtml
+    |   |       Login.cshtml
+    |   |       ResetPassword.cshtml
+    |   |       
+    |   +---AdminCategories
+    |   |       Create.cshtml
+    |   |       Edit.cshtml
+    |   |       Index.cshtml
+    |   |       
+    |   +---AdminDashboard
+    |   |       Index.cshtml
+    |   |       
+    |   +---AdminNews
+    |   |       Create.cshtml
+    |   |       Edit.cshtml
+    |   |       Index.cshtml
+    |   |       
+    |   +---AdminProducts
+    |   |       Create.cshtml
+    |   |       Edit.cshtml
+    |   |       Index.cshtml
+    |   |       
+    |   +---AdminTeamMember
+    |   |       Create.cshtml
+    |   |       Edit.cshtml
+    |   |       Index.cshtml
+    |   |       
+    |   +---AdminVideoMedia
+    |   |       Create.cshtml
+    |   |       Edit.cshtml
+    |   |       Index.cshtml
+    |   |       
+    |   +---Home
+    |   |       About.cshtml
+    |   |       Contact.cshtml
+    |   |       Index.cshtml
+    |   |       NotFound.cshtml
+    |   |       
+    |   +---Shared
+    |   |       _AdminLayout.cshtml
+    |   |       _AlertPartial.cshtml
+    |   |       _DeleteModalPartial.cshtml
+    |   |       _Footer.cshtml
+    |   |       _Header.cshtml
+    |   |       _Layout.cshtml
+    |   |       _Layout.cshtml.css
+    |   |       _ValidationScriptsPartial.cshtml
+    |   |       
+    |   +---SuperAdmin
+    |   |       ChangePassword.cshtml
+    |   |       Create.cshtml
+    |   |       Edit.cshtml
+    |   |       Index.cshtml
+    |   |       SignUp.cshtml
+    |   |       
+    |   +---UserNews
+    |   |       Details.cshtml
+    |   |       Index.cshtml
+    |   |       
+    |   +---UserProducts
+    |   |       Details.cshtml
+    |   |       Index.cshtml
+    |   |       
+    |   +---UserTeam
+    |   |       Details.cshtml
+    |   |       Index.cshtml
+    |   |       
+    |   \---UserVideoMedia
+    |           Details.cshtml
+    |           Index.cshtml
+    |           
+    \---wwwroot
+        +---css
+        |       About.css
+        |       AccessDenied.css
+        |       Admin.Bundle.Min.css
+        |       AdminDashboard.css
+        |       AdminGallery.css
+        |       AdminLogin.css
+        |       Components.css
+        |       Contact.css
+        |       Error.css
+        |       Footer.css
+        |       Header.css
+        |       Home.css
+        |       News.css
+        |       Product-Details.css
+        |       Product.css
+        |       Team.css
+        |       Token.css
+        |       Videos.css
+        |       
+        +---js
+        |       about.js
+        |       admin-validation.js
+        |       contact.js
+        |       footer.js
+        |       header.js
+        |       home.js
+        |       news.js
+        |       product-details.js
+        |       team.js
+        |       
+        +---lib
+        |   +---bootstrap
+        |   |   |   LICENSE
+        |   |   |   
+        |   |   \---dist
+        |   |       +---css
+        |   |       |       bootstrap-grid.css
+        |   |       |       bootstrap-grid.css.map
+        |   |       |       bootstrap-grid.min.css
+        |   |       |       bootstrap-grid.min.css.map
+        |   |       |       bootstrap-grid.rtl.css
+        |   |       |       bootstrap-grid.rtl.css.map
+        |   |       |       bootstrap-grid.rtl.min.css
+        |   |       |       bootstrap-grid.rtl.min.css.map
+        |   |       |       bootstrap-reboot.css
+        |   |       |       bootstrap-reboot.css.map
+        |   |       |       bootstrap-reboot.min.css
+        |   |       |       bootstrap-reboot.min.css.map
+        |   |       |       bootstrap-reboot.rtl.css
+        |   |       |       bootstrap-reboot.rtl.css.map
+        |   |       |       bootstrap-reboot.rtl.min.css
+        |   |       |       bootstrap-reboot.rtl.min.css.map
+        |   |       |       bootstrap-utilities.css
+        |   |       |       bootstrap-utilities.css.map
+        |   |       |       bootstrap-utilities.min.css
+        |   |       |       bootstrap-utilities.min.css.map
+        |   |       |       bootstrap-utilities.rtl.css
+        |   |       |       bootstrap-utilities.rtl.css.map
+        |   |       |       bootstrap-utilities.rtl.min.css
+        |   |       |       bootstrap-utilities.rtl.min.css.map
+        |   |       |       bootstrap.css
+        |   |       |       bootstrap.css.map
+        |   |       |       bootstrap.min.css
+        |   |       |       bootstrap.min.css.map
+        |   |       |       bootstrap.rtl.css
+        |   |       |       bootstrap.rtl.css.map
+        |   |       |       bootstrap.rtl.min.css
+        |   |       |       bootstrap.rtl.min.css.map
+        |   |       |       
+        |   |       \---js
+        |   |               bootstrap.bundle.js
+        |   |               bootstrap.bundle.js.map
+        |   |               bootstrap.bundle.min.js
+        |   |               bootstrap.bundle.min.js.map
+        |   |               bootstrap.esm.js
+        |   |               bootstrap.esm.js.map
+        |   |               bootstrap.esm.min.js
+        |   |               bootstrap.esm.min.js.map
+        |   |               bootstrap.js
+        |   |               bootstrap.js.map
+        |   |               bootstrap.min.js
+        |   |               bootstrap.min.js.map
+        |   |               
+        |   +---jquery
+        |   |   |   LICENSE.txt
+        |   |   |   
+        |   |   \---dist
+        |   |           jquery.js
+        |   |           jquery.min.js
+        |   |           jquery.min.map
+        |   |           
+        |   +---jquery-validation
+        |   |   |   LICENSE.md
+        |   |   |   
+        |   |   \---dist
+        |   |           additional-methods.js
+        |   |           additional-methods.min.js
+        |   |           jquery.validate.js
+        |   |           jquery.validate.min.js
+        |   |           
+        |   \---jquery-validation-unobtrusive
+        |           jquery.validate.unobtrusive.js
+        |           jquery.validate.unobtrusive.min.js
+        |           LICENSE.txt
+        |           
+        +---Resources
+        |   +---favicons
+        |   |       android-chrome-144.png
+        |   |       android-chrome-192.png
+        |   |       android-chrome-256.png
+        |   |       android-chrome-36.png
+        |   |       android-chrome-384.png
+        |   |       android-chrome-48.png
+        |   |       android-chrome-512.png
+        |   |       android-chrome-72.png
+        |   |       android-chrome-96.png
+        |   |       apple-touch-icon-1024.png
+        |   |       apple-touch-icon-114.png
+        |   |       apple-touch-icon-120.png
+        |   |       apple-touch-icon-144.png
+        |   |       apple-touch-icon-152.png
+        |   |       apple-touch-icon-167.png
+        |   |       apple-touch-icon-180.png
+        |   |       apple-touch-icon-57.png
+        |   |       apple-touch-icon-60.png
+        |   |       apple-touch-icon-72.png
+        |   |       apple-touch-icon-76.png
+        |   |       apple-touch-icon.png
+        |   |       favicon-128.png
+        |   |       favicon-16.png
+        |   |       favicon-256.png
+        |   |       favicon-32.png
+        |   |       favicon-48.png
+        |   |       favicon-64.png
+        |   |       favicon.ico
+        |   |       mstile-144.png
+        |   |       mstile-150.png
+        |   |       mstile-310.png
+        |   |       mstile-310x150.png
+        |   |       mstile-70.png
+        |   |       site.webmanifest
+        |   |       
+        |   +---images
+        |   |       background.png
+        |   |       cert-iso14001.png
+        |   |       cert-iso45001.png
+        |   |       cert-iso9001.jpg
+        |   |       client01.png
+        |   |       client02.png
+        |   |       client03.png
+        |   |       client04.png
+        |   |       client05.png
+        |   |       client06.png
+        |   |       client07.png
+        |   |       client08.png
+        |   |       concretepipeproduct.png
+        |   |       ContactUS.jpg
+        |   |       Factory.png
+        |   |       hero-bg.jpg
+        |   |       heroimage.png
+        |   |       layout.png
+        |   |       logo.png
+        |   |       preview.png
+        |   |       project-1.jpg
+        |   |       project-2.jpg
+        |   |       project-3.jpg
+        |   |       project-4.jpg
+        |   |       Rowad-Logo - Copy.png
+        |   |       Rowad-Logo.png
+        |   |       sleepersproduct.png
+        |   |       wallproduct.png
+        |   |       
+        |   \---StaticTexts
+        |           about.json
+        |           contact.json
+        |           footer.json
+        |           header.json
+        |           home.json
+        |           Seo.json
+        |           
+        \---uploads
+            +---news
+            |       c5cb7bd8-c6d5-4069-ad35-776ffd2cfffd.png
+            |       e40a0fb1-1a5f-4be5-826b-6cee9c74715e.png
+            |       
+            +---products
+            |       533e49e7-eb3d-44a7-92c9-d57ca65f762f.png
+            |       9a15336d-f2db-4186-b3e8-d8e87dbeafea.jpeg
+            |       9bb92b3a-e3ab-4de4-82dd-d0f8cb7c1413.png
+            |       9e5d9715-bae8-4aae-9b99-340f23b2be77.png
+            |       e8278010-0711-4a7c-97a8-fa34fcc7fc24.png
+            |       
+            \---team
+                    17ab9fbf-1c1b-4d9d-bfb9-4c76968d9906.jpeg
+                    436a7392-150d-4380-abe3-0e903bbe9351.png
+                    9e78a61f-9945-4659-91da-c19e37027a2c.webp
+                    c0e8d8b1-e228-4f62-ae23-5f4dc1748f6f.webp
+                    dbaa71b0-f7a6-40a5-9b0c-52742f3354be.jpeg
+                    efdf06da-406c-4bfa-bb82-1cfd6a9e5c06.png
+                    f7f650fc-bb9a-45db-95fa-edf4ac5d3d16.png
+                    

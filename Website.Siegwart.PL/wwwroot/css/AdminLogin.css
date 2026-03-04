@@ -1,0 +1,59 @@
+﻿/* Clean, modern admin login card */
+:root {
+    --brand: #0d6efd;
+    --bg1: #0f1724;
+    --bg2: #0b1220;
+    --card-bg: #ffffff;
+    --muted: #6c757d;
+}
+
+body.login-bg {
+    background: linear-gradient(120deg, rgba(13,110,253,0.06), rgba(0,0,0,0.02));
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 28px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 6px 30px rgba(20,30,40,0.08);
+}
+
+.login-logo {
+    max-height: 48px;
+    width: auto;
+}
+
+/* Inputs */
+.input-group .form-control {
+    border-left: 0;
+}
+
+.input-group .input-group-text {
+    background: #f8fafc;
+    border-right: 0;
+}
+
+/* Show password button style */
+.btn-show-pass {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: -1px;
+}
+
+/* Primary button */
+.btn-primary {
+    background: var(--brand);
+    border-color: var(--brand);
+    font-weight: 600;
+}
+
+/* Small screens */
+@media (max-width: 576px) {
+    .login-card {
+        margin: 16px;
+        padding: 20px;
+    }
+}

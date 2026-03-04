@@ -1,0 +1,142 @@
+﻿@model Website.Siegwart.BLL.Dtos.Admin.VideoMedia.VideoMediaUpdateDto
+
+@{
+    ViewData["Title"] = "Edit Video";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="mb-1">
+            <i class="bi bi-pencil me-2"></i> Edit Video
+        </h2>
+        <p class="text-muted mb-0">Update video details</p>
+    </div>
+    <div>
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Back to list
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form asp-action="Edit" asp-route-id="@Model.Id" method="post" novalidate>
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="Id" />
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="mb-3">
+                        <label asp-for="VideoUrl" class="form-label">YouTube URL or ID</label>
+                        <input asp-for="VideoUrl" class="form-control" placeholder="https://www.youtube.com/watch?v=..." />
+                        <span asp-validation-for="VideoUrl" class="text-danger"></span>
+                        <div class="form-text">You can paste full YouTube URL or the video id.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="TitleEn" class="form-label">Title (English)</label>
+                        <input asp-for="TitleEn" class="form-control" />
+                        <span asp-validation-for="TitleEn" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="TitleAr" class="form-label">Title (Arabic)</label>
+                        <input asp-for="TitleAr" class="form-control" dir="rtl" />
+                        <span asp-validation-for="TitleAr" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="DescriptionEn" class="form-label">Description (English)</label>
+                        <textarea asp-for="DescriptionEn" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="DescriptionEn" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="DescriptionAr" class="form-label">Description (Arabic)</label>
+                        <textarea asp-for="DescriptionAr" class="form-control" rows="4" dir="rtl"></textarea>
+                        <span asp-validation-for="DescriptionAr" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-body text-center">
+                            <div id="thumbPreviewWrapper" class="mb-2">
+                                <img id="thumbPreview" src="https://via.placeholder.com/320x180?text=Thumbnail"
+                                     alt="Thumbnail preview" class="img-fluid rounded" style="max-height:180px; object-fit:cover;" />
+                            </div>
+                            <small class="text-muted d-block mb-3">Thumbnail preview (auto from YouTube)</small>
+
+                            <div class="form-check form-switch mb-2">
+                                <input asp-for="IsPublished" class="form-check-input" />
+                                <label asp-for="IsPublished" class="form-check-label">Published</label>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="SortOrder" class="form-label">Sort Order</label>
+                                <input asp-for="SortOrder" class="form-control" type="number" />
+                                <span asp-validation-for="SortOrder" class="text-danger"></span>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-save"></i> Save Changes
+                                </button>
+                                <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="mb-2">Tips</h6>
+                            <ul class="ps-3 mb-0">
+                                <li>Paste a full YouTube link or the video id.</li>
+                                <li>Thumbnail updates automatically when you paste the URL.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        function extractYouTubeId(url) {
+            if (!url) return null;
+            if (/^[a-zA-Z0-9_-]{11}$/.test(url.trim())) return url.trim();
+            var regex = /(?:youtube\.com\/(?:watch\?v=|embed\/|v\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/;
+            var match = url.match(regex);
+            return match ? match[1] : null;
+        }
+
+        function updateThumbnailPreview(url) {
+            var id = extractYouTubeId(url);
+            var img = document.getElementById('thumbPreview');
+            if (id) {
+                img.src = "https://img.youtube.com/vi/" + id + "/hqdefault.jpg";
+            } else {
+                img.src = "https://via.placeholder.com/320x180?text=Thumbnail";
+            }
+        }
+
+        $(function() {
+            var $videoUrl = $('input[name="VideoUrl"], input[id$="VideoUrl"]');
+            $videoUrl.on('input paste change', function () {
+                setTimeout(() => updateThumbnailPreview($(this).val()), 50);
+            });
+
+            updateThumbnailPreview($videoUrl.val());
+        });
+    </script>
+}

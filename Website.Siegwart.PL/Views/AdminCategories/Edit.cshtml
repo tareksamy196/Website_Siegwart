@@ -1,0 +1,71 @@
+﻿@model Website.Siegwart.BLL.Dtos.Admin.CategoryDtos.UpdateCategoryDto
+
+@{
+    ViewData["Title"] = "Edit Category";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Form Header -->
+<div class="d-flex justify-content-between align-items-start mb-4">
+    <div>
+        <h2 class="mb-1">Edit Category</h2>
+        <p class="text-muted">Update category details</p>
+    </div>
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left"></i> Back to List
+    </a>
+</div>
+
+<!-- Form Card -->
+<div class="card">
+    <div class="card-body">
+        <!-- Validation Summary -->
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+        <form method="post" asp-action="Edit" asp-route-id="@Model.Id">
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.Id)
+
+            <div class="row g-4">
+                <!-- English Name -->
+                <div class="col-md-6">
+                    <label asp-for="NameEn" class="form-label">
+                        <i class="bi bi-flag-fill me-1"></i>Name (English)
+                    </label>
+                    <input asp-for="NameEn"
+                           class="form-control"
+                           placeholder="Enter category name in English"
+                           autocomplete="off" />
+                    <span asp-validation-for="NameEn" class="text-danger small"></span>
+                </div>
+
+                <!-- Arabic Name -->
+                <div class="col-md-6">
+                    <label asp-for="NameAr" class="form-label">
+                        <i class="bi bi-flag-fill me-1"></i>Name (Arabic)
+                    </label>
+                    <input asp-for="NameAr"
+                           class="form-control"
+                           dir="rtl"
+                           placeholder="أدخل اسم الفئة بالعربية"
+                           autocomplete="off" />
+                    <span asp-validation-for="NameAr" class="text-danger small"></span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex gap-2 mt-4">
+                <button type="submit" class="btn btn-warning">
+                    <i class="bi bi-pencil-square"></i> Update Category
+                </button>
+                <a asp-action="Index" class="btn btn-light">
+                    <i class="bi bi-x-circle"></i> Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

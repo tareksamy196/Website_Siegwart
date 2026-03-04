@@ -1,0 +1,174 @@
+﻿@model Website.Siegwart.BLL.Dtos.Admin.NewsDtos.CreateNewsDto
+
+@{
+    ViewData["Title"] = "Create News";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Form Header -->
+<div class="d-flex justify-content-between align-items-start mb-4">
+    <div>
+        <h2 class="mb-1">Create News Article</h2>
+        <p class="text-muted">Add a new news article</p>
+    </div>
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left"></i> Back to List
+    </a>
+</div>
+
+<!-- Form Card -->
+<div class="card">
+    <div class="card-body">
+        <!-- Validation Summary -->
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+        <form method="post" asp-action="Create" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+
+            <!-- Language Tabs -->
+            <ul class="nav nav-tabs mb-4" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-en" type="button">
+                        <i class="bi bi-flag-fill me-1"></i> English
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-ar" type="button">
+                        <i class="bi bi-flag-fill me-1"></i> العربية
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- English Tab -->
+                <div class="tab-pane fade show active" id="tab-en">
+                    <div class="mb-4">
+                        <label asp-for="TitleEn" class="form-label">Title (English)</label>
+                        <input asp-for="TitleEn"
+                               class="form-control"
+                               placeholder="Enter news title in English"
+                               autocomplete="off" />
+                        <span asp-validation-for="TitleEn" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-4">
+                        <label asp-for="ContentEn" class="form-label">Content (English)</label>
+                        <textarea asp-for="ContentEn"
+                                  class="form-control"
+                                  rows="6"
+                                  placeholder="Enter news content in English"></textarea>
+                        <span asp-validation-for="ContentEn" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <!-- Arabic Tab -->
+                <div class="tab-pane fade" id="tab-ar">
+                    <div class="mb-4">
+                        <label asp-for="TitleAr" class="form-label">العنوان (عربي)</label>
+                        <input asp-for="TitleAr"
+                               class="form-control"
+                               dir="rtl"
+                               placeholder="أدخل عنوان الخبر بالعربية"
+                               autocomplete="off" />
+                        <span asp-validation-for="TitleAr" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-4">
+                        <label asp-for="ContentAr" class="form-label">المحتوى (عربي)</label>
+                        <textarea asp-for="ContentAr"
+                                  class="form-control"
+                                  rows="6"
+                                  dir="rtl"
+                                  placeholder="أدخل محتوى الخبر بالعربية"></textarea>
+                        <span asp-validation-for="ContentAr" class="text-danger small"></span>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4" />
+
+            <!-- Image & Publishing -->
+            <div class="row g-4">
+                <!-- Image Upload -->
+                <div class="col-md-6">
+                    <label asp-for="ImageFile" class="form-label">
+                        <i class="bi bi-image me-1"></i>Featured Image
+                    </label>
+                    <input asp-for="ImageFile"
+                           type="file"
+                           class="form-control"
+                           accept=".jpg,.jpeg,.png,.webp"
+                           id="imageInput" />
+                    <div class="form-text">
+                        <i class="bi bi-info-circle me-1"></i>JPG, PNG or WebP • Max 5MB
+                    </div>
+                    <span asp-validation-for="ImageFile" class="text-danger small"></span>
+
+                    <!-- Image Preview -->
+                    <div id="imagePreview" style="display: none; margin-top: 15px;">
+                        <label class="form-label">Preview:</label>
+                        <div>
+                            <img id="preview"
+                                 style="max-width: 200px; max-height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid #0d6efd;" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publishing Settings -->
+                <div class="col-md-6">
+                    <label asp-for="PublishedOn" class="form-label">
+                        <i class="bi bi-calendar-event me-1"></i>Publish Date & Time
+                    </label>
+                    <input asp-for="PublishedOn"
+                           type="datetime-local"
+                           class="form-control"
+                           value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+                    <div class="form-text">When should this article be published?</div>
+                    <span asp-validation-for="PublishedOn" class="text-danger small"></span>
+
+                    <!-- Published Switch -->
+                    <div class="form-check form-switch mt-4">
+                        <input asp-for="IsPublished"
+                               class="form-check-input"
+                               id="isPublishedSwitch" />
+                        <label asp-for="IsPublished"
+                               class="form-check-label fw-semibold"
+                               for="isPublishedSwitch">
+                            Publish immediately
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex gap-2 mt-4">
+                <button type="submit" class="btn btn-success">
+                    <i class="bi bi-check2-circle"></i> Create Article
+                </button>
+                <a asp-action="Index" class="btn btn-light">
+                    <i class="bi bi-x-circle"></i> Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        // Image preview
+        document.getElementById('imageInput')?.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('preview').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            } else {
+                document.getElementById('imagePreview').style.display = 'none';
+            }
+        });
+    </script>
+}

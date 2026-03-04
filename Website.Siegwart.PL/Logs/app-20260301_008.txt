@@ -1,0 +1,361 @@
+2026-03-01 10:40:12.183 +02:00 [INF] ========================================
+2026-03-01 10:40:12.232 +02:00 [INF] ✓ Application Starting
+2026-03-01 10:40:12.233 +02:00 [INF] Environment: Development
+2026-03-01 10:40:12.234 +02:00 [INF] ========================================
+2026-03-01 10:40:12.259 +02:00 [INF] ✓ MVC configured with cache profiles
+2026-03-01 10:40:12.260 +02:00 [INF] ✓ Session configured
+2026-03-01 10:40:12.260 +02:00 [INF] ✓ Caching configured
+2026-03-01 10:40:12.262 +02:00 [INF] ✓ Compression configured (Brotli + Gzip)
+2026-03-01 10:40:12.265 +02:00 [INF] ✓ Database configured
+2026-03-01 10:40:12.273 +02:00 [INF] ✓ Identity & Authentication configured
+2026-03-01 10:40:12.275 +02:00 [INF] ✓ Repositories registered
+2026-03-01 10:40:12.279 +02:00 [INF] SMTP config read: Host=localhost, Port=1025, EnableSsl=false, FromEmail=dev@localhost, UserName=dev@localhost
+2026-03-01 10:40:12.281 +02:00 [INF] ✓ Business services registered
+2026-03-01 10:40:12.282 +02:00 [INF] ✓ Localization configured (EN/AR)
+2026-03-01 10:40:12.421 +02:00 [ERR] ✗ AutoMapper configuration validation failed
+AutoMapper.DuplicateTypeMapConfigurationException: The following type maps were found in multiple profiles:
+Website.Siegwart.BLL.Dtos.Admin.NewsDtos.CreateNewsDto to Website.Siegwart.DAL.Models.News defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.NewsProfile
+Website.Siegwart.BLL.Dtos.Admin.NewsDtos.UpdateNewsDto to Website.Siegwart.DAL.Models.News defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.NewsProfile
+Website.Siegwart.DAL.Models.News to Website.Siegwart.BLL.Dtos.Admin.NewsDtos.UpdateNewsDto defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.NewsProfile
+Website.Siegwart.BLL.Dtos.Admin.ProductDtos.CreateProductDto to Website.Siegwart.DAL.Models.Product defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Mappings.ProductProfile
+Website.Siegwart.BLL.Dtos.Admin.ProductDtos.UpdateProductDto to Website.Siegwart.DAL.Models.Product defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Mappings.ProductProfile
+Website.Siegwart.DAL.Models.Product to Website.Siegwart.BLL.Dtos.Admin.ProductDtos.UpdateProductDto defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Mappings.ProductProfile
+Website.Siegwart.DAL.Models.TeamMember to Website.Siegwart.BLL.Dtos.Admin.TeamMember.UpdateTeamMemberDto defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.TeamMemberProfile
+Website.Siegwart.BLL.Dtos.Admin.VideoMedia.VideoMediaCreateDto to Website.Siegwart.DAL.Models.VideoMedia defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.VideoMediaProfile
+Website.Siegwart.BLL.Dtos.Admin.VideoMedia.VideoMediaUpdateDto to Website.Siegwart.DAL.Models.VideoMedia defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.VideoMediaProfile
+This can cause configuration collisions and inconsistent mapping.
+Consolidate the CreateMap calls into one profile, or set the root Internal().AllowAdditiveTypeMapCreation configuration value to 'true'.
+
+   at AutoMapper.Configuration.ConfigurationValidator.AssertConfigurationExpressionIsValid(IGlobalConfiguration config, IEnumerable`1 typeMaps)
+   at AutoMapper.MapperConfiguration.AssertConfigurationIsValid()
+   at Website.Siegwart.PL.Program.ConfigureAutoMapper(IServiceCollection services, IWebHostEnvironment environment) in D:\Website\v09\Website.Siegwart\Website.Siegwart.PL\Program.cs:line 376
+2026-03-01 10:40:12.484 +02:00 [INF] ✓ AutoMapper configured
+2026-03-01 10:40:12.485 +02:00 [INF] ✓ Security configured (HSTS)
+2026-03-01 10:40:12.485 +02:00 [INF] ✓ All services configured successfully
+2026-03-01 10:40:13.219 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2026-03-01 10:40:14.052 +02:00 [INF] Executed DbCommand (235ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE DATABASE [Siegwart Website v09];
+2026-03-01 10:40:14.783 +02:00 [INF] Executed DbCommand (124ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [Siegwart Website v09] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2026-03-01 10:40:14.834 +02:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+SELECT 1
+2026-03-01 10:40:14.963 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2026-03-01 10:40:14.966 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+SELECT 1
+2026-03-01 10:40:14.999 +02:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-03-01 10:40:15.018 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-03-01 10:40:15.045 +02:00 [INF] Applying migration '20260301084001_Refactor'.
+2026-03-01 10:40:15.164 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE TABLE [Categories] (
+    [Id] int NOT NULL IDENTITY,
+    [NameEn] nvarchar(150) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [NameAr] nvarchar(150) COLLATE Arabic_100_CI_AI NOT NULL,
+    [IsActive] bit NOT NULL DEFAULT CAST(1 AS bit),
+    [IsDeleted] bit NOT NULL DEFAULT CAST(0 AS bit),
+    [CreatedOn] datetime2 NOT NULL DEFAULT (SYSUTCDATETIME()),
+    [LastModifiedOn] datetime2 NULL,
+    [CreatedBy] nvarchar(100) NULL,
+    [LastModifiedBy] nvarchar(100) NULL,
+    [Slug] varchar(220) NOT NULL,
+    [SeoTitleEn] nvarchar(70) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [SeoTitleAr] nvarchar(70) COLLATE Arabic_100_CI_AI NOT NULL,
+    [SeoDescriptionEn] nvarchar(500) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [SeoDescriptionAr] nvarchar(500) COLLATE Arabic_100_CI_AI NOT NULL,
+    [SeoKeywords] nvarchar(500) NULL,
+    [OgImageUrl] nvarchar(500) NULL,
+    CONSTRAINT [PK_Categories] PRIMARY KEY ([Id])
+);
+2026-03-01 10:40:16.205 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE TABLE [ContactMessages] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(200) NOT NULL,
+    [Email] nvarchar(200) NOT NULL,
+    [Phone] nvarchar(50) NULL,
+    [Subject] nvarchar(300) NULL,
+    [Message] nvarchar(2000) NOT NULL,
+    [IsRead] bit NOT NULL DEFAULT CAST(0 AS bit),
+    [IsReplied] bit NOT NULL DEFAULT CAST(0 AS bit),
+    [AdminNotes] nvarchar(1000) NULL,
+    [IpAddress] nvarchar(50) NULL,
+    [UserAgent] nvarchar(500) NULL,
+    [IsDeleted] bit NOT NULL DEFAULT CAST(0 AS bit),
+    [CreatedOn] datetime2 NOT NULL DEFAULT (SYSUTCDATETIME()),
+    [LastModifiedOn] datetime2 NULL,
+    [CreatedBy] nvarchar(max) NULL,
+    [LastModifiedBy] nvarchar(max) NULL,
+    CONSTRAINT [PK_ContactMessages] PRIMARY KEY ([Id])
+);
+2026-03-01 10:40:16.212 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE TABLE [News] (
+    [Id] int NOT NULL IDENTITY,
+    [TitleEn] nvarchar(200) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [TitleAr] nvarchar(200) COLLATE Arabic_100_CI_AI NOT NULL,
+    [SummaryEn] nvarchar(300) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [SummaryAr] nvarchar(300) COLLATE Arabic_100_CI_AI NOT NULL,
+    [ContentEn] nvarchar(max) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [ContentAr] nvarchar(max) COLLATE Arabic_100_CI_AI NOT NULL,
+    [ImageUrl] nvarchar(500) NULL,
+    [PublishedOn] datetime2 NULL,
+    [IsPublished] bit NOT NULL DEFAULT CAST(0 AS bit),
+    [IsDeleted] bit NOT NULL DEFAULT CAST(0 AS bit),
+    [CreatedOn] datetime2 NOT NULL DEFAULT (SYSUTCDATETIME()),
+    [LastModifiedOn] datetime2 NULL,
+    [CreatedBy] nvarchar(100) NULL,
+    [LastModifiedBy] nvarchar(100) NULL,
+    [Slug] varchar(220) NOT NULL,
+    [SeoTitleEn] nvarchar(70) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [SeoTitleAr] nvarchar(70) COLLATE Arabic_100_CI_AI NOT NULL,
+    [SeoDescriptionEn] nvarchar(500) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [SeoDescriptionAr] nvarchar(500) COLLATE Arabic_100_CI_AI NOT NULL,
+    [SeoKeywords] nvarchar(500) NULL,
+    [OgImageUrl] nvarchar(500) NULL,
+    CONSTRAINT [PK_News] PRIMARY KEY ([Id])
+);
+2026-03-01 10:40:19.294 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE TABLE [Roles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_Roles] PRIMARY KEY ([Id])
+);
+2026-03-01 10:40:19.303 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE TABLE [TeamMembers] (
+    [Id] int NOT NULL IDENTITY,
+    [NameEn] nvarchar(120) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [NameAr] nvarchar(120) COLLATE Arabic_100_CI_AI NOT NULL,
+    [TitleEn] nvarchar(90) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [TitleAr] nvarchar(90) COLLATE Arabic_100_CI_AI NOT NULL,
+    [Category] int NOT NULL,
+    [ImageUrl] nvarchar(500) NULL,
+    [Order] int NOT NULL DEFAULT 100,
+    [Email] nvarchar(100) NULL,
+    [Phone] nvarchar(20) NULL,
+    [LinkedInUrl] nvarchar(300) NULL,
+    [BioEn] nvarchar(1000) NULL,
+    [BioAr] nvarchar(1000) NULL,
+    [YearsOfExperience] int NULL,
+    [IsActive] bit NOT NULL DEFAULT CAST(1 AS bit),
+    [IsDeleted] bit NOT NULL DEFAULT CAST(0 AS bit),
+    [CreatedOn] datetime2 NOT NULL DEFAULT (SYSUTCDATETIME()),
+    [LastModifiedOn] datetime2 NULL,
+    [CreatedBy] nvarchar(100) NULL,
+    [LastModifiedBy] nvarchar(100) NULL,
+    [Slug] varchar(220) NOT NULL,
+    [SeoTitleEn] nvarchar(70) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [SeoTitleAr] nvarchar(70) COLLATE Arabic_100_CI_AI NOT NULL,
+    [SeoDescriptionEn] nvarchar(500) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [SeoDescriptionAr] nvarchar(500) COLLATE Arabic_100_CI_AI NOT NULL,
+    [SeoKeywords] nvarchar(500) NULL,
+    [OgImageUrl] nvarchar(500) NULL,
+    CONSTRAINT [PK_TeamMembers] PRIMARY KEY ([Id])
+);
+2026-03-01 10:40:22.617 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE TABLE [Users] (
+    [Id] nvarchar(450) NOT NULL,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_Users] PRIMARY KEY ([Id])
+);
+2026-03-01 10:40:22.626 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE TABLE [VideoMedia] (
+    [Id] int NOT NULL IDENTITY,
+    [VideoId] varchar(11) NOT NULL,
+    [SourceUrl] varchar(1000) NULL,
+    [TitleEn] nvarchar(250) COLLATE Latin1_General_100_CI_AI NULL,
+    [TitleAr] nvarchar(250) COLLATE Arabic_100_CI_AI NULL,
+    [DescriptionEn] nvarchar(2000) NULL,
+    [DescriptionAr] nvarchar(2000) NULL,
+    [ThumbnailUrl] varchar(500) NULL,
+    [SortOrder] int NOT NULL DEFAULT 100,
+    [Category] int NOT NULL,
+    [IsPublished] bit NOT NULL DEFAULT CAST(1 AS bit),
+    [IsDeleted] bit NOT NULL DEFAULT CAST(0 AS bit),
+    [CreatedOn] datetime2 NOT NULL DEFAULT (SYSUTCDATETIME()),
+    [LastModifiedOn] datetime2 NULL,
+    [CreatedBy] nvarchar(100) NULL,
+    [LastModifiedBy] nvarchar(100) NULL,
+    [Slug] varchar(220) NOT NULL,
+    [SeoTitleEn] nvarchar(70) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [SeoTitleAr] nvarchar(70) COLLATE Arabic_100_CI_AI NOT NULL,
+    [SeoDescriptionEn] nvarchar(500) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [SeoDescriptionAr] nvarchar(500) COLLATE Arabic_100_CI_AI NOT NULL,
+    [SeoKeywords] nvarchar(500) NULL,
+    [OgImageUrl] nvarchar(500) NULL,
+    CONSTRAINT [PK_VideoMedia] PRIMARY KEY ([Id])
+);
+2026-03-01 10:40:26.045 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE TABLE [Products] (
+    [Id] int NOT NULL IDENTITY,
+    [TitleEn] nvarchar(150) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [TitleAr] nvarchar(150) COLLATE Arabic_100_CI_AI NOT NULL,
+    [DescriptionEn] nvarchar(max) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [DescriptionAr] nvarchar(max) COLLATE Arabic_100_CI_AI NOT NULL,
+    [ImageUrl] nvarchar(500) NULL,
+    [IsActive] bit NOT NULL DEFAULT CAST(1 AS bit),
+    [SortOrder] int NOT NULL DEFAULT 100,
+    [CategoryId] int NOT NULL,
+    [IsDeleted] bit NOT NULL DEFAULT CAST(0 AS bit),
+    [CreatedOn] datetime2 NOT NULL DEFAULT (SYSUTCDATETIME()),
+    [LastModifiedOn] datetime2 NULL,
+    [CreatedBy] nvarchar(100) NULL,
+    [LastModifiedBy] nvarchar(100) NULL,
+    [Slug] varchar(220) NOT NULL,
+    [SeoTitleEn] nvarchar(70) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [SeoTitleAr] nvarchar(70) COLLATE Arabic_100_CI_AI NOT NULL,
+    [SeoDescriptionEn] nvarchar(500) COLLATE Latin1_General_100_CI_AI NOT NULL,
+    [SeoDescriptionAr] nvarchar(500) COLLATE Arabic_100_CI_AI NOT NULL,
+    [SeoKeywords] nvarchar(500) NULL,
+    [OgImageUrl] nvarchar(500) NULL,
+    CONSTRAINT [PK_Products] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Products_Categories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [Categories] ([Id]) ON DELETE NO ACTION
+);
+2026-03-01 10:40:26.051 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE TABLE [RoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_RoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_RoleClaims_Roles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [Roles] ([Id]) ON DELETE CASCADE
+);
+2026-03-01 10:40:29.356 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE TABLE [UserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] nvarchar(450) NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_UserClaims_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2026-03-01 10:40:29.364 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE TABLE [UserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_UserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_UserLogins_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2026-03-01 10:40:29.370 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE TABLE [UserRoles] (
+    [UserId] nvarchar(450) NOT NULL,
+    [RoleId] nvarchar(450) NOT NULL,
+    CONSTRAINT [PK_UserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_UserRoles_Roles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [Roles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_UserRoles_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2026-03-01 10:40:29.379 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE TABLE [UserTokens] (
+    [UserId] nvarchar(450) NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_UserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_UserTokens_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);
+2026-03-01 10:40:29.381 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_Categories_Deleted_Active] ON [Categories] ([IsDeleted], [IsActive]);
+2026-03-01 10:40:32.379 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE UNIQUE INDEX [IX_Categories_NameAr] ON [Categories] ([NameAr]);
+2026-03-01 10:40:32.382 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE UNIQUE INDEX [IX_Categories_NameEn] ON [Categories] ([NameEn]);
+2026-03-01 10:40:32.386 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_Category_IsDeleted] ON [Categories] ([IsDeleted]);
+2026-03-01 10:40:32.389 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE UNIQUE INDEX [IX_Category_Slug] ON [Categories] ([Slug]);
+2026-03-01 10:40:32.393 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_ContactMessages_Email] ON [ContactMessages] ([Email]);
+2026-03-01 10:40:32.396 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_ContactMessages_Read_Deleted_Date] ON [ContactMessages] ([IsRead], [IsDeleted], [CreatedOn]);
+2026-03-01 10:40:32.398 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_News_Deleted_Published_Date] ON [News] ([IsDeleted], [IsPublished], [PublishedOn]);
+2026-03-01 10:40:32.401 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_News_IsDeleted] ON [News] ([IsDeleted]);
+2026-03-01 10:40:32.404 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE UNIQUE INDEX [IX_News_Slug] ON [News] ([Slug]);
+2026-03-01 10:40:32.407 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_Product_IsDeleted] ON [Products] ([IsDeleted]);
+2026-03-01 10:40:32.409 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE UNIQUE INDEX [IX_Product_Slug] ON [Products] ([Slug]);
+2026-03-01 10:40:32.412 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_Products_CategoryId] ON [Products] ([CategoryId]);
+2026-03-01 10:40:34.910 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_Products_Deleted_Active_Sort] ON [Products] ([IsDeleted], [IsActive], [SortOrder]);
+2026-03-01 10:40:34.913 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_RoleClaims_RoleId] ON [RoleClaims] ([RoleId]);
+2026-03-01 10:40:34.920 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE UNIQUE INDEX [RoleNameIndex] ON [Roles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;
+2026-03-01 10:40:34.923 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_TeamMember_IsDeleted] ON [TeamMembers] ([IsDeleted]);
+2026-03-01 10:40:34.926 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE UNIQUE INDEX [IX_TeamMember_Slug] ON [TeamMembers] ([Slug]);
+2026-03-01 10:40:34.928 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_TeamMembers_Category] ON [TeamMembers] ([Category]);
+2026-03-01 10:40:34.931 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_TeamMembers_Deleted_Active_Order] ON [TeamMembers] ([IsDeleted], [IsActive], [Order]);
+2026-03-01 10:40:34.933 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_UserClaims_UserId] ON [UserClaims] ([UserId]);
+2026-03-01 10:40:34.936 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_UserLogins_UserId] ON [UserLogins] ([UserId]);
+2026-03-01 10:40:34.938 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_UserRoles_RoleId] ON [UserRoles] ([RoleId]);
+2026-03-01 10:40:34.941 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [EmailIndex] ON [Users] ([NormalizedEmail]);
+2026-03-01 10:40:34.943 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE UNIQUE INDEX [UserNameIndex] ON [Users] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;
+2026-03-01 10:40:36.710 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_VideoMedia_Category] ON [VideoMedia] ([Category]);
+2026-03-01 10:40:36.712 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_VideoMedia_Deleted_Published_Sort] ON [VideoMedia] ([IsDeleted], [IsPublished], [SortOrder]);
+2026-03-01 10:40:36.715 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE INDEX [IX_VideoMedia_IsDeleted] ON [VideoMedia] ([IsDeleted]);
+2026-03-01 10:40:36.718 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE UNIQUE INDEX [IX_VideoMedia_Slug] ON [VideoMedia] ([Slug]);
+2026-03-01 10:40:36.721 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+CREATE UNIQUE INDEX [IX_VideoMedia_VideoId] ON [VideoMedia] ([VideoId]);
+2026-03-01 10:40:36.732 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260301084001_Refactor', N'8.0.23');

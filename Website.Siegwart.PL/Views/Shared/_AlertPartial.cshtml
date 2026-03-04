@@ -1,0 +1,35 @@
+﻿@* Global Alert with Auto-Dismiss *@
+@if (TempData["Alert.Message"] != null)
+{
+    var alertType = TempData["Alert.Type"]?.ToString() ?? "info";
+    var iconMap = new Dictionary<string, string>
+    {
+        { "success", "bi-check-circle" },
+        { "danger", "bi-exclamation-circle" },
+        { "warning", "bi-exclamation-triangle" },
+        { "info", "bi-info-circle" }
+    };
+    var icon = iconMap.ContainsKey(alertType) ? iconMap[alertType] : "bi-info-circle";
+
+    <div class="alert alert-@alertType alert-dismissible fade show mb-3"
+         role="alert"
+         id="global-alert"
+         style="border-radius: 12px; border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+        <i class="bi @icon me-2"></i>
+        @TempData["Alert.Message"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <script>
+        (function() {
+            // Auto-hide alert after 5 seconds
+            setTimeout(function () {
+                const alertEl = document.getElementById('global-alert');
+                if (alertEl) {
+                    const bsAlert = new bootstrap.Alert(alertEl);
+                    bsAlert.close();
+                }
+            }, 5000);
+        })();
+    </script>
+}

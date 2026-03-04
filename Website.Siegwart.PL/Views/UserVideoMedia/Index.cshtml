@@ -1,0 +1,242 @@
+﻿@using Website.Siegwart.BLL.Dtos.Admin.VideoMedia
+@using Website.Siegwart.PL.Helper
+@model IEnumerable<VideoMediaListItemDto>
+
+@{
+    ViewData["Title"] = LocalizedText.Pick(Context, "Media Gallery", "معرض الوسائط");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var isAr = LocalizedText.IsArabic(Context);
+    var items = (Model ?? Enumerable.Empty<VideoMediaListItemDto>()).ToList();
+    var featured = items.FirstOrDefault();
+}
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="vm-hero">
+    <div class="container">
+        <div class="vm-hero-inner">
+
+            <!-- Left -->
+            <div class="vm-hero-left">
+                <div class="vm-hero-kicker">
+                    <i class="bi bi-play-circle" aria-hidden="true"></i>
+                    @LocalizedText.Pick(Context, "MEDIA GALLERY", "معرض الوسائط")
+                </div>
+
+                <h1 class="vm-hero-title">
+                    @LocalizedText.Pick(Context, "Video Gallery", "معرض الفيديوهات")
+                </h1>
+
+                <p class="vm-hero-lead">
+                    @LocalizedText.Pick(Context,
+                    "Explore our curated collection of videos showcasing our projects, capabilities and engineering excellence.",
+                                        "استعرض مجموعتنا المختارة من الفيديوهات التي تبرز مشاريعنا وقدراتنا وتميزنا الهندسي.")
+                </p>
+
+                <div class="vm-hero-stats">
+                    <div class="vm-hero-stat">
+                        <span class="vm-hero-stat-num">@items.Count</span>
+                        <span class="vm-hero-stat-lbl">
+                            @LocalizedText.Pick(Context, "Videos", "فيديو")
+                        </span>
+                    </div>
+                    <div class="vm-hero-stat">
+                        <span class="vm-hero-stat-num">HD</span>
+                        <span class="vm-hero-stat-lbl">
+                            @LocalizedText.Pick(Context, "Quality", "الجودة")
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right — Featured video or alt card -->
+            <div class="vm-hero-right">
+                @if (featured != null)
+                {
+                    var featTitle = LocalizedText.Pick(Context, featured.TitleEn ?? "", featured.TitleAr ?? "");
+                    var featThumb = string.IsNullOrWhiteSpace(featured.ThumbnailUrl)
+                    ? $"https://img.youtube.com/vi/{featured.VideoId}/maxresdefault.jpg"
+                    : featured.ThumbnailUrl;
+
+                    <div class="vm-hero-featured"
+                         data-bs-toggle="modal"
+                         data-bs-target="#videoPlayerModal"
+                         data-videoid="@featured.VideoId"
+                         role="button"
+                         aria-label="@LocalizedText.Pick(Context, "Play featured video", "تشغيل الفيديو المميز")">
+                        <img src="@featThumb"
+                             alt="@featTitle"
+                             class="vm-hero-featured-img"
+                             loading="eager" />
+                        <div class="vm-hero-featured-overlay">
+                            <div class="vm-play-btn-lg">
+                                <i class="bi bi-play-fill"></i>
+                            </div>
+                            <span class="vm-hero-featured-label">
+                                @LocalizedText.Pick(Context, "Watch Now", "شاهد الآن")
+                            </span>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="vm-hero-right-alt">
+                        <p>
+                            @LocalizedText.Pick(Context,
+                            "Browse videos, watch highlights, and learn more about our impactful solutions across industries.",
+                                                "تصفح الفيديوهات وشاهد أبرز المشاهد وتعرف أكثر على حلولنا المؤثرة.")
+                    </p>
+                </div>
+                                }
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════ VIDEOS SECTION ═══════════════════ -->
+<section class="vm-section">
+    <div class="container">
+
+        <div class="vm-section-header">
+            <span class="vm-section-tag">
+                <i class="bi bi-collection-play" aria-hidden="true"></i>
+                @LocalizedText.Pick(Context, "All Videos", "كل الفيديوهات")
+            </span>
+            <h2 class="vm-section-title">
+                @LocalizedText.Pick(Context, "Siegwart Videos", "فيديوهات Siegwart")
+            </h2>
+            <div class="vm-section-line"></div>
+            <p class="vm-section-desc">
+                @LocalizedText.Pick(Context,
+                "Latest video stories, project highlights and company updates.",
+                                "أحدث الفيديوهات، ملخصات المشاريع وتحديثات الشركة.")
+            </p>
+        </div>
+
+        <div class="vm-grid">
+            @if (!items.Any())
+            {
+                <div class="vm-empty">
+                    <div class="vm-empty-icon">
+                        <i class="bi bi-camera-video"></i>
+                    </div>
+                    <p>@LocalizedText.Pick(Context, "No videos available yet.", "لا توجد فيديوهات متاحة بعد.")</p>
+                </div>
+            }
+            else
+            {
+                foreach (var item in items)
+                {
+                    var title = LocalizedText.Pick(Context, item.TitleEn ?? "", item.TitleAr ?? "");
+                    var desc = LocalizedText.Pick(Context, item.TitleAr ?? "", item.TitleEn ?? "");
+                    var thumb = string.IsNullOrWhiteSpace(item.ThumbnailUrl)
+                    ? $"https://img.youtube.com/vi/{item.VideoId}/hqdefault.jpg"
+                    : item.ThumbnailUrl;
+
+                    <article class="vm-card">
+                        <!-- Thumbnail -->
+                        <div class="vm-card-thumb">
+                            <img src="@thumb"
+                                 alt="@title"
+                                 class="vm-card-img"
+                                 loading="lazy" />
+                            <button class="vm-play-btn"
+                                    type="button"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#videoPlayerModal"
+                                    data-videoid="@item.VideoId"
+                                    aria-label="@LocalizedText.Pick(Context, "Play", "تشغيل")">
+                                <i class="bi bi-play-fill"></i>
+                            </button>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="vm-card-body @(isAr ? "text-end" : "")">
+                            <div class="vm-card-date">
+                                <i class="bi bi-calendar3" aria-hidden="true"></i>
+                                @item.CreatedOn.ToString("dd MMM yyyy")
+                            </div>
+                            <h3 class="vm-card-title">
+                                <a asp-action="Details" asp-route-id="@item.Id">@title</a>
+                            </h3>
+                            @if (!string.IsNullOrWhiteSpace(desc))
+                            {
+                                <p class="vm-card-excerpt">@desc</p>
+                            }
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="vm-card-footer">
+                            <a class="vm-card-link"
+                               asp-action="Details"
+                               asp-route-id="@item.Id">
+                                @LocalizedText.Pick(Context, "Details", "التفاصيل")
+                                <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                            </a>
+                            <a class="vm-yt-btn"
+                               href="https://www.youtube.com/watch?v=@item.VideoId"
+                               target="_blank"
+                               rel="noopener">
+                                <i class="bi bi-youtube" aria-hidden="true"></i>
+                                @LocalizedText.Pick(Context, "YouTube", "يوتيوب")
+                            </a>
+                        </div>
+                    </article>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════ PLAYER MODAL ═══════════════════ -->
+<div class="modal fade vm-modal" id="videoPlayerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title">
+                    @LocalizedText.Pick(Context, "Video Player", "مشغل الفيديو")
+                </h5>
+                <button type="button"
+                        class="btn-close btn-close-white"
+                        data-bs-dismiss="modal"
+                        aria-label="@LocalizedText.Pick(Context, "Close", "إغلاق")">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="ratio ratio-16x9">
+                    <iframe id="videoPlayerFrame"
+                            src=""
+                            title="Video Player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Videos.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script>
+        (() => {
+            const modal = document.getElementById('videoPlayerModal');
+            const iframe = document.getElementById('videoPlayerFrame');
+            if (!modal || !iframe) return;
+
+            modal.addEventListener('show.bs.modal', e => {
+                const btn = e.relatedTarget;
+                const id = btn?.getAttribute('data-videoid');
+                if (id) iframe.src = `https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
+            });
+
+            modal.addEventListener('hidden.bs.modal', () => {
+                iframe.src = '';
+            });
+        })();
+    </script>
+}

@@ -1,0 +1,234 @@
+﻿@using Microsoft.AspNetCore.WebUtilities
+@using Website.Siegwart.PL.Helper
+@inject IStaticTextService T
+@{
+    var lang = Context.GetCurrentLanguage();
+    var dir = lang == "ar" ? "rtl" : "ltr";
+    var isAr = lang == "ar";
+
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+    var action = ViewContext.RouteData.Values["action"]?.ToString() ?? "";
+
+    bool isHome = controller == "Home" && action == "Index";
+
+    var title = ViewData["Title"] as string;
+    var description = ViewData["Description"] as string ?? T.Seo("default_description");
+    var keywords = ViewData["Keywords"] as string ?? T.Seo("default_keywords");
+    var ogImage = ViewData["OgImage"] as string ?? Url.Content("~/Resources/images/og-default.jpg");
+
+    var canonicalUrl = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}";
+    var siteName = ViewData["site_name"] as string;
+    var fullTitle = string.IsNullOrWhiteSpace(title) ? siteName : $"{title} | {siteName}";
+}
+<!DOCTYPE html>
+<html lang="@lang" dir="@dir" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#002D62" />
+
+    <!-- Primary Meta Tags -->
+    <title>@fullTitle</title>
+    <meta name="title" content="@fullTitle" />
+    <meta name="description" content="@description" />
+    <meta name="keywords" content="@keywords" />
+    <meta name="author" content="Siegwart - Egyptian Company for Pipes & Cement Products" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="@(isAr ? "Arabic" : "English")" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="@canonicalUrl" />
+    <meta property="og:title" content="@fullTitle" />
+    <meta property="og:description" content="@description" />
+    <meta property="og:image" content="@ogImage" />
+    <meta property="og:site_name" content="@siteName" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="@canonicalUrl" />
+    <meta name="twitter:title" content="@fullTitle" />
+    <meta name="twitter:description" content="@description" />
+    <meta name="twitter:image" content="@ogImage" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="@canonicalUrl" />
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         FAVICONS - HIGH QUALITY & VISIBLE
+         ═══════════════════════════════════════════════════════════════════ -->
+    <!-- Standard Favicon -->
+    <link rel="icon" type="image/png" sizes="512x512" href="~/Resources/favicons/favicon-512.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="~/Resources/favicons/favicon-256.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="~/Resources/favicons/favicon-128.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="~/Resources/favicons/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="~/Resources/favicons/favicon-64.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="~/Resources/favicons/favicon-48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Resources/favicons/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Resources/favicons/favicon-16.png">
+
+    <!-- Apple Touch Icons (High Resolution) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Resources/favicons/apple-touch-icon-180.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/Resources/favicons/apple-touch-icon-152.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/Resources/favicons/apple-touch-icon-144.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="~/Resources/favicons/apple-touch-icon-120.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/Resources/favicons/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/Resources/favicons/apple-touch-icon-76.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/Resources/favicons/apple-touch-icon-72.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="~/Resources/favicons/apple-touch-icon-60.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="~/Resources/favicons/apple-touch-icon-57.png">
+
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileImage" content="~/Resources/favicons/mstile-144.png">
+    <meta name="msapplication-TileColor" content="#002D62">
+    <meta name="msapplication-config" content="~/Resources/favicons/browserconfig.xml">
+
+    <!-- Safari Pinned Tab -->
+    <link rel="mask-icon" href="~/Resources/favicons/safari-pinned-tab.svg" color="#002D62">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="~/Resources/favicons/site.webmanifest">
+
+    <!-- Shortcut Icon (Legacy) -->
+    <link rel="shortcut icon" href="~/Resources/favicons/favicon.ico">
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         PRECONNECT & DNS PREFETCH
+         ═══════════════════════════════════════════════════════════════════ -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         STYLESHEETS - OPTIMIZED LOADING
+         ═══════════════════════════════════════════════════════════════════ -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+          crossorigin="anonymous"
+          media="all" />
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          crossorigin="anonymous"
+          media="all" />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.min.css"
+          crossorigin="anonymous"
+          media="all" />
+
+    <!-- Design System & Components -->
+    <link rel="stylesheet" href="~/css/token.css" asp-append-version="true" media="all" />
+    <link rel="stylesheet" href="~/css/components.css" asp-append-version="true" media="all" />
+
+    <!-- Layout Styles -->
+    <link rel="stylesheet" href="~/css/header.css" asp-append-version="true" media="all" />
+    <link rel="stylesheet" href="~/css/footer.css" asp-append-version="true" media="all" />
+
+    <!-- Page-specific Styles -->
+    @if (isHome)
+    {
+        <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" media="all" />
+    }
+
+    @await RenderSectionAsync("Styles", required: false)
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         INLINE CRITICAL CSS (Performance Boost)
+         ═══════════════════════════════════════════════════════════════════ -->
+    <style>
+        /* Critical styles for faster rendering */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+        }
+
+        .sig-main {
+            min-height: 60vh;
+        }
+        /* Prevent layout shift */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="@(lang == "ar" ? "ar-lang" : "en-lang") @(isHome ? "home-body" : "inner-body")"
+      data-lang="@lang">
+
+    <!-- Skip to main content (Accessibility) -->
+    <a href="#main-content" class="skip-to-main visually-hidden-focusable">
+        Skip to main content
+    </a>
+
+    <!-- Header -->
+    <partial name="_Header" />
+
+    <!-- Main Content -->
+    <main role="main"
+          id="main-content"
+          class="sig-main pb-3 @(isHome ? "page-home" : "page-inner")"
+          tabindex="-1">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <partial name="_Footer" />
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         JAVASCRIPT - OPTIMIZED LOADING
+         ═══════════════════════════════════════════════════════════════════ -->
+    <!-- jQuery -->
+    <script src="~/lib/jquery/dist/jquery.min.js" defer></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"
+            defer></script>
+
+    <!-- Site Scripts -->
+    <script src="~/js/header.js" asp-append-version="true" defer></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         STRUCTURED DATA (SEO Enhancement)
+         ═══════════════════════════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+        {
+            "@@context": "https://schema.org",
+            "@@type": "Organization",
+            "name": "Siegwart - Egyptian Company for Pipes & Cement Products",
+            "alternateName": "Siegwart",
+            "url": "@(Context.Request.Scheme)://@(Context.Request.Host)",
+            "logo": "@Url.Content("~/Resources/images/logo.png")",
+            "description": "@description",
+            "address": {
+                "@@type": "PostalAddress",
+                "streetAddress": "EL Masara, Helwan",
+                "addressLocality": "Cairo",
+                "addressCountry": "EG"
+            },
+            "contactPoint": {
+                "@@type": "ContactPoint",
+                "contactType": "Customer Service",
+                "email": "info@siegwart.com"
+            },
+            "sameAs": [
+                "https://www.linkedin.com/company/siegwart",
+                "https://www.facebook.com/siegwart"
+            ],
+            "foundingDate": "1932",
+            "industry": "Railway & Infrastructure Manufacturing"
+        }
+    </script>
+</body>
+</html>

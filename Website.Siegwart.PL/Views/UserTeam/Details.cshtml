@@ -1,0 +1,157 @@
+﻿@using Website.Siegwart.BLL.Dtos.User
+@using Website.Siegwart.PL.Helper
+@model TeamMemberViewDto
+
+@{
+    ViewData["Title"] = LocalizedText.Pick(Context, Model.NameEn, Model.NameAr);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var isAr = LocalizedText.IsArabic(Context);
+}
+
+<!-- Breadcrumb -->
+<section class="breadcrumb-section">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb @(isAr ? "flex-row-reverse" : "")">
+                <li class="breadcrumb-item">
+                    <a asp-controller="Home" asp-action="Index">
+                        @LocalizedText.Pick(Context, "Home", "الرئيسية")
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a asp-action="Index">
+                        @LocalizedText.Pick(Context, "Team", "الفريق")
+                    </a>
+                </li>
+                <li class="breadcrumb-item active">
+                    @LocalizedText.Pick(Context, Model.NameEn, Model.NameAr)
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Team Member Profile -->
+<section class="member-profile">
+    <div class="container">
+        <div class="profile-card">
+            <div class="row g-0">
+                <!-- Photo Column -->
+                <div class="col-lg-5">
+                    <div class="profile-photo-section">
+                        <div class="profile-photo-wrapper">
+                            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                            {
+                                <img src="@Url.Content("~/" + Model.ImageUrl)"
+                                     alt="@LocalizedText.Pick(Context, Model.NameEn, Model.NameAr)"
+                                     class="profile-photo" />
+                            }
+                            else
+                            {
+                                <div class="profile-no-photo">
+                                    <i class="bi bi-person-circle"></i>
+                                </div>
+                            }
+                        </div>
+
+                        <!-- Category Badge -->
+                        <div class="profile-category-badge">
+                            <i class="bi bi-briefcase"></i>
+                            <span>@Model.CategoryName</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Column -->
+                <div class="col-lg-7">
+                    <div class="profile-info-section @(isAr ? "text-end" : "")">
+                        <!-- Name & Title -->
+                        <div class="profile-header">
+                            <h1 class="profile-name">
+                                @LocalizedText.Pick(Context, Model.NameEn, Model.NameAr)
+                            </h1>
+                            <p class="profile-title">
+                                @LocalizedText.Pick(Context, Model.TitleEn, Model.TitleAr)
+                            </p>
+                            <div class="title-divider"></div>
+                        </div>
+
+                        <!-- Biography -->
+                        @if (!string.IsNullOrEmpty(Model.BioEn) || !string.IsNullOrEmpty(Model.BioAr))
+                        {
+                            <div class="profile-bio">
+                                <h3 class="bio-heading">
+                                    <i class="bi bi-person-lines-fill"></i>
+                                    @LocalizedText.Pick(Context, "Biography", "السيرة الذاتية")
+                                </h3>
+                                <p class="bio-text" dir="@(isAr ? "rtl" : "ltr")">
+                                    @LocalizedText.Pick(Context, Model.BioEn, Model.BioAr)
+                                </p>
+                            </div>
+                        }
+
+                        <!-- Experience -->
+                        @if (Model.YearsOfExperience.HasValue && Model.YearsOfExperience > 0)
+                        {
+                            <div class="profile-experience">
+                                <div class="experience-badge">
+                                    <i class="bi bi-award"></i>
+                                    <div>
+                                        <strong>@Model.YearsOfExperience</strong>
+                                        <span>@LocalizedText.Pick(Context, "Years of Experience", "سنوات من الخبرة")</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <!-- Contact Information -->
+                        @if (!string.IsNullOrEmpty(Model.Email) || !string.IsNullOrEmpty(Model.Phone) || !string.IsNullOrEmpty(Model.LinkedInUrl))
+                        {
+                            <div class="profile-contact">
+                                <h3 class="contact-heading">
+                                    <i class="bi bi-telephone-fill"></i>
+                                    @LocalizedText.Pick(Context, "Contact Information", "معلومات الاتصال")
+                                </h3>
+                                <div class="contact-items">
+                                    @if (!string.IsNullOrEmpty(Model.Email))
+                                    {
+                                        <a href="mailto:@Model.Email" class="contact-link">
+                                            <i class="bi bi-envelope-fill"></i>
+                                            <span>@Model.Email</span>
+                                        </a>
+                                    }
+                                    @if (!string.IsNullOrEmpty(Model.Phone))
+                                    {
+                                        <a href="tel:@Model.Phone" class="contact-link">
+                                            <i class="bi bi-telephone-fill"></i>
+                                            <span>@Model.Phone</span>
+                                        </a>
+                                    }
+                                    @if (!string.IsNullOrEmpty(Model.LinkedInUrl))
+                                    {
+                                        <a href="@Model.LinkedInUrl" target="_blank" rel="noopener" class="contact-link">
+                                            <i class="bi bi-linkedin"></i>
+                                            <span>LinkedIn Profile</span>
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                        }
+
+                        <!-- Back Button -->
+                        <div class="profile-actions">
+                            <a asp-action="Index" class="btn-back">
+                                <i class="bi bi-arrow-@(isAr ? "right" : "left")"></i>
+                                <span>@LocalizedText.Pick(Context, "Back to Team", "العودة للفريق")</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Team.css" asp-append-version="true" />
+}

@@ -1,0 +1,164 @@
+﻿@using Website.Siegwart.BLL.Dtos.User
+@using Website.Siegwart.PL.Helper
+@model IEnumerable<NewsViewDto>
+@inject IStaticTextService T
+
+@{
+    ViewData["Title"] = LocalizedText.Pick(Context, "News & Updates", "الأخبار والتحديثات");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var isAr = LocalizedText.IsArabic(Context);
+    var featured = Model?.FirstOrDefault();
+    var remaining = Model?.Skip(1).ToList() ?? new List<NewsViewDto>();
+}
+
+<!-- Hero -->
+<section class="news-hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-eyebrow">
+                @LocalizedText.Pick(Context, "LATEST NEWS", "آخر الأخبار")
+            </div>
+            <h1 class="hero-title">@T.Home("news.title")</h1>
+            <p class="hero-subtitle">
+                @LocalizedText.Pick(Context,
+                "Stay updated with our latest projects and announcements.",
+                                "ابقَ على اطلاع بأحدث مشاريعنا وإعلاناتنا.")
+            </p>
+            <div class="hero-divider"></div>
+        </div>
+    </div>
+</section>
+
+<!-- News Content -->
+<section class="news-content">
+    <div class="container">
+
+        @if (featured != null)
+        {
+            <!-- Featured -->
+            <div class="featured-news sw-reveal">
+                <div class="row g-0 align-items-stretch">
+                    <div class="col-lg-6 @(isAr ? "order-lg-2" : "")">
+                        <div class="featured-image">
+                            @if (!string.IsNullOrWhiteSpace(featured.ImageUrl))
+                            {
+                                <img src="@Url.Content("~/" + featured.ImageUrl)"
+                                     alt="@LocalizedText.Pick(Context, featured.TitleEn, featured.TitleAr)"
+                                     loading="lazy" />
+                            }
+                            else
+                            {
+                                <div class="featured-no-image">
+                                    <i class="bi bi-newspaper"></i>
+                                </div>
+                            }
+                            <div class="featured-badge">
+                                @T.Home("news.featured")
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 @(isAr ? "order-lg-1" : "")">
+                        <div class="featured-content @(isAr ? "text-end" : "")">
+                            <span class="news-date">
+                                <i class="bi bi-calendar-event"></i>
+                                <span>@featured.PublishedOn.ToString(isAr ? "dd MMMM yyyy" : "MMMM dd, yyyy")</span>
+                            </span>
+                            <h2 class="featured-title">
+                                @LocalizedText.Pick(Context, featured.TitleEn, featured.TitleAr)
+                            </h2>
+                            <p class="featured-excerpt">
+                                @{
+                                    var content = LocalizedText.Pick(Context, featured.ContentEn, featured.ContentAr) ?? "";
+                                    var excerpt = content.Length > 220 ? content.Substring(0, 220) + "..." : content;
+                                }
+                                @excerpt
+                            </p>
+                            <a asp-action="Details" asp-route-id="@featured.Id" class="btn-read-more">
+                                @T.Home("news.read_full")
+                                <i class="bi bi-arrow-@(isAr ? "left" : "right")"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @if (remaining.Any())
+            {
+                <div class="news-section-label sw-reveal" style="animation-delay:.1s">
+                    <span>@LocalizedText.Pick(Context, "MORE NEWS", "المزيد من الأخبار")</span>
+                </div>
+
+                <div class="news-grid">
+                    @{
+                        int idx = 0;
+                    }
+                    @foreach (var news in remaining)
+                    {
+                        <article class="news-card sw-reveal" style="animation-delay:@((idx % 3) * 80)ms">
+                            <a asp-action="Details" asp-route-id="@news.Id" class="news-card-link">
+                                <div class="news-card-image">
+                                    @if (!string.IsNullOrWhiteSpace(news.ImageUrl))
+                                    {
+                                        <img src="@Url.Content("~/" + news.ImageUrl)"
+                                             alt="@LocalizedText.Pick(Context, news.TitleEn, news.TitleAr)"
+                                             loading="lazy" />
+                                    }
+                                    else
+                                    {
+                                        <div class="news-card-no-image">
+                                            <i class="bi bi-newspaper"></i>
+                                        </div>
+                                    }
+                                    <div class="news-card-overlay">
+                                        <span class="view-news">
+                                            <i class="bi bi-eye-fill"></i>
+                                            @T.Home("news.read_article")
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="news-card-content @(isAr ? "text-end" : "")">
+                                    <span class="news-card-date">
+                                        <i class="bi bi-calendar-check"></i>
+                                        @news.PublishedOn.ToString(isAr ? "dd MMM yyyy" : "MMM dd, yyyy")
+                                    </span>
+                                    <h3 class="news-card-title">
+                                        @LocalizedText.Pick(Context, news.TitleEn, news.TitleAr)
+                                    </h3>
+                                    <p class="news-card-excerpt">
+                                        @{
+                                            var cc = LocalizedText.Pick(Context, news.ContentEn, news.ContentAr) ?? "";
+                                            var ce = cc.Length > 130 ? cc.Substring(0, 130) + "..." : cc;
+                                        }
+                                        @ce
+                                    </p>
+                                    <span class="news-card-read">
+                                        @LocalizedText.Pick(Context, "Read more", "اقرأ المزيد")
+                                        <i class="bi bi-arrow-@(isAr ? "left" : "right")"></i>
+                                    </span>
+                                </div>
+                            </a>
+                        </article>
+                        idx++;
+                    }
+                </div>
+            }
+        }
+        else
+        {
+            <div class="empty-state">
+                <span class="empty-icon"><i class="bi bi-newspaper"></i></span>
+                <h3>@T.Home("news.no_news")</h3>
+                <p>@T.Home("news.check_back")</p>
+            </div>
+        }
+
+    </div>
+</section>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/News.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script src="~/js/news.js" asp-append-version="true"></script>
+}

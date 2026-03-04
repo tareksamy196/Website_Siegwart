@@ -1,0 +1,189 @@
+﻿@using Website.Siegwart.PL.Helper
+@inject IStaticTextService T
+
+@{
+    var isAr = LocalizedText.IsArabic(Context);
+    var currentYear = DateTime.Now.Year;
+}
+
+<footer class="sig-footer">
+    <div class="container">
+        <div class="row gy-5">
+
+            <!-- Brand & About -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                <div class="footer-brand">
+                    <a asp-controller="Home" asp-action="Index" class="footer-logo">
+                        <img src="~/Resources/images/logo.png"
+                             alt="@T.Footer("brand_name")"
+                             loading="lazy">
+                    </a>
+
+                    <p class="footer-desc">
+                        @T.Footer("brand_description")
+                    </p>
+
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/profile.php?id=61585921739457"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/110794952"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://youtube.com/@@siegwartcompany?si=OhDv_DfkwT-NaceY"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <h6 class="footer-heading">@T.Footer("quick_links_title")</h6>
+                <ul class="footer-links">
+                    <li>
+                        <a asp-controller="Home" asp-action="Index">
+                            <i class="bi bi-chevron-@(isAr ? "left" : "right")"></i>
+                            @T.Footer("link_home")
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="About">
+                            <i class="bi bi-chevron-@(isAr ? "left" : "right")"></i>
+                            @T.Footer("link_about")
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="UserProducts" asp-action="Index">
+                            <i class="bi bi-chevron-@(isAr ? "left" : "right")"></i>
+                            @T.Footer("link_products")
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Projects" asp-action="Index">
+                            <i class="bi bi-chevron-@(isAr ? "left" : "right")"></i>
+                            @T.Footer("link_projects")
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="UserNews" asp-action="Index">
+                            <i class="bi bi-chevron-@(isAr ? "left" : "right")"></i>
+                            @T.Footer("link_news")
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Contact">
+                            <i class="bi bi-chevron-@(isAr ? "left" : "right")"></i>
+                            @T.Footer("link_contact")
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <h6 class="footer-heading">@T.Footer("contact_title")</h6>
+                <p class="footer-subtitle">@T.Footer("contact_subtitle")</p>
+
+                <ul class="footer-contact">
+                    <li>
+                        <div class="contact-icon">
+                            <i class="bi bi-geo-alt-fill"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>@T.Footer("address_label")</strong>
+                            <span>@T.Footer("address_line1")</span>
+                            <span>@T.Footer("address_line2")</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="contact-icon">
+                            <i class="bi bi-telephone-fill"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>@T.Footer("phone_label")</strong>
+                            <a href="tel:+2023606612">@T.Footer("phone_number")</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="contact-icon">
+                            <i class="bi bi-envelope-fill"></i>
+                        </div>
+                        <div class="contact-text">
+                            <strong>@T.Footer("email_label")</strong>
+                            <a href="mailto:info@siegwarteg.com">@T.Footer("email_address")</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Map -->
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <h6 class="footer-heading">@T.Footer("map_title")</h6>
+                <p class="footer-subtitle">@T.Footer("map_subtitle")</p>
+
+                <div class="footer-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3458.781546326814!2d31.301745174426554!3d29.89939457499694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145837df5d4e4bd3%3A0x9d19f47052f81393!2z2YXYtdmG2Lkg2LPZigs2YI9in2KfYsdi3!5e0!3m2!1sen!2seg!4v1766342476769!5m2!1sen!2seg"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="@T.Footer("map_title")"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-@(isAr ? "end" : "start")">
+                    <p class="footer-copyright">
+                        © @currentYear <strong>@T.Footer("brand_name")</strong>. @T.Footer("copyright_text")
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-@(isAr ? "start" : "end")">
+                    <ul class="footer-legal">
+                        <li>
+                            <a asp-controller="Home" asp-action="Privacy">
+                                @T.Footer("privacy_policy")
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="Home" asp-action="Terms">
+                                @T.Footer("terms_service")
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+@section Styles {
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+}
+
+@section Scripts {
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+    </script>
+}

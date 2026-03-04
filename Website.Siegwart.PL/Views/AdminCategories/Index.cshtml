@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Website.Siegwart.BLL.Dtos.Admin.CategoryDtos.CategoryDetailsDto>
+
+@{
+    ViewData["Title"] = "Categories Management";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Page Header -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="mb-1">
+            <i class="bi bi-tags me-2"></i>Categories
+        </h2>
+        <p class="text-muted mb-0">Manage product categories</p>
+    </div>
+    <div class="d-flex gap-2">
+        <!-- Search -->
+        <div class="input-group" style="width: 250px;">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+            <input id="tableSearch" type="text" class="form-control" placeholder="Search categories..." />
+        </div>
+        <!-- Add Button -->
+        <a href="@Url.Action("Create")" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Add Category
+        </a>
+    </div>
+</div>
+
+<!-- Table Card -->
+<div class="card">
+    <div class="card-body">
+        @if (Model != null && Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="dataTable">
+                    <thead class="table-light">
+                        <tr>
+                            <th style="width: 80px;">ID</th>
+                            <th>Name (English)</th>
+                            <th>Name (Arabic)</th>
+                            <th>Products</th>
+                            <th style="width: 150px;">Created</th>
+                            <th class="text-center" style="width: 150px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var category in Model)
+                        {
+                            <tr>
+                                <td class="text-muted">@category.Id</td>
+                                <td><strong>@category.NameEn</strong></td>
+                                <td><span dir="rtl">@category.NameAr</span></td>
+                                <td>
+                                    <span class="badge bg-info">@category.ProductCount</span>
+                                </td>
+                                <td>
+                                    <small class="text-muted">
+                                        @category.CreatedOn.ToString("dd/MM/yyyy")<br />
+                                        <span class="text-muted">@category.CreatedOn.ToString("HH:mm")</span>
+                                    </small>
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <a href="@Url.Action("Edit", new { id = category.Id })"
+                                           class="btn btn-outline-warning"
+                                           title="Edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <button type="button"
+                                                class="btn btn-outline-danger"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#deleteModal"
+                                                data-id="@category.Id"
+                                                data-name="@category.NameEn"
+                                                title="Delete">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="text-center py-5">
+                <i class="bi bi-inbox display-1 text-muted"></i>
+                <p class="mt-3 text-muted">
+                    No categories yet. <a href="@Url.Action("Create")" class="fw-bold">Create your first category</a>
+                </p>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<partial name="_DeleteModalPartial" />
+
+@section Scripts {
+    <script>
+        // Simple table search
+        document.getElementById('tableSearch')?.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            document.querySelectorAll('#dataTable tbody tr').forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(query) ? '' : 'none';
+            });
+        });
+    </script>
+}

@@ -1,0 +1,337 @@
+﻿@using Microsoft.AspNetCore.WebUtilities
+@using Website.Siegwart.PL.Helper
+@inject IStaticTextService T
+
+@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+    var action = ViewContext.RouteData.Values["action"]?.ToString() ?? "";
+
+    bool isHome = controller.Equals("Home", StringComparison.OrdinalIgnoreCase) && action.Equals("Index", StringComparison.OrdinalIgnoreCase);
+    bool isAbout = controller.Equals("Home", StringComparison.OrdinalIgnoreCase) && action.Equals("About", StringComparison.OrdinalIgnoreCase);
+    bool isTeam = controller.Equals("UserTeam", StringComparison.OrdinalIgnoreCase);
+    bool isContact = controller.Equals("Home", StringComparison.OrdinalIgnoreCase) && action.Equals("Contact", StringComparison.OrdinalIgnoreCase);
+    bool isProductsArea = controller.Equals("UserProducts", StringComparison.OrdinalIgnoreCase) || controller.Equals("Projects", StringComparison.OrdinalIgnoreCase);
+    bool isNewsArea = controller.Equals("UserNews", StringComparison.OrdinalIgnoreCase) || controller.Equals("UserVideoMedia", StringComparison.OrdinalIgnoreCase);
+
+    var lang = Context.GetCurrentLanguage();
+    bool isRtl = lang.Equals("ar", StringComparison.OrdinalIgnoreCase);
+
+    string Text(string key, string fallback = "") => T.Header(key) ?? fallback;
+    string? AriaCurrent(bool active) => active ? "page" : null;
+
+    string WithLang(string newLang)
+    {
+        var path = Context.Request.Path.ToString();
+        var queryString = Context.Request.QueryString.ToString();
+
+        // Parse existing query string
+        var parsed = QueryHelpers.ParseQuery(queryString);
+
+        // Create new dictionary, excluding existing lang parameter
+        var dict = new Dictionary<string, string?>();
+        foreach (var kvp in parsed)
+        {
+            if (!kvp.Key.Equals("lang", StringComparison.OrdinalIgnoreCase))
+            {
+                dict[kvp.Key] = kvp.Value.ToString();
+            }
+        }
+
+        // Add new lang parameter
+        dict["lang"] = newLang;
+
+        return QueryHelpers.AddQueryString(path, dict);
+    }
+}
+
+<!-- Main Header -->
+<header class="sig-header" id="mainHeader" role="banner">
+    <div class="sig-container">
+        <!-- Brand -->
+        <a asp-controller="Home" asp-action="Index" class="sig-brand"
+           aria-label="@Text("home", "Home") - @Text("brand_name", "Siegwart")">
+            <img class="sig-brand-logo"
+                 src="~/Resources/images/logo.png"
+                 alt="@Text("brand_name", "Siegwart")"
+                 loading="eager"
+                 width="86"
+                 height="86"
+                 decoding="async" />
+            <div class="sig-brand-text">
+                <span class="sig-brand-name"><b>@Text("brand_name", "SIEGWART")</b></span>
+                <span class="sig-brand-sub">@Text("brand_full", "Infrastructure & Concrete Products")</span>
+            </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="sig-nav" aria-label="@Text("primary_nav", "Primary navigation")">
+            <ul class="sig-menu" id="primaryMenu">
+                <li>
+                    <a asp-controller="Home" asp-action="Index"
+                       class="sig-link @(isHome ? "active" : "")"
+                       aria-current="@AriaCurrent(isHome)">
+                        @Text("home", "Home")
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Home" asp-action="About"
+                       class="sig-link @(isAbout ? "active" : "")"
+                       aria-current="@AriaCurrent(isAbout)">
+                        @Text("about", "About")
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="UserTeam" asp-action="Index"
+                       class="sig-link @(isTeam ? "active" : "")"
+                       aria-current="@AriaCurrent(isTeam)">
+                        @Text("team", "Our Team")
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="UserProducts" asp-action="Index"
+                       class="sig-link @(isProductsArea ? "active" : "")"
+                       aria-current="@AriaCurrent(isProductsArea)">
+                        @Text("products", "Products")
+                    </a>
+                </li>
+                <li class="sig-dd @(isNewsArea ? "active" : "")" data-dd>
+                    <button class="sig-link sig-dd-toggle" type="button"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            aria-controls="ddNewsMedia"
+                            aria-label="@Text("news_media", "News & Media") @Text("menu", "menu")">
+                        @Text("news_media", "News & Media")
+                        <span class="sig-dd-icon" aria-hidden="true">
+                            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </button>
+                    <ul class="sig-dd-menu" id="ddNewsMedia" role="menu">
+                        <li role="none">
+                            <a asp-controller="UserNews" asp-action="Index" role="menuitem">
+                                @Text("news", "News")
+                            </a>
+                        </li>
+                        <li role="none">
+                            <a asp-controller="UserVideoMedia" asp-action="Index" role="menuitem">
+                                @Text("media_gallery", "Media Gallery")
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a asp-controller="Home" asp-action="Contact"
+                       class="sig-link @(isContact ? "active" : "")"
+                       aria-current="@AriaCurrent(isContact)">
+                        @Text("contact", "Contact")
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Header Actions -->
+        <div class="sig-actions">
+            <!-- Language Switcher -->
+            <div class="sig-dd sig-dd-right" data-dd>
+                <button class="sig-icon-btn sig-lang-btn sig-dd-toggle" type="button"
+                        aria-label="@Text("language", "Language"): @(lang.ToUpperInvariant())"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        aria-controls="ddLang">
+                    <i class="fas fa-earth-africa" aria-hidden="true"></i>
+                    <span class="sig-lang-badge">@lang.ToUpperInvariant()</span>
+                </button>
+                <ul class="sig-dd-menu" id="ddLang" role="menu">
+                    <li role="none">
+                        <a href="@WithLang("en")"
+                           class="sig-m-link lang-link @(lang == "en" ? "active" : "")"
+                           role="menuitem"
+                           lang="en"
+                           aria-label="Switch to English">
+                            English
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="@WithLang("ar")"
+                           class="sig-m-link lang-link @(lang == "ar" ? "active" : "")"
+                           role="menuitem"
+                           lang="ar"
+                           aria-label="التبديل إلى العربية">
+                            العربية
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Get in Touch Button -->
+            <button class="sig-cta" id="openSidePanel" type="button"
+                    aria-controls="contactPanel"
+                    aria-expanded="false"
+                    aria-label="@Text("get_in_touch", "Get in Touch")">
+                @Text("get_in_touch", "Get in Touch")
+            </button>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="sig-burger" id="mobileToggle" type="button"
+                    aria-label="@Text("open_menu", "Open menu")"
+                    aria-expanded="false"
+                    aria-controls="mobileMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div class="sig-mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+
+<!-- Mobile Menu Drawer -->
+<aside class="sig-mobile" id="mobileMenu" aria-label="@Text("mobile_menu", "Mobile navigation")" aria-hidden="true">
+    <div class="sig-mobile-head">
+        <span class="sig-mobile-title">@Text("menu", "Menu")</span>
+        <button class="sig-mobile-close" id="mobileClose" type="button"
+                aria-label="@Text("close_menu", "Close menu")">
+            <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <nav class="sig-mobile-nav" aria-label="@Text("mobile_nav", "Mobile navigation")">
+        <a asp-controller="Home" asp-action="Index"
+           class="sig-m-link @(isHome ? "active" : "")"
+           aria-current="@AriaCurrent(isHome)">
+            @Text("home", "Home")
+        </a>
+        <a asp-controller="Home" asp-action="About"
+           class="sig-m-link @(isAbout ? "active" : "")"
+           aria-current="@AriaCurrent(isAbout)">
+            @Text("about", "About")
+        </a>
+        <a asp-controller="UserTeam" asp-action="Index"
+           class="sig-m-link @(isTeam ? "active" : "")"
+           aria-current="@AriaCurrent(isTeam)">
+            @Text("team", "Our Team")
+        </a>
+   
+        <a asp-controller="UserProducts" asp-action="Index"
+           class="sig-m-link @(isProductsArea ? "active" : "")"
+           aria-current="@AriaCurrent(isProductsArea)">
+            @Text("products", "Products")
+        </a>
+   
+        <!-- News & Media Accordion -->
+        <button class="sig-m-dd @(isNewsArea ? "active" : "")" type="button" data-mdd
+                aria-expanded="false"
+                aria-controls="mobileNewsMedia"
+                aria-label="@Text("news_media", "News & Media") @Text("submenu", "submenu")">
+            @Text("news_media", "News & Media")
+            <span class="sig-m-dd-icon" aria-hidden="true">
+                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+        </button>
+        <div class="sig-m-dd-panel" id="mobileNewsMedia">
+            <a asp-controller="UserNews" asp-action="Index" class="sig-m-sub">
+                @Text("news", "News")
+            </a>
+            <a asp-controller="UserVideoMedia" asp-action="Index" class="sig-m-sub">
+                @Text("media_gallery", "Media Gallery")
+            </a>
+        </div>
+
+        <div class="sig-mobile-divider" role="separator"></div>
+
+        <!-- Mobile Language Switcher -->
+        <div class="sig-mobile-lang">
+            <span class="sig-mobile-lang-title">@Text("language", "Language")</span>
+            <a href="@WithLang("en")"
+               class="sig-m-link @(lang == "en" ? "active" : "")"
+               lang="en"
+               aria-label="Switch to English">
+                English
+            </a>
+            <a href="@WithLang("ar")"
+               class="sig-m-link @(lang == "ar" ? "active" : "")"
+               lang="ar"
+               aria-label="التبديل إلى العربية">
+                العربية
+            </a>
+        </div>
+
+        <button class="sig-m-cta" id="openSidePanelMobile" type="button"
+                aria-controls="contactPanel"
+                aria-label="@Text("get_in_touch", "Get in Touch")">
+            @Text("get_in_touch", "Get in Touch")
+        </button>
+    </nav>
+</aside>
+
+<!-- Contact Panel Overlay -->
+<div class="side-panel-overlay" id="panelOverlay" aria-hidden="true"></div>
+
+<!-- Contact Panel Drawer -->
+<aside class="side-contact-panel" id="contactPanel"
+       role="dialog"
+       aria-modal="true"
+       aria-hidden="true"
+       aria-labelledby="panelTitle">
+    <button class="close-panel-btn" id="closePanel" type="button"
+            aria-label="@Text("close_contact_panel", "Close contact panel")">
+        <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+
+    <div class="panel-content">
+        <div class="panel-image-header" role="img"
+             aria-label="@Text("contact_header_image", "Contact header image")"></div>
+
+        <div class="panel-body">
+            <h6 class="panel-subtitle">@Text("contact_panel_subtitle", "CONTACT")</h6>
+            <h2 class="panel-title" id="panelTitle">@Text("contact_panel_title", "Let's Build Together")</h2>
+
+            <div class="contact-details">
+                <div class="detail-item">
+                    <label>@Text("office", "Office")</label>
+                    <p>15A – Sheriff St., Downtown,<br />Cairo, Egypt.</p>
+                </div>
+                <div class="detail-item">
+                    <label>@Text("production_site", "Production Site")</label>
+                    <p>EL Masara, Helwan,<br />Cairo, Egypt.</p>
+                </div>
+                <div class="detail-item">
+                    <label>@Text("email_label", "Email")</label>
+                    <p>
+                        <a href="mailto:info@siegwart.com" aria-label="Email us at info@siegwart.com">
+                            info@siegwart.com
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="panel-cta-box">
+                <p>@Text("got_project", "Got a project in mind?")</p>
+                <a asp-controller="Home" asp-action="Contact" class="btn-panel-action"
+                   aria-label="@Text("cta_panel", "Contact Now")">
+                    @Text("cta_panel", "CONTACT NOW")
+                </a>
+            </div>
+
+            <div class="panel-social">
+                <a href="#" aria-label="@Text("visit_linkedin", "Visit us on LinkedIn")"
+                   target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="#" aria-label="@Text("visit_facebook", "Visit us on Facebook")"
+                   target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="#" aria-label="@Text("visit_instagram", "Visit us on Instagram")"
+                   target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</aside>

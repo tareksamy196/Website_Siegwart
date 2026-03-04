@@ -1,0 +1,364 @@
+﻿@using Website.Siegwart.BLL.Dtos.User
+@using Website.Siegwart.PL.Helper
+@inject IStaticTextService T
+
+@{
+    ViewData["Title"] = T.Seo("home_title");
+    ViewData["Description"] = T.Seo("home_description");
+    ViewData["Keywords"] = T.Seo("home_keywords");
+
+    var lang = Context.GetCurrentLanguage();
+    var isArabic = lang == "ar";
+    var newsItems = ViewBag.SliderNews as List<NewsViewDto> ?? new List<NewsViewDto>();
+    var hasNews = newsItems.Any();
+
+    var categoryMap = new Dictionary<int, int>
+    {
+        { 0, 1 }, 
+        { 1, 2 },  
+        { 2, 3 }   
+    };
+}
+
+<div class="home-page @(isArabic ? "is-ar" : "is-en")">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="sig-hero">
+        <div class="sig-container sig-hero-content">
+            <span class="sig-hero-tag">@T.Home("hero.tag")</span>
+            <h1 class="sig-hero-title">
+                @T.Home("hero.title1")<br />
+                @T.Home("hero.title2")
+            </h1>
+            <p class="sig-hero-lead">@T.Home("hero.lead")</p>
+
+            <div class="sig-hero-actions">
+                <a asp-controller="Home" asp-action="About" class="sig-btn sig-btn-outline--light" aria-label="@T.Home("hero.actions.about")">
+                    <span>@T.Home("hero.actions.about")</span>
+                    <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+                <a asp-controller="UserProducts" asp-action="Index" class="sig-btn sig-btn-outline--light" aria-label="@T.Home("hero.actions.products")">
+                    <span>@T.Home("hero.actions.products")</span>
+                    <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+                <a asp-controller="Home" asp-action="Contact" class="sig-btn sig-btn-outline--light" aria-label="@T.Home("hero.actions.contact")">
+                    <span>@T.Home("hero.actions.contact")</span>
+                    <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+            </div>
+
+            <div class="sig-hero-mini">
+                @for (int i = 0; i < 3; i++)
+                {
+                    <div class="sig-hero-mini-item">
+                        <span class="k">@T.Home($"hero.mini.{i}.label")</span>
+                        <span class="v">@T.Home($"hero.mini.{i}.value")</span>
+                    </div>
+                }
+            </div>
+        </div>
+        <button type="button" class="sig-hero-scroll-hint js-scroll-hint" aria-label="@T.Home("scroll_to_content")"></button>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MANUFACTURING / PRODUCTS
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="sig-section sig-mfg">
+        <div class="sig-container">
+            <div class="sig-mfg-head">
+                <div class="sig-mfg-head-text">
+                    <h2 class="sig-h2">@T.Home("mfg.title")</h2>
+                    <p class="sig-p">@T.Home("mfg.lead")</p>
+                </div>
+                <a asp-controller="UserProducts" asp-action="Index" class="sig-btn sig-btn-primary" aria-label="@T.Home("mfg.actions.products")">
+                    <span>@T.Home("mfg.actions.products")</span>
+                    <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+            </div>
+
+            <div class="sig-mfg-grid">
+                @for (int i = 0; i < 3; i++)
+                {
+                    var categoryId = categoryMap.ContainsKey(i) ? categoryMap[i] : i + 1;
+
+                    <article class="sig-mfg-item">
+                        <div class="sig-mfg-copy">
+                            <div class="sig-mfg-ico">
+                                @switch (i)
+                                {
+                                    case 0:
+                                        <i class="fas fa-train" aria-hidden="true"></i>
+                                        break;
+                                    case 1:
+                                        <i class="fas fa-water" aria-hidden="true"></i>
+                                        break;
+                                    default:
+                                        <i class="fas fa-industry" aria-hidden="true"></i>
+                                        break;
+                                }
+                            </div>
+                            <h3 class="sig-h3">@T.Home($"mfg.items.{i}.title")</h3>
+                            <p class="sig-p">@T.Home($"mfg.items.{i}.text")</p>
+
+                            <a asp-controller="UserProducts"
+                               asp-action="Index"
+                               asp-route-categoryId="@categoryId"
+                               class="sig-link-more"
+                               aria-label="@T.Home($"mfg.items.{i}.learn_more"): @T.Home($"mfg.items.{i}.title")">
+                                <span>@T.Home($"mfg.items.{i}.learn_more")</span>
+                                <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="sig-mfg-media">
+                            <img src="~/Resources/images/@T.Home($"mfg.items.{i}.img")"
+                                 alt="@T.Home($"mfg.items.{i}.title")"
+                                 loading="lazy"
+                                 width="600"
+                                 height="400" />
+                        </div>
+                    </article>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         ABOUT SECTION
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="sig-section">
+        <div class="sig-container sig-about-grid">
+            <div class="sig-about-text">
+                <h2 class="sig-h2">@T.Home("about.title")</h2>
+                <p class="sig-p">@T.Home("about.p1")</p>
+                <p class="sig-p">@T.Home("about.p2")</p>
+
+                <div class="sig-feature-box">
+                    <div class="feature-icon">
+                        <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
+                    </div>
+                    <div class="feature-content">
+                        @Html.Raw(T.Home("about.ecpc_highlight"))
+                    </div>
+                </div>
+
+                <div class="sig-actions-row">
+                    <a asp-controller="Home" asp-action="About" class="sig-btn sig-btn-primary" aria-label="@T.Home("about.actions.about")">
+                        <span>@T.Home("about.actions.about")</span>
+                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="sig-about-cards">
+                @for (int i = 0; i < 3; i++)
+                {
+                    <article class="sig-card">
+                        <h3 class="sig-h3">@T.Home($"about.cards.{i}.title")</h3>
+                        <p class="sig-p">@T.Home($"about.cards.{i}.text")</p>
+                    </article>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         TRUST BADGES
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="sig-trust">
+        <div class="sig-container sig-trust-grid">
+            @for (int i = 0; i < 4; i++)
+            {
+                <div class="sig-trust-item">
+                    <div class="trust-icon">
+                        @switch (i)
+                        {
+                            case 0:
+                                <i class="fas fa-history" aria-hidden="true"></i>
+                                break;
+                            case 1:
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                break;
+                            case 2:
+                                <i class="fas fa-leaf" aria-hidden="true"></i>
+                                break;
+                            default:
+                                <i class="fas fa-building" aria-hidden="true"></i>
+                                break;
+                        }
+                    </div>
+                    <h3>@T.Home($"trust_cards.{i}.title")</h3>
+                    <p>@T.Home($"trust_cards.{i}.text")</p>
+                </div>
+            }
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         STATISTICS
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="sig-section sig-section--alt">
+        <div class="sig-container">
+            <div class="sig-section-head">
+                <h2 class="sig-h2">@T.Home("stats.title")</h2>
+                <p class="sig-p">@T.Home("stats.lead")</p>
+            </div>
+
+            <div class="sig-stats-grid">
+                @for (int i = 0; i < 4; i++)
+                {
+                    <article class="sig-stat js-counter">
+                        <div class="sig-stat-top">
+                            <span class="sig-stat-num" data-count="@T.Home($"stats.items.{i}.number")">0</span>
+                            <span class="sig-stat-suffix">@T.Home($"stats.items.{i}.suffix")</span>
+                        </div>
+                        <div class="sig-stat-label">@T.Home($"stats.items.{i}.label")</div>
+                    </article>
+                }
+            </div>
+
+            <p class="sig-note">@T.Home("stats.note")</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         NEWS SECTION
+         ═══════════════════════════════════════════════════════════ -->
+    @if (hasNews)
+    {
+        <section class="home-news-highlights" aria-label="@T.Home("news.section_label")">
+            <div class="sig-container home-news-grid">
+                <div class="home-news-left">
+                    <span class="home-news-tag">@T.Home("news.tag")</span>
+                    <h2 class="home-news-title">@T.Home("news.title")</h2>
+                    <p class="home-news-desc">@T.Home("news.desc")</p>
+                    <div class="sig-actions-row">
+                        <a asp-controller="UserNews" asp-action="Index" class="sig-btn sig-btn-outline sig-btn-news-all" aria-label="@T.Home("news.view_all")">
+                            <span>@T.Home("news.view_all")</span>
+                            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="home-news-cards" role="list">
+                    @foreach (var news in newsItems.Take(6))
+                    {
+                        var title = isArabic ? news.TitleAr : news.TitleEn;
+                        <article class="home-news-card" role="listitem">
+                            <a asp-controller="UserNews" asp-action="Details" asp-route-id="@news.Id"
+                               class="home-news-link"
+                               aria-label="@title">
+                                <div class="home-news-thumb">
+                                    @if (!string.IsNullOrWhiteSpace(news.ImageUrl))
+                                    {
+                                        <img src="@Url.Content("~/" + news.ImageUrl)"
+                                             alt="@title"
+                                             loading="lazy"
+                                             width="400"
+                                             height="400" />
+                                    }
+                                    else
+                                    {
+                                        <div class="home-news-noimg">
+                                            <i class="bi bi-newspaper" aria-hidden="true"></i>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="home-news-meta">
+                                    <span class="home-news-label">@T.Home("news.tag")</span>
+                                    <h3 class="home-news-heading">@title</h3>
+                                    <time class="home-news-date" datetime="@news.PublishedOn.ToString("yyyy-MM-dd")">
+                                        @news.PublishedOn.ToString(isArabic ? "dd MMM yyyy" : "MMM dd, yyyy")
+                                    </time>
+                                </div>
+                            </a>
+                        </article>
+                    }
+                </div>
+            </div>
+        </section>
+    }
+    else
+    {
+        <section class="home-news-highlights home-news-empty" aria-label="@T.Home("news.section_label")">
+            <div class="sig-container">
+                <div class="empty-state">
+                    <div class="empty-icon">
+                        <i class="bi bi-newspaper" aria-hidden="true"></i>
+                    </div>
+                    <h3>@T.Home("news.no_news")</h3>
+                    <p>@T.Home("news.check_back")</p>
+                    <a asp-controller="UserNews" asp-action="Index" class="sig-btn sig-btn-outline" aria-label="@T.Home("news.view_all")">
+                        <span>@T.Home("news.view_all")</span>
+                        <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    }
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         CLIENTS SECTION
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="sig-section sig-clients-custom">
+        <div class="sig-container">
+            <div class="clients-flex-row">
+                <div class="clients-title-col">
+                    <h2 class="clients-title">
+                        @(isArabic? T.Home("clients.titleAr") : T.Home("clients.title"))
+                    </h2>
+                </div>
+                <div class="clients-logos-col">
+                    <div class="clients-logos-custom-grid">
+                        @{
+                            var clients = new[] {
+                                                new { img = "/Resources/images/client01.png", alt = "Client 1" },
+                                                new { img = "/Resources/images/client02.png", alt = "Client 2" },
+                                                new { img = "/Resources/images/client03.png", alt = "Client 3" },
+                                                new { img = "/Resources/images/client04.png", alt = "Client 4" },
+                                                new { img = "/Resources/images/client05.png", alt = "Client 5" },
+                                                new { img = "/Resources/images/client06.png", alt = "Client 6" },
+                                                new { img = "/Resources/images/client07.png", alt = "Client 7" },
+                                                new { img = "/Resources/images/client08.png", alt = "Client 8" },
+                                                new { img = "/Resources/images/Rowad-Logo.png", alt = "Rowad Group" }
+                                                };
+
+                            foreach (var c in clients)
+                            {
+                                <div class="client-logo-unit">
+                                    <img src="@c.img"
+                                         alt="@c.alt"
+                                         loading="lazy"
+                                         width="220"
+                                         height="110" />
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         FINAL CTA
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="sig-final-cta">
+        <div class="sig-container sig-center">
+            <h2 class="sig-h2 sig-h2--light">@T.Home("final_cta.title")</h2>
+            <p class="sig-p sig-p--light">@T.Home("final_cta.lead")</p>
+            <div class="sig-cta-row">
+                <a asp-controller="Home" asp-action="Contact" class="sig-btn sig-btn-outline--light" aria-label="@T.Home("hero.actions.contact")">
+                    <span>@T.Home("hero.actions.contact")</span>
+                    <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+@section Scripts {
+    <script src="~/js/home.js" asp-append-version="true" defer></script>
+}

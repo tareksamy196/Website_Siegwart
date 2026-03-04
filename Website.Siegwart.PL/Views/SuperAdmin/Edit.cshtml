@@ -1,0 +1,98 @@
+﻿@model Website.Siegwart.BLL.Dtos.Admin.SuperAdminAccount.EditAdminDto
+
+@{
+    ViewData["Title"] = "Edit User";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var allRoles = ViewBag.AllRoles as List<string> ?? new List<string>();
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-9">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <h2 class="h5 mb-0">@ViewData["Title"]</h2>
+                            <small class="text-muted">Edit user details and roles</small>
+                        </div>
+                        <a asp-controller="SuperAdmin" asp-action="Index" class="btn btn-outline-secondary btn-sm">
+                            <i class="bi bi-arrow-left"></i> Back
+                        </a>
+                    </div>
+
+                    <form asp-action="Edit" asp-route-id="@Model.Id" method="post" novalidate>
+                        @Html.AntiForgeryToken()
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+
+                        <input asp-for="Id" type="hidden" />
+
+                        <div class="mb-3">
+                            <label asp-for="UserName" class="form-label">Username</label>
+                            <input asp-for="UserName" class="form-control" />
+                            <span asp-validation-for="UserName" class="text-danger small d-block"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label">Email</label>
+                            <input asp-for="Email" type="email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger small d-block"></span>
+                        </div>
+
+                        <div class="form-check form-switch mb-3">
+                            <input asp-for="EmailConfirmed" class="form-check-input" id="emailConfirmed" />
+                            <label class="form-check-label" for="emailConfirmed">Email confirmed</label>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Roles</label>
+                            <div class="border rounded px-3 py-2">
+                                @if (!allRoles.Any())
+                                {
+                                    <div class="text-muted small">No roles defined.</div>
+                                }
+                                else
+                                {
+                                    foreach (var r in allRoles)
+                                    {
+                                        var isChecked = Model.Roles != null && Model.Roles.Contains(r);
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="Roles" value="@r" @(isChecked ? "checked" : "") id="role_@r" />
+                                            <label class="form-check-label" for="role_@r">@r</label>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                            </div>
+
+                            <div>
+                                <a asp-action="ChangePassword" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-warning me-2">
+                                    <i class="bi bi-key"></i> Reset Password
+                                </a>
+
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-save"></i> Save changes
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="mt-3">
+                        <small class="text-muted">Note: Removing the last SuperAdmin role is not allowed. You cannot remove your own SuperAdmin role.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+}

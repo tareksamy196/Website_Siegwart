@@ -1,0 +1,136 @@
+﻿
+    /* Page Header */
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .header-content {
+        flex: 1;
+    }
+
+    .page-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0 0 8px;
+        color: #002D62;
+    }
+
+        .page-title i {
+            color: #0096FF;
+            margin-right: 12px;
+        }
+
+    .page-description {
+        color: #64748b;
+        margin: 0;
+        font-size: 1rem;
+    }
+    /* Statistics Cards */
+    .stat-card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 45, 98, 0.08);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 45, 98, 0.15);
+        }
+
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        color: white;
+    }
+
+    .stat-content {
+        flex: 1;
+    }
+
+    .stat-value {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #002D62;
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    .stat-label {
+        font-size: 0.875rem;
+        color: #64748b;
+    }
+    /* Video Thumbnail */
+    .video-thumbnail {
+        width: 60px;
+        height: 45px;
+        object-fit: cover;
+        border-radius: 6px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    /* Video Info */
+    .video-info {
+        max-width: 300px;
+    }
+
+    .video-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #002D62;
+    }
+    /* View Count */
+    .view-count {
+        font-weight: 600;
+        color: #64748b;
+    }
+    /* Status Toggles */
+    .status-toggles {
+        min-width: 120px;
+    }
+
+    .form-check-input:checked {
+        background-color: #0096FF;
+        border-color: #0096FF;
+    }
+    /* Empty State */
+    .empty-state {
+        padding: 80px 20px;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+        .stat-card {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .video-info {
+            max-width: 200px;
+        }
+
+        .page-header {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .header-actions .btn {
+            width: 100%;
+        }
+    }
+
+  
+

@@ -1,0 +1,138 @@
+﻿@using Website.Siegwart.BLL.Dtos.User
+@using Website.Siegwart.PL.Helper
+@model NewsViewDto
+
+@{
+    ViewData["Title"] = LocalizedText.Pick(Context, Model.TitleEn, Model.TitleAr);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var isAr = LocalizedText.IsArabic(Context);
+}
+
+<!-- Breadcrumb -->
+<section class="breadcrumb-section">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb @(isAr ? "flex-row-reverse" : "")">
+                <li class="breadcrumb-item">
+                    <a asp-controller="Home" asp-action="Index">
+                        @LocalizedText.Pick(Context, "Home", "الرئيسية")
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a asp-action="Index">
+                        @LocalizedText.Pick(Context, "News", "الأخبار")
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    @LocalizedText.Pick(Context, Model.TitleEn, Model.TitleAr)
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Article -->
+<article class="news-article">
+    <div class="container">
+        <div class="article-container">
+
+            <!-- Header -->
+            <header class="article-header @(isAr ? "text-end" : "")">
+                <div class="article-meta">
+                    <span class="article-date">
+                        <i class="bi bi-calendar-event"></i>
+                        <time datetime="@Model.PublishedOn.ToString("yyyy-MM-dd")">
+                            @Model.PublishedOn.ToString(isAr ? "dd MMMM yyyy" : "MMMM dd, yyyy")
+                        </time>
+                    </span>
+                </div>
+                <h1 class="article-title">
+                    @LocalizedText.Pick(Context, Model.TitleEn, Model.TitleAr)
+                </h1>
+                <div class="title-divider"></div>
+            </header>
+
+            <!-- Image -->
+            @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+            {
+                <div class="article-image">
+                    <img src="@Url.Content("~/" + Model.ImageUrl)"
+                         alt="@LocalizedText.Pick(Context, Model.TitleEn, Model.TitleAr)"
+                         class="img-fluid" loading="lazy" />
+                </div>
+            }
+
+            <!-- Content -->
+            <div class="article-content @(isAr ? "text-end" : "")"
+                 dir="@(isAr ? "rtl" : "ltr")">
+                @Html.Raw(LocalizedText.Pick(Context, Model.ContentEn, Model.ContentAr))
+            </div>
+
+            <!-- Footer -->
+            <footer class="article-footer">
+                <div class="article-actions @(isAr ? "flex-row-reverse" : "")">
+                    <a asp-action="Index" class="btn-back">
+                        <i class="bi bi-arrow-@(isAr ? "right" : "left")"></i>
+                        <span>@LocalizedText.Pick(Context, "Back to News", "العودة للأخبار")</span>
+                    </a>
+                    <button class="btn-share" id="shareBtn" type="button">
+                        <i class="bi bi-share"></i>
+                        <span>@LocalizedText.Pick(Context, "Share", "مشاركة")</span>
+                    </button>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+</article>
+
+<!-- Share Modal — clean design -->
+<div class="modal fade" id="shareModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:380px">
+        <div class="modal-content news-share-modal">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    @LocalizedText.Pick(Context, "Share Article", "مشاركة المقال")
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="share-buttons">
+                    <a href="#" class="share-btn share-facebook" data-share="facebook">
+                        <i class="bi bi-facebook"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="#" class="share-btn share-twitter" data-share="twitter">
+                        <i class="bi bi-twitter-x"></i>
+                        <span>Twitter / X</span>
+                    </a>
+                    <a href="#" class="share-btn share-linkedin" data-share="linkedin">
+                        <i class="bi bi-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="#" class="share-btn share-whatsapp" data-share="whatsapp">
+                        <i class="bi bi-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+                <div class="share-copy-row">
+                    <input type="text" class="share-copy-input" id="shareLinkInput"
+                           value="" readonly
+                           placeholder="@LocalizedText.Pick(Context, "Page URL", "رابط الصفحة")" />
+                    <button class="share-copy-btn" id="copyLinkBtn" type="button">
+                        <i class="bi bi-clipboard"></i>
+                        @LocalizedText.Pick(Context, "Copy", "نسخ")
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/News.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script src="~/js/news.js" asp-append-version="true"></script>
+}

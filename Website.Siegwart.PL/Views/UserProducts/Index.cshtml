@@ -1,0 +1,265 @@
+﻿@model IEnumerable<Website.Siegwart.BLL.Dtos.User.UserProductDto>
+@using Website.Siegwart.PL.Helper
+
+@{
+    ViewData["Title"] = LocalizedText.Pick(Context, "Products", "المنتجات");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var isAr = LocalizedText.IsArabic(Context);
+
+    var grouped = (Model ?? Enumerable.Empty<Website.Siegwart.BLL.Dtos.User.UserProductDto>())
+        .GroupBy(m => new { m.CategoryId, m.CategoryNameEn, m.CategoryNameAr })
+        .Select(g => new
+        {
+            Key = g.Key,
+            Items = g.OrderBy(p => p.Id).ToList()
+        })
+        .ToList();
+
+    int globalIndex = 0;
+}
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="sw-hero">
+    <div class="sw-hero__noise"></div>
+    <div class="sw-hero__grid-lines"></div>
+
+    <div class="container position-relative">
+        <div class="sw-hero__eyebrow">
+            <span class="sw-hero__line"></span>
+            <span class="sw-hero__label">@LocalizedText.Pick(Context, "PRODUCT CATALOGUE", "كتالوج المنتجات")</span>
+        </div>
+
+        <h1 class="sw-hero__title">
+            @if (!isAr)
+            {
+                <span class="sw-hero__title-outline">Our</span>
+                <span class="sw-hero__title-solid">Products</span>
+            }
+            else
+            {
+                <span class="sw-hero__title-outline">منتجاتنا</span>
+                <span class="sw-hero__title-solid">المبتكرة</span>
+            }
+        </h1>
+
+        <p class="sw-hero__sub">
+            @LocalizedText.Pick(Context,
+            "Engineering solutions built for the demands of tomorrow.",
+                        "حلول هندسية مصممة لمتطلبات المستقبل.")
+        </p>
+
+        <div class="sw-hero__stats">
+            <div class="sw-hero__stat">
+                <span class="sw-hero__stat-num">@(grouped.Sum(g => g.Items.Count))</span>
+                <span class="sw-hero__stat-lbl">@LocalizedText.Pick(Context, "Products", "منتج")</span>
+            </div>
+            <div class="sw-hero__stat">
+                <span class="sw-hero__stat-num">@grouped.Count</span>
+                <span class="sw-hero__stat-lbl">@LocalizedText.Pick(Context, "Categories", "فئة")</span>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- ═══════════════════ PRODUCTS ═══════════════════ -->
+<section class="sw-products">
+    <div class="container-fluid px-0">
+
+        @if (!grouped.Any())
+        {
+            <div class="sw-empty">
+                <div class="sw-empty__icon">
+                    <svg viewBox="0 0 64 64" fill="none">
+                        <rect x="8" y="20" width="48" height="36" rx="3" stroke="currentColor" stroke-width="2" />
+                        <path d="M22 20V14a10 10 0 0120 0v6" stroke="currentColor" stroke-width="2" />
+                    </svg>
+                </div>
+                <p>@LocalizedText.Pick(Context, "No products available yet.", "لا توجد منتجات متاحة حتى الآن.")</p>
+            </div>
+        }
+        else
+        {
+            @foreach (var cat in grouped)
+            {
+                var products = cat.Items;
+                int count = products.Count;
+                int catNum = grouped.IndexOf(cat) + 1;
+                string catNumStr = catNum < 10 ? "0" + catNum : catNum.ToString();
+
+                <!-- ── Category Label ── -->
+                <div class="sw-cat-label @(isAr ? "rtl" : "")">
+                    <div class="sw-cat-label__index">@catNumStr</div>
+                    <div class="sw-cat-label__text">
+                        <span class="sw-cat-label__pre">@LocalizedText.Pick(Context, "CATEGORY", "الفئة")</span>
+                        <h2 class="sw-cat-label__name">
+                            @LocalizedText.Pick(Context, cat.Key.CategoryNameEn, cat.Key.CategoryNameAr)
+                        </h2>
+                    </div>
+                    <div class="sw-cat-label__count">
+                        @count @LocalizedText.Pick(Context, count == 1 ? "item" : "items", count == 1 ? "منتج" : "منتجات")
+                    </div>
+                </div>
+
+                <!-- ── Layout by count ── -->
+                @if (count == 1)
+                {
+                    <!-- SOLO -->
+                    var p = products[0];
+                    var d = LocalizedText.Pick(Context, p.DescriptionEn, p.DescriptionAr);
+                    <a asp-action="Details" asp-route-id="@p.Id" class="sw-solo">
+                        <div class="sw-solo__img-wrap">
+                            @if (!string.IsNullOrWhiteSpace(p.ImageUrl))
+                            {
+                                <img src="@Url.Content("~/" + p.ImageUrl)"
+                                     alt="@LocalizedText.Pick(Context, p.TitleEn, p.TitleAr)"
+                                     class="sw-solo__img" loading="lazy" />
+                            }
+                            else
+                            {
+                                <div class="sw-solo__placeholder"><i class="bi bi-layers"></i></div>
+                            }
+                            <div class="sw-solo__veil"></div>
+                        </div>
+                        <div class="sw-solo__body @(isAr ? "rtl" : "")">
+                            <span class="sw-tag">@LocalizedText.Pick(Context, "Featured", "مميز")</span>
+                            <h3 class="sw-solo__title">@LocalizedText.Pick(Context, p.TitleEn, p.TitleAr)</h3>
+                            <p class="sw-solo__desc">@(d.Length > 200 ? d.Substring(0, 200) + "…" : d)</p>
+                            <div class="sw-solo__cta">
+                                @LocalizedText.Pick(Context, "Explore Product", "استكشف المنتج")
+                                <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                                    <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8"
+                                          stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                }
+                else if (count == 2)
+                {
+                    <!-- DUO -->
+                    <div class="sw-duo">
+                        @foreach (var p2 in products)
+                        {
+                            var d2 = LocalizedText.Pick(Context, p2.DescriptionEn, p2.DescriptionAr);
+                            <a asp-action="Details" asp-route-id="@p2.Id" class="sw-duo__item">
+                                <div class="sw-duo__img-wrap">
+                                    @if (!string.IsNullOrWhiteSpace(p2.ImageUrl))
+                                    {
+                                        <img src="@Url.Content("~/" + p2.ImageUrl)"
+                                             alt="@LocalizedText.Pick(Context, p2.TitleEn, p2.TitleAr)"
+                                             class="sw-duo__img" loading="lazy" />
+                                    }
+                                    else
+                                    {
+                                        <div class="sw-duo__placeholder"><i class="bi bi-layers"></i></div>
+                                    }
+                                    <div class="sw-duo__veil"></div>
+                                </div>
+                                <div class="sw-duo__body @(isAr ? "rtl" : "")">
+                                    <h3 class="sw-duo__title">@LocalizedText.Pick(Context, p2.TitleEn, p2.TitleAr)</h3>
+                                    <p class="sw-duo__desc">@(d2.Length > 100 ? d2.Substring(0, 100) + "…" : d2)</p>
+                                    <span class="sw-duo__arrow">
+                                        <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                            <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="2"
+                                                  stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </a>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <!-- MOSAIC -->
+                    <div class="sw-mosaic" data-count="@count">
+                        @{
+                            int mi = 0;
+                        }
+                        @foreach (var pm in products)
+                        {
+                            var dm = LocalizedText.Pick(Context, pm.DescriptionEn, pm.DescriptionAr);
+                            bool hero = (mi == 0);
+                            <a asp-action="Details" asp-route-id="@pm.Id"
+                               class="sw-tile @(hero ? "sw-tile--hero" : "sw-tile--reg")">
+                                <div class="sw-tile__img-wrap">
+                                    @if (!string.IsNullOrWhiteSpace(pm.ImageUrl))
+                                    {
+                                        <img src="@Url.Content("~/" + pm.ImageUrl)"
+                                             alt="@LocalizedText.Pick(Context, pm.TitleEn, pm.TitleAr)"
+                                             class="sw-tile__img" loading="lazy" />
+                                    }
+                                    else
+                                    {
+                                        <div class="sw-tile__placeholder"><i class="bi bi-layers"></i></div>
+                                    }
+                                    <div class="sw-tile__veil"></div>
+                                </div>
+                                <div class="sw-tile__body @(isAr ? "rtl" : "")">
+                                    @if (hero)
+                                    {
+                                        <span class="sw-tag">@LocalizedText.Pick(Context, "Featured", "مميز")</span>
+                                    }
+                                    <h3 class="sw-tile__title">@LocalizedText.Pick(Context, pm.TitleEn, pm.TitleAr)</h3>
+                                    @if (hero)
+                                    {
+                                        <p class="sw-tile__desc">@(dm.Length > 140 ? dm.Substring(0, 140) + "…" : dm)</p>
+                                    }
+                                    <span class="sw-tile__cta">
+                                        @LocalizedText.Pick(Context, "View", "عرض")
+                                        <svg width="15" height="15" viewBox="0 0 20 20" fill="none">
+                                            <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="2"
+                                                  stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </a>
+                            mi++;
+                        }
+                    </div>
+                }
+
+                <div class="sw-divider"></div>
+            }
+        }
+    </div>
+</section>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Product.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script>
+        (() => {
+            // Scroll reveal
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('sw--visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.08 });
+
+            document.querySelectorAll(
+                '.sw-cat-label, .sw-solo, .sw-duo__item, .sw-tile, .sw-empty'
+            ).forEach(el => { el.classList.add('sw--hidden'); io.observe(el); });
+
+            // Counter animation
+            document.querySelectorAll('.sw-hero__stat-num').forEach(el => {
+                const target = parseInt(el.textContent, 10);
+                if (isNaN(target) || target === 0) return;
+                let cur = 0;
+                const tick = () => {
+                    cur += Math.ceil(target / 18);
+                    if (cur >= target) { el.textContent = target; return; }
+                    el.textContent = cur;
+                    requestAnimationFrame(tick);
+                };
+                requestAnimationFrame(tick);
+            });
+        })();
+    </script>
+}

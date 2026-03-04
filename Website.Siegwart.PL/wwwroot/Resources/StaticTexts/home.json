@@ -1,0 +1,422 @@
+{
+  "en": {
+    "hero": {
+      "tag": "Since 1932 • National Industrial Entity",
+      "title1": "Leading manufacturer of precast and prestressed concrete products",
+      "title2": " ",
+      "lead": "Siegwart, with nearly a century of experience, contributes to executing major national projects",
+      "actions": {
+        "about": "Who We Are",
+        "products": "Explore Products",
+        "contact": "Get in Touch"
+      },
+      "mini": [
+        {
+          "label": "Established",
+          "value": "1932"
+        },
+        {
+          "label": "Standard",
+          "value": "EN 13230"
+        },
+        {
+          "label": "Certifications",
+          "value": "ISO 9001/14001/45001"
+        }
+      ]
+    },
+
+    "trust": [
+      "Infrastructure Manufacturing",
+      "Railway & Metro Sleepers, Light & High-Speed Trains",
+      "High-Speed Rail Support",
+      "Certified Management Systems"
+    ],
+
+    "trust_cards": [
+      {
+        "title": "Extensive Experience",
+        "text": "Supporting national infrastructure projects for nearly a century"
+      },
+      {
+        "title": "Certified Quality",
+        "text": "Commitment to highest quality standards and certifications"
+      },
+      {
+        "title": "Occupational Health & Safety",
+        "text": "Ensuring environmental care in all manufacturing processes"
+      },
+      {
+        "title": "National Projects",
+        "text": "Trusted partner in rail, roads, and metro projects"
+      }
+    ],
+
+    "about": {
+      "title": "Founded for National Development",
+      "p1": "Since 1932, Siegwart has been a pioneer in infrastructure solutions. Over the decades, the company expanded into manufacturing prestressed concrete sleepers, supporting railway, metro, and tram projects.",
+      "p2": "Our approach is based on disciplined operations, qualified teams, and continuous modernization—aligned with European standard EN 13230.",
+      "ecpc_highlight": "Siegwart owns <strong>40%</strong> of ECPC, strengthening its leadership in the pipes and cement industry.",
+      "actions": {
+        "about": "Read More",
+        "projects": "View Projects"
+      },
+      "cards": [
+        {
+          "title": "Quality & Compliance",
+          "text": "Structured processes aligned with ISO management systems and project requirements."
+        },
+        {
+          "title": "Occupational Health & Safety",
+          "text": "Health and safety strategies integrated into daily operations."
+        },
+        {
+          "title": "Sustainability",
+          "text": "Human, Environment, and Technology as pillars for responsible growth."
+        }
+      ]
+    },
+
+    "stats": {
+      "title": "National Manufacturing Capacity",
+      "lead": "Continuous modernization and disciplined management ensure reliable delivery for major infrastructure programs.",
+      "items": [
+        {
+          "number": "1932",
+          "suffix": "year",
+          "label": "Established"
+        },
+        {
+          "number": "2",
+          "suffix": "Factories",
+          "label": "Prestressed Sleeper Manufacturing"
+        },
+        {
+          "number": "1800",
+          "suffix": "/day",
+          "label": "High-Speed Sleeper Output (Capacity)"
+        },
+        {
+          "number": "1600",
+          "suffix": "/day",
+          "label": "Railway & Metro Sleepers Output (Capacity)"
+        }
+      ],
+      "note": "* Values are based on company profile and may vary depending on project and production plans."
+    },
+
+    "mfg": {
+      "title": "What We Manufacture",
+      "lead": "Product families serving national infrastructure and transportation requirements.",
+      "actions": { "products": "View Products" },
+      "items": [
+        {
+          "title": "Concrete Sleepers",
+          "text": "Prestressed solutions for main railway lines, metro, and high-speed rail programs.",
+          "learn_more": "Learn More",
+          "img": "sleepersproduct.png"
+        },
+        {
+          "title": "Pipes & Infrastructure",
+          "text": "Supporting water and sewage projects with long-standing production expertise.",
+          "learn_more": "Learn More",
+          "img": "concretepipeproduct.png"
+        },
+        {
+          "title": "Concrete Products",
+          "text": "Concrete products meeting construction and infrastructure market demands.",
+          "learn_more": "Learn More",
+          "img": "wallproduct.png"
+        }
+      ]
+    },
+
+    "timeline": {
+      "title": "Milestones",
+      "lead": "Key milestones that shaped Siegwart's manufacturing portfolio.",
+      "items": [
+        {
+          "year": "1932",
+          "title": "Company Established",
+          "text": "Pioneered production and infrastructure works, including water and sewage pipes."
+        },
+        {
+          "year": "1964",
+          "title": "Railway Sleepers (Monobloc)",
+          "text": "Monobloc sleepers with Pandrol and K type fastening systems for key railway projects."
+        },
+        {
+          "year": "1989",
+          "title": "Metro Sleepers (Twin Blocks)",
+          "text": "Twin block sleepers with Pandrol fastening systems for metro lines."
+        },
+        {
+          "year": "2012",
+          "title": "Production Modernization",
+          "text": "New lines with Vossloh fastening systems aligned with EN 13230."
+        },
+        {
+          "year": "2022",
+          "title": "High-Speed Sleepers",
+          "text": "Started production supporting the national high-speed rail project."
+        }
+      ]
+    },
+
+    "cert": {
+      "title": "Certified Management Systems",
+      "lead": "Operations aligned with internationally recognized standards for quality, environment, and occupational health & safety.",
+      "actions": { "compliance": "Compliance Approach" },
+      "badges": [ "ISO 9001", "ISO 14001", "ISO 45001" ]
+    },
+
+    "news": {
+      "tag": "Latest Updates",
+      "title": "Latest News",
+      "desc": "Follow our latest news and developments",
+      "featured": "Featured",
+      "read_full": "Read Full Article",
+      "read_more": "Read More",
+      "read_article": "Read Article",
+      "share": "Share",
+      "view_all": "View All News",
+      "no_news": "No News Available",
+      "check_back": "Check back soon for the latest updates"
+    },
+
+    "locations": {
+      "tag": "Our Location",
+      "title": "Locations",
+      "lead": "We operate across Cairo with dedicated production and office locations.",
+      "actions": { "contact": "Contact Office" },
+      "items": [
+        {
+          "chip": "Production Site",
+          "title": "EL Masara, Helwan",
+          "text": "Cairo, Egypt"
+        }
+      ]
+    },
+
+    "final_cta": {
+      "title": "Partnering for a Stronger Future",
+      "lead": "We welcome collaboration opportunities with public and private sector partners across Egypt.",
+      "actions": {
+        "contact": "Get in Touch",
+        "projects": "View Projects"
+      }
+    },
+    "clients": { "title": "out clients" }
+
+  },
+
+  "ar": {
+    "hero": {
+      "tag": "منذ 1932 • كيان صناعي وطني",
+      "title1": "رائدة صناعة المنتجات الخرسانية سابقة الصب سابقة الاجهاد",
+      "title2": " ",
+      "lead": "تسهم سيجوارت، بخبرة تمتد لحوالي قرن، في تنفيذ المشاريع القومية الكبرى",
+      "actions": {
+        "about": "من نحن",
+        "products": "استكشف المنتجات",
+        "contact": "تواصل الآن"
+      },
+      "mini": [
+        {
+          "label": "تأسست",
+          "value": "1932"
+        },
+        {
+          "label": "المواصفة",
+          "value": "EN 13230"
+        },
+        {
+          "label": "اعتمادات",
+          "value": "ISO 9001/14001/45001"
+        }
+      ]
+    },
+
+    "trust": [
+      "تصنيع البنية التحتية",
+      "فلنكات السكك الحديدية و مترو الانفاق و شبكات القطار الكهربائى الخفيف و القطار الكهربائى السريع",
+      "دعم القطارات فائقة السرعة",
+      "أنظمة إدارة معتمدة"
+    ],
+
+    "trust_cards": [
+      {
+        "title": "خبرة طويلة",
+        "text": "دعم مشروعات البنية التحتية بخبرة تمتد لحوالى قرن "
+      },
+      {
+        "title": "جودة معتمدة",
+        "text": "الالتزام بأعلى معايير الجودة والمواصفات القياسية"
+      },
+      {
+        "title": "السلامة والصحة المهنية",
+        "text": "الحفاظ على البيئة ضمن جميع عمليات التصنيع"
+      },
+      {
+        "title": "مشروعات وطنية",
+        "text": "شريك موثوق في مشروعات السكك الحديدية والطرق والمترو"
+      }
+    ],
+
+    "about": {
+      "title": " تأسست من أجل التنمية القومية",
+      "p1": "منذ 1932 وسيجـوارت رائدة في إنتاج حلول للبنية التحتية. وواصلت توسعها عبر العقود في تصنيع فلنكات خرسانية سابقة الإجهاد، دعمًا لمشاريع السكك الحديدية والمترو والترام.",
+      "p2": "منهجنا قائم على الانضباط و الاحترافية، فرق مؤهلة، وتحديث مستمر - متوافق مع المواصفة الأوروبية EN 13230.",
+      "ecpc_highlight": "<strong> تمتلك شركة سيجـوارت</strong> <strong>40٪</strong> من شركة ECPC </a> مما يعزز مكانتها الريادية في صناعة المواسير والمنتجات الأسمنتية.",
+      "actions": {
+        "about": "اقرأ المزيد",
+        "projects": "عرض المشاريع"
+      },
+      "cards": [
+        {
+          "title": "الجودة والالتزام",
+          "text": "إجراءات صارمة متوافقة مع أنظمة إدارة الجودة ومواصفات المشاريع."
+        },
+        {
+          "title": "السلامة والصحة المهنية",
+          "text": "استراتيجيات الصحة والسلامة المهنية جزء رئيسي من التشغيل اليومي."
+        },
+        {
+          "title": "الاستدامة",
+          "text": "العنصر البشري، البيئة، والتكنولوجيا ركائز للنمو المستمر."
+        }
+      ]
+    },
+
+    "stats": {
+      "title": "الطاقة التصنيعية القومية",
+      "lead": "التطوير المستمر والإدارة المنضبطة يحققان التوريد الموثوق لبرامج البنية التحتية الكبرى.",
+      "items": [
+        {
+          "number": "1932",
+          "suffix": "عام",
+          "label": "تأسست"
+        },
+        {
+          "number": "2",
+          "suffix": "مصنع",
+          "label": "تصنيع فلنكات السكة الحديد"
+        },
+        {
+          "number": "1800",
+          "suffix": "/يوم",
+          "label": "إنتاج فلنكات عالية السرعة (الطاقة)"
+        },
+        {
+          "number": "1600",
+          "suffix": "/يوم",
+          "label": "إنتاج فلنكات السكك والمترو (الطاقة)"
+        }
+      ],
+      "note": "* القيم حسب ملف الشركة وقد تختلف حسب المشروع وخطط الإنتاج."
+    },
+
+    "mfg": {
+      "title": "ما نصنعه",
+      "lead": "عائلات منتجات تخدم متطلبات البنية التحتية والنقل الوطنية.",
+      "actions": { "products": "عرض المنتجات" },
+      "items": [
+        {
+          "title": "فلنكات خرسانية",
+          "text": "فلنكات سابقة الإجهاد لخطوط السكك الرئيسية، المترو، والقطارات السريعة.",
+          "learn_more": "تعرف أكثر",
+          "img": "sleepersproduct.png"
+        },
+        {
+          "title": "المواسير والبنية التحتية",
+          "text": "دعم مشاريع المياه والصرف بخبرة تصنيع عريقة.",
+          "learn_more": "تعرف أكثر",
+          "img": "concretepipeproduct.png"
+        },
+        {
+          "title": "منتجات خرسانية",
+          "text": "منتجات خرسانية تلبي متطلبات السوق الإنشائي والبنية التحتية.",
+          "learn_more": "تعرف أكثر",
+          "img": "wallproduct.png"
+        }
+      ]
+    },
+
+    "timeline": {
+      "title": "محطات هامة",
+      "lead": "محطات شكلت مجموعة منتجات سيجوارت الصناعية.",
+      "items": [
+        {
+          "year": "1932",
+          "title": "تأسيس الشركة",
+          "text": "ريادة في الإنتاج ومشروعات البنية التحتية، منها مواسير المياه والصرف."
+        },
+        {
+          "year": "1964",
+          "title": "فلنكات السكك (منوبلوك)",
+          "text": "عوارض منوبلوك بنظم تثبيت بندرول وK لمشاريع السكك الرئيسية."
+        },
+        {
+          "year": "1989",
+          "title": "عوارض المترو (توين بلوك)",
+          "text": "فلنكات مزدوجة ببندرول مخصصة لخطوط المترو."
+        },
+        {
+          "year": "2012",
+          "title": "تحديث التصنيع",
+          "text": "خطوط جديدة بنظام Vossloh المتوافق مع EN 13230."
+        },
+        {
+          "year": "2022",
+          "title": "عوارض عالية السرعة",
+          "text": "بداية تصنيع العوارض لمشروع القطار السريع الوطني."
+        }
+      ]
+    },
+
+    "cert": {
+      "title": "أنظمة الإدارة المعتمدة",
+      "lead": "عملياتنا متوافقة مع معايير الجودة والبيئة وصحة وسلامة العمل المعتمدة دوليًا.",
+      "actions": { "compliance": "نهج الالتزام" },
+      "badges": [ "ISO 9001", "ISO 14001", "ISO 45001" ]
+    },
+
+    "news": {
+      "tag": "آخر التحديثات",
+      "title": "آخر الأخبار",
+      "desc": "تابع أحدث الأخبار والتطورات",
+      "featured": "مميز",
+      "read_full": "اقرأ المقال الكامل",
+      "read_more": "اقرأ المزيد",
+      "read_article": "قراءة المقال",
+      "share": "مشاركة",
+      "view_all": "عرض جميع الأخبار",
+      "no_news": "لا توجد أخبار",
+      "check_back": "تحقق قريباً للحصول على آخر التحديثات"
+    },
+
+    "locations": {
+      "tag": "موقعنا",
+      "title": "المواقع",
+      "lead": "نغطي القاهرة من خلال مواقع إنتاج ومكاتب مخصصة.",
+      "actions": { "contact": "تواصل مع المكتب" },
+      "items": [
+        {
+          "chip": "موقع الإنتاج",
+          "title": "المعصرة - حلوان",
+          "text": "القاهرة، مصر"
+        }
+      ]
+    },
+
+    "final_cta": {
+      "title": "شراكة من أجل مستقبل أقوى",
+      "lead": "نرحب بفرص التعاون مع شركاء القطاعين العام والخاص في جميع أنحاء مصر.",
+      "actions": {
+        "contact": "تواصل الآن",
+        "projects": "عرض المشاريع"
+      }
+    },
+    "clients": { "titleAr":"عملاءنا"}
+  }
+}

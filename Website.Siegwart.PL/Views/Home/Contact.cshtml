@@ -1,0 +1,286 @@
+﻿@using Website.Siegwart.PL.Helper
+@inject IStaticTextService T
+
+@{
+    ViewData["Title"] = T.Contact("title");
+    ViewData["Description"] = T.Seo("contact_description");
+    var isAr = LocalizedText.IsArabic(Context);
+}
+
+<!-- ==========================================================================
+     CONTACT PAGE
+     Professional contact form with validation and info cards
+     ========================================================================== -->
+<section class="contact">
+
+    <!-- Hero Banner -->
+    <div class="contact__hero">
+        <div class="container">
+            <div class="contact__hero-content" data-aos="fade-up">
+                <h1 class="contact__hero-title">@T.Contact("hero_title")</h1>
+                <p class="contact__hero-subtitle">@T.Contact("hero_subtitle")</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="contact__wrapper">
+        <div class="container">
+            <div class="row g-4">
+
+                <!-- Contact Form Section -->
+                <div class="col-lg-7" data-aos="fade-right">
+                    <div class="contact__form-card">
+
+                        <!-- Form Header -->
+                        <div class="contact__form-header">
+                            <h2 class="contact__form-title">@T.Contact("form_title")</h2>
+                            <p class="contact__form-subtitle">@T.Contact("form_subtitle")</p>
+                        </div>
+
+                        <!-- Success Alert -->
+                        @if (TempData["Success"] != null)
+                        {
+                            <div class="contact__alert contact__alert--success alert alert-dismissible fade show" role="alert">
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>@TempData["Success"]</span>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        }
+
+                        <!-- Error Alert -->
+                        @if (TempData["Error"] != null)
+                        {
+                            <div class="contact__alert contact__alert--error alert alert-dismissible fade show" role="alert">
+                                <i class="bi bi-exclamation-triangle-fill"></i>
+                                <span>@TempData["Error"]</span>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        }
+
+                        <!-- Contact Form -->
+                        <form asp-action="SendContact"
+                              asp-controller="Home"
+                              method="post"
+                              class="contact__form"
+                              id="contactForm"
+                              novalidate>
+
+                            @Html.AntiForgeryToken()
+
+                            <!-- Full Name Field -->
+                            <div class="contact__field">
+                                <label for="contactName" class="contact__label">
+                                    @T.Contact("label_name")
+                                    <span class="contact__required">*</span>
+                                </label>
+                                <input type="text"
+                                       class="contact__input"
+                                       id="contactName"
+                                       name="Name"
+                                       placeholder="@T.Contact("placeholder_name")"
+                                       required
+                                       autocomplete="name" />
+                                <div class="contact__error">@T.Contact("error_name")</div>
+                            </div>
+
+                            <!-- Email & Phone Row -->
+                            <div class="row g-3">
+                                <!-- Email Field -->
+                                <div class="col-md-6">
+                                    <div class="contact__field">
+                                        <label for="contactEmail" class="contact__label">
+                                            @T.Contact("label_email")
+                                            <span class="contact__required">*</span>
+                                        </label>
+                                        <input type="email"
+                                               class="contact__input"
+                                               id="contactEmail"
+                                               name="Email"
+                                               placeholder="@T.Contact("placeholder_email")"
+                                               required
+                                               autocomplete="email" />
+                                        <div class="contact__error">@T.Contact("error_email")</div>
+                                    </div>
+                                </div>
+
+                                <!-- Phone Field -->
+                                <div class="col-md-6">
+                                    <div class="contact__field">
+                                        <label for="contactPhone" class="contact__label">
+                                            @T.Contact("label_phone")
+                                        </label>
+                                        <input type="tel"
+                                               class="contact__input"
+                                               id="contactPhone"
+                                               name="Phone"
+                                               placeholder="@T.Contact("placeholder_phone")"
+                                               autocomplete="tel" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Subject Field -->
+                            <div class="contact__field">
+                                <label for="contactSubject" class="contact__label">
+                                    @T.Contact("label_subject")
+                                </label>
+                                <input type="text"
+                                       class="contact__input"
+                                       id="contactSubject"
+                                       name="Subject"
+                                       placeholder="@T.Contact("placeholder_subject")" />
+                            </div>
+
+                            <!-- Message Field -->
+                            <div class="contact__field">
+                                <label for="contactMessage" class="contact__label">
+                                    @T.Contact("label_message")
+                                    <span class="contact__required">*</span>
+                                </label>
+                                <textarea class="contact__input contact__input--textarea"
+                                          id="contactMessage"
+                                          name="Message"
+                                          rows="5"
+                                          placeholder="@T.Contact("placeholder_message")"
+                                          required></textarea>
+                                <div class="contact__error">@T.Contact("error_message")</div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="contact__button" id="contactSubmit">
+                                <span class="contact__button-text">@T.Contact("btn_submit")</span>
+                                <span class="contact__button-loading" style="display: none;">
+                                    <span class="spinner-border spinner-border-sm"></span>
+                                    <span>@T.Contact("btn_sending")</span>
+                                </span>
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+
+                <!-- Contact Info Section -->
+                <div class="col-lg-5" data-aos="fade-left">
+                    <div class="contact__info-card">
+
+                        <!-- Info Header -->
+                        <h3 class="contact__info-title">@T.Contact("info_title")</h3>
+                        <p class="contact__info-subtitle">@T.Contact("info_subtitle")</p>
+
+                        <!-- Contact Information List -->
+                        <div class="contact__info-list">
+
+                            <!-- Phone Info -->
+                            <div class="contact__info-item">
+                                <div class="contact__info-icon">
+                                    <i class="bi bi-telephone-fill"></i>
+                                </div>
+                                <div class="contact__info-content">
+                                    <h4 class="contact__info-label">@T.Contact("phone_label")</h4>
+                                    <a href="tel:+2023606612" class="contact__info-value">
+                                        @T.Contact("phone_number")
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Email Info -->
+                            <div class="contact__info-item">
+                                <div class="contact__info-icon">
+                                    <i class="bi bi-envelope-fill"></i>
+                                </div>
+                                <div class="contact__info-content">
+                                    <h4 class="contact__info-label">@T.Contact("email_label")</h4>
+                                    <a href="mailto:info@siegwarteg.com" class="contact__info-value">
+                                        @T.Contact("email_address")
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Address Info -->
+                            <div class="contact__info-item">
+                                <div class="contact__info-icon">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                </div>
+                                <div class="contact__info-content">
+                                    <h4 class="contact__info-label">@T.Contact("address_label")</h4>
+                                    <p class="contact__info-value">
+                                        @T.Contact("address_line1")<br>
+                                        @T.Contact("address_line2")
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Working Hours Info -->
+                            <div class="contact__info-item">
+                                <div class="contact__info-icon">
+                                    <i class="bi bi-clock-fill"></i>
+                                </div>
+                                <div class="contact__info-content">
+                                    <h4 class="contact__info-label">@T.Contact("hours_label")</h4>
+                                    <p class="contact__info-value">
+                                        @T.Contact("hours_weekdays")<br>
+                                        @T.Contact("hours_weekend")
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Google Map -->
+                        <div class="contact__map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3458.781546326814!2d31.301745174426554!3d29.89939457499694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145837df5d4e4bd3%3A0x9d19f47052f81393!2z2YXYtdmG2Lkg2LPZigs2YI9in2KfYsdi3!5e0!3m2!1sen!2seg!4v1766342476769!5m2!1sen!2seg"
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    title="@T.Contact("map_title")"
+                                    allowfullscreen
+                                    aria-label="@T.Contact("map_title")">
+                            </iframe>
+                        </div>
+
+                        <!-- Social Media Links -->
+                        <div class="contact__social">
+                            <h4 class="contact__social-title">@T.Contact("social_title")</h4>
+                            <div class="contact__social-links">
+                                <a href="https://www.facebook.com/profile.php?id=61585921739457"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="contact__social-link"
+                                   aria-label="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/company/110794952"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="contact__social-link"
+                                   aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://youtube.com/@@siegwartcompany"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="contact__social-link"
+                                   aria-label="YouTube">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+@section Styles {
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/Contact.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="~/js/contact.js" asp-append-version="true"></script>
+}

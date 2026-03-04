@@ -1,0 +1,88 @@
+2026-02-25 00:00:04.413 +02:00 [INF] ========================================
+2026-02-25 00:00:04.585 +02:00 [INF] ✓ Application Starting
+2026-02-25 00:00:04.598 +02:00 [INF] Environment: Development
+2026-02-25 00:00:04.613 +02:00 [INF] ========================================
+2026-02-25 00:00:04.808 +02:00 [INF] ✓ MVC configured with cache profiles
+2026-02-25 00:00:04.817 +02:00 [INF] ✓ Session configured
+2026-02-25 00:00:04.825 +02:00 [INF] ✓ Caching configured
+2026-02-25 00:00:04.840 +02:00 [INF] ✓ Compression configured (Brotli + Gzip)
+2026-02-25 00:00:04.877 +02:00 [INF] ✓ Database configured
+2026-02-25 00:00:04.931 +02:00 [INF] ✓ Identity & Authentication configured
+2026-02-25 00:00:04.939 +02:00 [INF] ✓ Repositories registered
+2026-02-25 00:00:04.995 +02:00 [INF] SMTP config read: Host=mail.siegwarteg.com, Port=465, EnableSsl=true, FromEmail=admin@siegwarteg.com, UserName=admin@siegwarteg.com
+2026-02-25 00:00:05.008 +02:00 [INF] ✓ Business services registered
+2026-02-25 00:00:05.035 +02:00 [INF] ✓ Localization configured (EN/AR)
+2026-02-25 00:00:05.346 +02:00 [ERR] ✗ AutoMapper configuration validation failed
+AutoMapper.DuplicateTypeMapConfigurationException: The following type maps were found in multiple profiles:
+Website.Siegwart.BLL.Dtos.Admin.NewsDtos.CreateNewsDto to Website.Siegwart.DAL.Models.News defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.NewsProfile
+Website.Siegwart.BLL.Dtos.Admin.NewsDtos.UpdateNewsDto to Website.Siegwart.DAL.Models.News defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.NewsProfile
+Website.Siegwart.DAL.Models.News to Website.Siegwart.BLL.Dtos.Admin.NewsDtos.UpdateNewsDto defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.NewsProfile
+Website.Siegwart.BLL.Dtos.Admin.ProductDtos.CreateProductDto to Website.Siegwart.DAL.Models.Product defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Mappings.ProductProfile
+Website.Siegwart.BLL.Dtos.Admin.ProductDtos.UpdateProductDto to Website.Siegwart.DAL.Models.Product defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Mappings.ProductProfile
+Website.Siegwart.DAL.Models.Product to Website.Siegwart.BLL.Dtos.Admin.ProductDtos.UpdateProductDto defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Mappings.ProductProfile
+Website.Siegwart.DAL.Models.TeamMember to Website.Siegwart.BLL.Dtos.Admin.TeamMember.UpdateTeamMemberDto defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.TeamMemberProfile
+Website.Siegwart.BLL.Dtos.Admin.VideoMedia.VideoMediaCreateDto to Website.Siegwart.DAL.Models.VideoMedia defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.VideoMediaProfile
+Website.Siegwart.BLL.Dtos.Admin.VideoMedia.VideoMediaUpdateDto to Website.Siegwart.DAL.Models.VideoMedia defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.VideoMediaProfile
+This can cause configuration collisions and inconsistent mapping.
+Consolidate the CreateMap calls into one profile, or set the root Internal().AllowAdditiveTypeMapCreation configuration value to 'true'.
+
+   at AutoMapper.Configuration.ConfigurationValidator.AssertConfigurationExpressionIsValid(IGlobalConfiguration config, IEnumerable`1 typeMaps)
+   at AutoMapper.MapperConfiguration.AssertConfigurationIsValid()
+   at Website.Siegwart.PL.Program.ConfigureAutoMapper(IServiceCollection services, IWebHostEnvironment environment) in D:\Website\v09\Website.Siegwart\Website.Siegwart.PL\Program.cs:line 376
+2026-02-25 00:00:05.393 +02:00 [INF] ✓ AutoMapper configured
+2026-02-25 00:00:05.404 +02:00 [INF] ✓ Security configured (HSTS)
+2026-02-25 00:00:05.406 +02:00 [INF] ✓ All services configured successfully
+2026-02-25 00:00:05.867 +02:00 [INF] ✓ Routes configured
+2026-02-25 00:00:05.874 +02:00 [INF]   → Default route: {controller}/{action}/{id?}
+2026-02-25 00:00:05.887 +02:00 [INF]   → Use [Route] attributes in controllers for custom paths
+2026-02-25 00:00:05.894 +02:00 [INF] ✓ Middleware pipeline configured
+2026-02-25 00:00:05.902 +02:00 [INF] ========================================
+2026-02-25 00:00:05.910 +02:00 [INF] ✓ Starting Database Seeding...
+2026-02-25 00:00:05.918 +02:00 [INF] ========================================
+2026-02-25 00:00:06.183 +02:00 [INF] Applying any pending migrations...
+2026-02-25 00:00:06.860 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2026-02-25 00:00:07.814 +02:00 [INF] Migrations applied (if any).
+2026-02-25 00:00:07.870 +02:00 [INF] Seeding roles: SuperAdmin, Admin
+2026-02-25 00:00:08.431 +02:00 [INF] Initial admin already exists; ensured roles.
+2026-02-25 00:00:08.435 +02:00 [INF] ========================================
+2026-02-25 00:00:08.438 +02:00 [INF] ✓ Database Seeding Completed
+2026-02-25 00:00:08.439 +02:00 [INF] ========================================
+2026-02-25 00:00:09.527 +02:00 [INF] HTTP GET / responded 307 in 3.2231 ms
+2026-02-25 00:00:09.965 +02:00 [INF] Retrieved 2 published news articles
+2026-02-25 00:00:10.699 +02:00 [INF] HTTP GET / responded 200 in 1101.0935 ms
+2026-02-25 00:00:10.718 +02:00 [WRN] Unable to configure Browser Link script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+2026-02-25 00:00:10.733 +02:00 [WRN] Unable to configure browser refresh script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+2026-02-25 00:00:14.808 +02:00 [INF] Retrieved 2 published news articles
+2026-02-25 00:00:15.108 +02:00 [INF] HTTP GET /news/index responded 200 in 360.6797 ms
+2026-02-25 00:00:15.133 +02:00 [WRN] Unable to configure Browser Link script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+2026-02-25 00:00:15.149 +02:00 [WRN] Unable to configure browser refresh script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+2026-02-25 00:00:15.262 +02:00 [INF] HTTP GET /css/News.css responded 200 in 33.9468 ms
+2026-02-25 00:00:15.262 +02:00 [INF] HTTP GET /js/news.js responded 200 in 30.4873 ms
+2026-02-25 00:01:05.083 +02:00 [INF] HTTP GET /news/details responded 404 in 10.4456 ms
+2026-02-25 00:01:10.396 +02:00 [INF] HTTP GET /news/details/1 responded 404 in 1.0534 ms
+2026-02-25 00:01:17.578 +02:00 [INF] Retrieved 5 active products
+2026-02-25 00:01:17.638 +02:00 [INF] HTTP GET /products/index responded 200 in 295.5692 ms
+2026-02-25 00:01:17.647 +02:00 [WRN] Unable to configure Browser Link script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+2026-02-25 00:01:17.655 +02:00 [WRN] Unable to configure browser refresh script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+2026-02-25 00:01:21.857 +02:00 [INF] Retrieved 2 published news articles
+2026-02-25 00:01:21.889 +02:00 [INF] HTTP GET /news/index responded 200 in 59.7165 ms
+2026-02-25 00:01:21.906 +02:00 [WRN] Unable to configure Browser Link script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.
+2026-02-25 00:01:21.917 +02:00 [WRN] Unable to configure browser refresh script injection on the response. This may have been caused by the response's Content-Encoding: '["br"]'. Consider disabling response compression.

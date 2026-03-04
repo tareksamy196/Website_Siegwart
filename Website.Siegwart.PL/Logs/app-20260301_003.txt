@@ -1,0 +1,345 @@
+2026-03-01 10:31:41.303 +02:00 [INF] ========================================
+2026-03-01 10:31:41.341 +02:00 [INF] ✓ Application Starting
+2026-03-01 10:31:41.342 +02:00 [INF] Environment: Development
+2026-03-01 10:31:41.344 +02:00 [INF] ========================================
+2026-03-01 10:31:41.372 +02:00 [INF] ✓ MVC configured with cache profiles
+2026-03-01 10:31:41.373 +02:00 [INF] ✓ Session configured
+2026-03-01 10:31:41.374 +02:00 [INF] ✓ Caching configured
+2026-03-01 10:31:41.375 +02:00 [INF] ✓ Compression configured (Brotli + Gzip)
+2026-03-01 10:31:41.379 +02:00 [INF] ✓ Database configured
+2026-03-01 10:31:41.388 +02:00 [INF] ✓ Identity & Authentication configured
+2026-03-01 10:31:41.389 +02:00 [INF] ✓ Repositories registered
+2026-03-01 10:31:41.394 +02:00 [INF] SMTP config read: Host=localhost, Port=1025, EnableSsl=false, FromEmail=dev@localhost, UserName=dev@localhost
+2026-03-01 10:31:41.396 +02:00 [INF] ✓ Business services registered
+2026-03-01 10:31:41.397 +02:00 [INF] ✓ Localization configured (EN/AR)
+2026-03-01 10:31:41.527 +02:00 [ERR] ✗ AutoMapper configuration validation failed
+AutoMapper.DuplicateTypeMapConfigurationException: The following type maps were found in multiple profiles:
+Website.Siegwart.BLL.Dtos.Admin.NewsDtos.CreateNewsDto to Website.Siegwart.DAL.Models.News defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.NewsProfile
+Website.Siegwart.BLL.Dtos.Admin.NewsDtos.UpdateNewsDto to Website.Siegwart.DAL.Models.News defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.NewsProfile
+Website.Siegwart.DAL.Models.News to Website.Siegwart.BLL.Dtos.Admin.NewsDtos.UpdateNewsDto defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.NewsProfile
+Website.Siegwart.BLL.Dtos.Admin.ProductDtos.CreateProductDto to Website.Siegwart.DAL.Models.Product defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Mappings.ProductProfile
+Website.Siegwart.BLL.Dtos.Admin.ProductDtos.UpdateProductDto to Website.Siegwart.DAL.Models.Product defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Mappings.ProductProfile
+Website.Siegwart.DAL.Models.Product to Website.Siegwart.BLL.Dtos.Admin.ProductDtos.UpdateProductDto defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Mappings.ProductProfile
+Website.Siegwart.DAL.Models.TeamMember to Website.Siegwart.BLL.Dtos.Admin.TeamMember.UpdateTeamMemberDto defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.TeamMemberProfile
+Website.Siegwart.BLL.Dtos.Admin.VideoMedia.VideoMediaCreateDto to Website.Siegwart.DAL.Models.VideoMedia defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.VideoMediaProfile
+Website.Siegwart.BLL.Dtos.Admin.VideoMedia.VideoMediaUpdateDto to Website.Siegwart.DAL.Models.VideoMedia defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.VideoMediaProfile
+This can cause configuration collisions and inconsistent mapping.
+Consolidate the CreateMap calls into one profile, or set the root Internal().AllowAdditiveTypeMapCreation configuration value to 'true'.
+
+   at AutoMapper.Configuration.ConfigurationValidator.AssertConfigurationExpressionIsValid(IGlobalConfiguration config, IEnumerable`1 typeMaps)
+   at AutoMapper.MapperConfiguration.AssertConfigurationIsValid()
+   at Website.Siegwart.PL.Program.ConfigureAutoMapper(IServiceCollection services, IWebHostEnvironment environment) in D:\Website\v09\Website.Siegwart\Website.Siegwart.PL\Program.cs:line 376
+2026-03-01 10:31:41.563 +02:00 [INF] ✓ AutoMapper configured
+2026-03-01 10:31:41.565 +02:00 [INF] ✓ Security configured (HSTS)
+2026-03-01 10:31:41.565 +02:00 [INF] ✓ All services configured successfully
+2026-03-01 10:31:42.296 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2026-03-01 10:31:42.995 +02:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+SELECT 1
+2026-03-01 10:31:43.865 +02:00 [INF] Executed DbCommand (66ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-03-01 10:31:43.870 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+SELECT 1
+2026-03-01 10:31:43.873 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-03-01 10:31:43.899 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-03-01 10:31:43.925 +02:00 [INF] Applying migration '20260301083114_Refactor'.
+2026-03-01 10:31:44.045 +02:00 [INF] Executed DbCommand (28ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DROP INDEX [IX_VideoMedia_Published_Sort_Created] ON [VideoMedia];
+2026-03-01 10:31:44.055 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DROP INDEX [IX_Products_Deleted_Active] ON [Products];
+2026-03-01 10:31:44.060 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DROP INDEX [IX_Products_IsActive] ON [Products];
+2026-03-01 10:31:44.067 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DROP INDEX [IX_News_IsPublished] ON [News];
+2026-03-01 10:31:44.071 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DROP INDEX [IX_News_PublishedOn] ON [News];
+2026-03-01 10:31:44.488 +02:00 [INF] Executed DbCommand (417ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+EXEC sp_rename N'[TeamMembers].[IX_TeamMembers_IsDeleted]', N'IX_TeamMember_IsDeleted', N'INDEX';
+2026-03-01 10:31:44.495 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+EXEC sp_rename N'[TeamMembers].[IX_TeamMembers_Active_Order]', N'IX_TeamMembers_Deleted_Active_Order', N'INDEX';
+2026-03-01 10:31:44.498 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+EXEC sp_rename N'[Categories].[IX_Categories_IsDeleted]', N'IX_Category_IsDeleted', N'INDEX';
+2026-03-01 10:31:45.302 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @defaultSchema AS sysname;
+SET @defaultSchema = SCHEMA_NAME();
+DECLARE @description AS sql_variant;
+EXEC sp_dropextendedproperty 'MS_Description', 'SCHEMA', @defaultSchema, 'TABLE', N'VideoMedia', 'COLUMN', N'VideoId';
+2026-03-01 10:31:45.377 +02:00 [INF] Executed DbCommand (75ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @var0 sysname;
+SELECT @var0 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[VideoMedia]') AND [c].[name] = N'TitleEn');
+IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [VideoMedia] DROP CONSTRAINT [' + @var0 + '];');
+ALTER TABLE [VideoMedia] ALTER COLUMN [TitleEn] nvarchar(250) COLLATE Latin1_General_100_CI_AI NULL;
+DECLARE @defaultSchema AS sysname;
+SET @defaultSchema = SCHEMA_NAME();
+DECLARE @description AS sql_variant;
+EXEC sp_dropextendedproperty 'MS_Description', 'SCHEMA', @defaultSchema, 'TABLE', N'VideoMedia', 'COLUMN', N'TitleEn';
+2026-03-01 10:31:45.394 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @var1 sysname;
+SELECT @var1 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[VideoMedia]') AND [c].[name] = N'TitleAr');
+IF @var1 IS NOT NULL EXEC(N'ALTER TABLE [VideoMedia] DROP CONSTRAINT [' + @var1 + '];');
+ALTER TABLE [VideoMedia] ALTER COLUMN [TitleAr] nvarchar(250) COLLATE Arabic_100_CI_AI NULL;
+DECLARE @defaultSchema AS sysname;
+SET @defaultSchema = SCHEMA_NAME();
+DECLARE @description AS sql_variant;
+EXEC sp_dropextendedproperty 'MS_Description', 'SCHEMA', @defaultSchema, 'TABLE', N'VideoMedia', 'COLUMN', N'TitleAr';
+2026-03-01 10:31:45.425 +02:00 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @var2 sysname;
+SELECT @var2 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[VideoMedia]') AND [c].[name] = N'ThumbnailUrl');
+IF @var2 IS NOT NULL EXEC(N'ALTER TABLE [VideoMedia] DROP CONSTRAINT [' + @var2 + '];');
+ALTER TABLE [VideoMedia] ALTER COLUMN [ThumbnailUrl] varchar(500) NULL;
+DECLARE @defaultSchema AS sysname;
+SET @defaultSchema = SCHEMA_NAME();
+DECLARE @description AS sql_variant;
+EXEC sp_dropextendedproperty 'MS_Description', 'SCHEMA', @defaultSchema, 'TABLE', N'VideoMedia', 'COLUMN', N'ThumbnailUrl';
+2026-03-01 10:31:47.223 +02:00 [INF] Executed DbCommand (34ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @defaultSchema AS sysname;
+SET @defaultSchema = SCHEMA_NAME();
+DECLARE @description AS sql_variant;
+EXEC sp_dropextendedproperty 'MS_Description', 'SCHEMA', @defaultSchema, 'TABLE', N'VideoMedia', 'COLUMN', N'SourceUrl';
+2026-03-01 10:31:47.224 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @defaultSchema AS sysname;
+SET @defaultSchema = SCHEMA_NAME();
+DECLARE @description AS sql_variant;
+EXEC sp_dropextendedproperty 'MS_Description', 'SCHEMA', @defaultSchema, 'TABLE', N'VideoMedia', 'COLUMN', N'SortOrder';
+2026-03-01 10:31:47.226 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @defaultSchema AS sysname;
+SET @defaultSchema = SCHEMA_NAME();
+DECLARE @description AS sql_variant;
+EXEC sp_dropextendedproperty 'MS_Description', 'SCHEMA', @defaultSchema, 'TABLE', N'VideoMedia', 'COLUMN', N'LastModifiedOn';
+2026-03-01 10:31:47.271 +02:00 [INF] Executed DbCommand (45ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @var3 sysname;
+SELECT @var3 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[VideoMedia]') AND [c].[name] = N'LastModifiedBy');
+IF @var3 IS NOT NULL EXEC(N'ALTER TABLE [VideoMedia] DROP CONSTRAINT [' + @var3 + '];');
+ALTER TABLE [VideoMedia] ALTER COLUMN [LastModifiedBy] nvarchar(100) NULL;
+2026-03-01 10:31:49.706 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @defaultSchema AS sysname;
+SET @defaultSchema = SCHEMA_NAME();
+DECLARE @description AS sql_variant;
+EXEC sp_dropextendedproperty 'MS_Description', 'SCHEMA', @defaultSchema, 'TABLE', N'VideoMedia', 'COLUMN', N'IsPublished';
+2026-03-01 10:31:49.820 +02:00 [INF] Executed DbCommand (113ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @var4 sysname;
+SELECT @var4 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[VideoMedia]') AND [c].[name] = N'DescriptionEn');
+IF @var4 IS NOT NULL EXEC(N'ALTER TABLE [VideoMedia] DROP CONSTRAINT [' + @var4 + '];');
+ALTER TABLE [VideoMedia] ALTER COLUMN [DescriptionEn] nvarchar(2000) NULL;
+DECLARE @defaultSchema AS sysname;
+SET @defaultSchema = SCHEMA_NAME();
+DECLARE @description AS sql_variant;
+EXEC sp_dropextendedproperty 'MS_Description', 'SCHEMA', @defaultSchema, 'TABLE', N'VideoMedia', 'COLUMN', N'DescriptionEn';
+2026-03-01 10:31:49.847 +02:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @var5 sysname;
+SELECT @var5 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[VideoMedia]') AND [c].[name] = N'DescriptionAr');
+IF @var5 IS NOT NULL EXEC(N'ALTER TABLE [VideoMedia] DROP CONSTRAINT [' + @var5 + '];');
+ALTER TABLE [VideoMedia] ALTER COLUMN [DescriptionAr] nvarchar(2000) NULL;
+DECLARE @defaultSchema AS sysname;
+SET @defaultSchema = SCHEMA_NAME();
+DECLARE @description AS sql_variant;
+EXEC sp_dropextendedproperty 'MS_Description', 'SCHEMA', @defaultSchema, 'TABLE', N'VideoMedia', 'COLUMN', N'DescriptionAr';
+2026-03-01 10:31:52.160 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @defaultSchema AS sysname;
+SET @defaultSchema = SCHEMA_NAME();
+DECLARE @description AS sql_variant;
+EXEC sp_dropextendedproperty 'MS_Description', 'SCHEMA', @defaultSchema, 'TABLE', N'VideoMedia', 'COLUMN', N'CreatedOn';
+2026-03-01 10:31:52.217 +02:00 [INF] Executed DbCommand (56ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @var6 sysname;
+SELECT @var6 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[VideoMedia]') AND [c].[name] = N'CreatedBy');
+IF @var6 IS NOT NULL EXEC(N'ALTER TABLE [VideoMedia] DROP CONSTRAINT [' + @var6 + '];');
+ALTER TABLE [VideoMedia] ALTER COLUMN [CreatedBy] nvarchar(100) NULL;
+2026-03-01 10:31:52.244 +02:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+ALTER TABLE [VideoMedia] ADD [Category] int NOT NULL DEFAULT 0;
+2026-03-01 10:31:52.247 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+ALTER TABLE [VideoMedia] ADD [OgImageUrl] nvarchar(500) NULL;
+2026-03-01 10:31:52.253 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+ALTER TABLE [VideoMedia] ADD [SeoDescriptionAr] nvarchar(160) COLLATE Arabic_100_CI_AI NOT NULL DEFAULT N'';
+2026-03-01 10:31:52.260 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+ALTER TABLE [VideoMedia] ADD [SeoDescriptionEn] nvarchar(160) COLLATE Latin1_General_100_CI_AI NOT NULL DEFAULT N'';
+2026-03-01 10:31:52.262 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+ALTER TABLE [VideoMedia] ADD [SeoKeywords] nvarchar(500) NULL;
+2026-03-01 10:31:52.265 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+ALTER TABLE [VideoMedia] ADD [SeoTitleAr] nvarchar(70) COLLATE Arabic_100_CI_AI NOT NULL DEFAULT N'';
+2026-03-01 10:31:54.452 +02:00 [INF] Executed DbCommand (32ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+ALTER TABLE [VideoMedia] ADD [SeoTitleEn] nvarchar(70) COLLATE Latin1_General_100_CI_AI NOT NULL DEFAULT N'';
+2026-03-01 10:31:54.455 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+ALTER TABLE [VideoMedia] ADD [Slug] varchar(220) NOT NULL DEFAULT '';
+2026-03-01 10:31:54.491 +02:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @var7 sysname;
+SELECT @var7 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[TeamMembers]') AND [c].[name] = N'Order');
+IF @var7 IS NOT NULL EXEC(N'ALTER TABLE [TeamMembers] DROP CONSTRAINT [' + @var7 + '];');
+ALTER TABLE [TeamMembers] ADD DEFAULT 100 FOR [Order];
+2026-03-01 10:31:54.510 +02:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @var8 sysname;
+SELECT @var8 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[TeamMembers]') AND [c].[name] = N'LinkedInUrl');
+IF @var8 IS NOT NULL EXEC(N'ALTER TABLE [TeamMembers] DROP CONSTRAINT [' + @var8 + '];');
+ALTER TABLE [TeamMembers] ALTER COLUMN [LinkedInUrl] nvarchar(300) NULL;
+2026-03-01 10:31:54.530 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @var9 sysname;
+SELECT @var9 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[TeamMembers]') AND [c].[name] = N'ImageUrl');
+IF @var9 IS NOT NULL EXEC(N'ALTER TABLE [TeamMembers] DROP CONSTRAINT [' + @var9 + '];');
+ALTER TABLE [TeamMembers] ALTER COLUMN [ImageUrl] nvarchar(500) NULL;
+2026-03-01 10:31:56.481 +02:00 [INF] Executed DbCommand (42ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @var10 sysname;
+SELECT @var10 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[TeamMembers]') AND [c].[name] = N'CreatedOn');
+IF @var10 IS NOT NULL EXEC(N'ALTER TABLE [TeamMembers] DROP CONSTRAINT [' + @var10 + '];');
+ALTER TABLE [TeamMembers] ADD DEFAULT (SYSUTCDATETIME()) FOR [CreatedOn];
+2026-03-01 10:31:56.490 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+ALTER TABLE [TeamMembers] ADD [OgImageUrl] nvarchar(500) NULL;
+2026-03-01 10:31:56.493 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+ALTER TABLE [TeamMembers] ADD [SeoDescriptionAr] nvarchar(160) COLLATE Arabic_100_CI_AI NOT NULL DEFAULT N'';
+2026-03-01 10:31:56.498 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+ALTER TABLE [TeamMembers] ADD [SeoDescriptionEn] nvarchar(160) COLLATE Latin1_General_100_CI_AI NOT NULL DEFAULT N'';
+2026-03-01 10:31:56.500 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+ALTER TABLE [TeamMembers] ADD [SeoKeywords] nvarchar(500) NULL;
+2026-03-01 10:31:56.505 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+ALTER TABLE [TeamMembers] ADD [SeoTitleAr] nvarchar(70) COLLATE Arabic_100_CI_AI NOT NULL DEFAULT N'';
+2026-03-01 10:31:56.510 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+ALTER TABLE [TeamMembers] ADD [SeoTitleEn] nvarchar(70) COLLATE Latin1_General_100_CI_AI NOT NULL DEFAULT N'';
+2026-03-01 10:31:56.515 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+ALTER TABLE [TeamMembers] ADD [Slug] varchar(220) NOT NULL DEFAULT '';
+2026-03-01 10:31:56.597 +02:00 [INF] Executed DbCommand (82ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DROP INDEX [IX_Product_Slug] ON [Products];
+DECLARE @var11 sysname;
+SELECT @var11 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Products]') AND [c].[name] = N'Slug');
+IF @var11 IS NOT NULL EXEC(N'ALTER TABLE [Products] DROP CONSTRAINT [' + @var11 + '];');
+ALTER TABLE [Products] ALTER COLUMN [Slug] varchar(220) NOT NULL;
+CREATE UNIQUE INDEX [IX_Product_Slug] ON [Products] ([Slug]);
+2026-03-01 10:31:58.519 +02:00 [INF] Executed DbCommand (96ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @var12 sysname;
+SELECT @var12 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Products]') AND [c].[name] = N'SeoTitleEn');
+IF @var12 IS NOT NULL EXEC(N'ALTER TABLE [Products] DROP CONSTRAINT [' + @var12 + '];');
+ALTER TABLE [Products] ALTER COLUMN [SeoTitleEn] nvarchar(70) COLLATE Latin1_General_100_CI_AI NOT NULL;
+2026-03-01 10:31:58.575 +02:00 [INF] Executed DbCommand (55ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @var13 sysname;
+SELECT @var13 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Products]') AND [c].[name] = N'SeoTitleAr');
+IF @var13 IS NOT NULL EXEC(N'ALTER TABLE [Products] DROP CONSTRAINT [' + @var13 + '];');
+ALTER TABLE [Products] ALTER COLUMN [SeoTitleAr] nvarchar(70) COLLATE Arabic_100_CI_AI NOT NULL;
+2026-03-01 10:31:58.659 +02:00 [ERR] Failed executing DbCommand (83ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+DECLARE @var14 sysname;
+SELECT @var14 = [d].[name]
+FROM [sys].[default_constraints] [d]
+INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+WHERE ([d].[parent_object_id] = OBJECT_ID(N'[Products]') AND [c].[name] = N'SeoDescriptionEn');
+IF @var14 IS NOT NULL EXEC(N'ALTER TABLE [Products] DROP CONSTRAINT [' + @var14 + '];');
+ALTER TABLE [Products] ALTER COLUMN [SeoDescriptionEn] nvarchar(160) COLLATE Latin1_General_100_CI_AI NOT NULL;
+2026-03-01 10:36:02.224 +02:00 [INF] ========================================
+2026-03-01 10:36:02.327 +02:00 [INF] ✓ Application Starting
+2026-03-01 10:36:02.329 +02:00 [INF] Environment: Development
+2026-03-01 10:36:02.331 +02:00 [INF] ========================================
+2026-03-01 10:36:02.359 +02:00 [INF] ✓ MVC configured with cache profiles
+2026-03-01 10:36:02.360 +02:00 [INF] ✓ Session configured
+2026-03-01 10:36:02.361 +02:00 [INF] ✓ Caching configured
+2026-03-01 10:36:02.362 +02:00 [INF] ✓ Compression configured (Brotli + Gzip)
+2026-03-01 10:36:02.366 +02:00 [INF] ✓ Database configured
+2026-03-01 10:36:02.379 +02:00 [INF] ✓ Identity & Authentication configured
+2026-03-01 10:36:02.380 +02:00 [INF] ✓ Repositories registered
+2026-03-01 10:36:02.386 +02:00 [INF] SMTP config read: Host=localhost, Port=1025, EnableSsl=false, FromEmail=dev@localhost, UserName=dev@localhost
+2026-03-01 10:36:02.389 +02:00 [INF] ✓ Business services registered
+2026-03-01 10:36:02.390 +02:00 [INF] ✓ Localization configured (EN/AR)
+2026-03-01 10:36:02.548 +02:00 [ERR] ✗ AutoMapper configuration validation failed
+AutoMapper.DuplicateTypeMapConfigurationException: The following type maps were found in multiple profiles:
+Website.Siegwart.BLL.Dtos.Admin.NewsDtos.CreateNewsDto to Website.Siegwart.DAL.Models.News defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.NewsProfile
+Website.Siegwart.BLL.Dtos.Admin.NewsDtos.UpdateNewsDto to Website.Siegwart.DAL.Models.News defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.NewsProfile
+Website.Siegwart.DAL.Models.News to Website.Siegwart.BLL.Dtos.Admin.NewsDtos.UpdateNewsDto defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.NewsProfile
+Website.Siegwart.BLL.Dtos.Admin.ProductDtos.CreateProductDto to Website.Siegwart.DAL.Models.Product defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Mappings.ProductProfile
+Website.Siegwart.BLL.Dtos.Admin.ProductDtos.UpdateProductDto to Website.Siegwart.DAL.Models.Product defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Mappings.ProductProfile
+Website.Siegwart.DAL.Models.Product to Website.Siegwart.BLL.Dtos.Admin.ProductDtos.UpdateProductDto defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Mappings.ProductProfile
+Website.Siegwart.DAL.Models.TeamMember to Website.Siegwart.BLL.Dtos.Admin.TeamMember.UpdateTeamMemberDto defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.TeamMemberProfile
+Website.Siegwart.BLL.Dtos.Admin.VideoMedia.VideoMediaCreateDto to Website.Siegwart.DAL.Models.VideoMedia defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.VideoMediaProfile
+Website.Siegwart.BLL.Dtos.Admin.VideoMedia.VideoMediaUpdateDto to Website.Siegwart.DAL.Models.VideoMedia defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.VideoMediaProfile
+This can cause configuration collisions and inconsistent mapping.
+Consolidate the CreateMap calls into one profile, or set the root Internal().AllowAdditiveTypeMapCreation configuration value to 'true'.
+
+   at AutoMapper.Configuration.ConfigurationValidator.AssertConfigurationExpressionIsValid(IGlobalConfiguration config, IEnumerable`1 typeMaps)
+   at AutoMapper.MapperConfiguration.AssertConfigurationIsValid()
+   at Website.Siegwart.PL.Program.ConfigureAutoMapper(IServiceCollection services, IWebHostEnvironment environment) in D:\Website\v09\Website.Siegwart\Website.Siegwart.PL\Program.cs:line 376
+2026-03-01 10:36:03.373 +02:00 [INF] ✓ AutoMapper configured
+2026-03-01 10:36:03.375 +02:00 [INF] ✓ Security configured (HSTS)
+2026-03-01 10:36:03.375 +02:00 [INF] ✓ All services configured successfully
+2026-03-01 10:36:04.427 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2026-03-01 10:36:06.530 +02:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+SELECT 1
+2026-03-01 10:36:06.561 +02:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-03-01 10:36:06.577 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='15']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];

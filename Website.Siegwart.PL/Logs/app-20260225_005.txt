@@ -1,0 +1,93 @@
+2026-02-25 00:47:36.563 +02:00 [INF] ========================================
+2026-02-25 00:47:36.758 +02:00 [INF] ✓ Application Starting
+2026-02-25 00:47:36.762 +02:00 [INF] Environment: Development
+2026-02-25 00:47:36.769 +02:00 [INF] ========================================
+2026-02-25 00:47:37.088 +02:00 [INF] ✓ MVC configured with cache profiles
+2026-02-25 00:47:37.117 +02:00 [INF] ✓ Session configured
+2026-02-25 00:47:37.149 +02:00 [INF] ✓ Caching configured
+2026-02-25 00:47:37.266 +02:00 [INF] ✓ Compression configured (Brotli + Gzip)
+2026-02-25 00:47:37.350 +02:00 [INF] ✓ Database configured
+2026-02-25 00:47:37.422 +02:00 [INF] ✓ Identity & Authentication configured
+2026-02-25 00:47:37.427 +02:00 [INF] ✓ Repositories registered
+2026-02-25 00:47:37.467 +02:00 [INF] SMTP config read: Host=mail.siegwarteg.com, Port=465, EnableSsl=true, FromEmail=admin@siegwarteg.com, UserName=admin@siegwarteg.com
+2026-02-25 00:47:37.478 +02:00 [INF] ✓ Business services registered
+2026-02-25 00:47:37.511 +02:00 [INF] ✓ Localization configured (EN/AR)
+2026-02-25 00:47:37.756 +02:00 [ERR] ✗ AutoMapper configuration validation failed
+AutoMapper.DuplicateTypeMapConfigurationException: The following type maps were found in multiple profiles:
+Website.Siegwart.BLL.Dtos.Admin.NewsDtos.CreateNewsDto to Website.Siegwart.DAL.Models.News defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.NewsProfile
+Website.Siegwart.BLL.Dtos.Admin.NewsDtos.UpdateNewsDto to Website.Siegwart.DAL.Models.News defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.NewsProfile
+Website.Siegwart.DAL.Models.News to Website.Siegwart.BLL.Dtos.Admin.NewsDtos.UpdateNewsDto defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.NewsProfile
+Website.Siegwart.BLL.Dtos.Admin.ProductDtos.CreateProductDto to Website.Siegwart.DAL.Models.Product defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Mappings.ProductProfile
+Website.Siegwart.BLL.Dtos.Admin.ProductDtos.UpdateProductDto to Website.Siegwart.DAL.Models.Product defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Mappings.ProductProfile
+Website.Siegwart.DAL.Models.Product to Website.Siegwart.BLL.Dtos.Admin.ProductDtos.UpdateProductDto defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Mappings.ProductProfile
+Website.Siegwart.DAL.Models.TeamMember to Website.Siegwart.BLL.Dtos.Admin.TeamMember.UpdateTeamMemberDto defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.TeamMemberProfile
+Website.Siegwart.BLL.Dtos.Admin.VideoMedia.VideoMediaCreateDto to Website.Siegwart.DAL.Models.VideoMedia defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.VideoMediaProfile
+Website.Siegwart.BLL.Dtos.Admin.VideoMedia.VideoMediaUpdateDto to Website.Siegwart.DAL.Models.VideoMedia defined in profiles:
+Website.Siegwart.BLL.Profiles.EntityMappingProfile
+Website.Siegwart.BLL.Profiles.VideoMediaProfile
+This can cause configuration collisions and inconsistent mapping.
+Consolidate the CreateMap calls into one profile, or set the root Internal().AllowAdditiveTypeMapCreation configuration value to 'true'.
+
+   at AutoMapper.Configuration.ConfigurationValidator.AssertConfigurationExpressionIsValid(IGlobalConfiguration config, IEnumerable`1 typeMaps)
+   at AutoMapper.MapperConfiguration.AssertConfigurationIsValid()
+   at Website.Siegwart.PL.Program.ConfigureAutoMapper(IServiceCollection services, IWebHostEnvironment environment) in D:\Website\v09\Website.Siegwart\Website.Siegwart.PL\Program.cs:line 376
+2026-02-25 00:47:37.819 +02:00 [INF] ✓ AutoMapper configured
+2026-02-25 00:47:37.830 +02:00 [INF] ✓ Security configured (HSTS)
+2026-02-25 00:47:37.831 +02:00 [INF] ✓ All services configured successfully
+2026-02-25 00:47:38.197 +02:00 [INF] ✓ Routes configured
+2026-02-25 00:47:38.207 +02:00 [INF]   → Default route: {controller}/{action}/{id?}
+2026-02-25 00:47:38.217 +02:00 [INF]   → Use [Route] attributes in controllers for custom paths
+2026-02-25 00:47:38.218 +02:00 [INF] ✓ Middleware pipeline configured
+2026-02-25 00:47:38.221 +02:00 [INF] ========================================
+2026-02-25 00:47:38.222 +02:00 [INF] ✓ Starting Database Seeding...
+2026-02-25 00:47:38.224 +02:00 [INF] ========================================
+2026-02-25 00:47:38.502 +02:00 [INF] Applying any pending migrations...
+2026-02-25 00:47:39.453 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2026-02-25 00:47:40.771 +02:00 [INF] Migrations applied (if any).
+2026-02-25 00:47:40.801 +02:00 [INF] Seeding roles: SuperAdmin, Admin
+2026-02-25 00:47:41.466 +02:00 [INF] Initial admin already exists; ensured roles.
+2026-02-25 00:47:41.470 +02:00 [INF] ========================================
+2026-02-25 00:47:41.472 +02:00 [INF] ✓ Database Seeding Completed
+2026-02-25 00:47:41.476 +02:00 [INF] ========================================
+2026-02-25 00:47:42.595 +02:00 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://0.0.0.0:5042: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+ ---> System.Net.Sockets.SocketException (10048): Only one usage of each socket address (protocol/network address/port) is normally permitted.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.ListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)

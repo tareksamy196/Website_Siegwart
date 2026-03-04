@@ -1,0 +1,36 @@
+﻿{
+  "en": {
+    "site_name": "Siegwart",
+    "default_description": "Siegwart - The Egyptian Company for Pipes & Cement Products. A national manufacturer supporting Egypt's railway and infrastructure development since 1932. Leading provider of high-quality concrete products, railway sleepers, and infrastructure solutions.",
+    "default_keywords": "Siegwart, Infrastructure, Concrete Pipes, Railway Sleepers, Cement Products, Construction, Egypt, Manufacturing, Concrete Solutions, Railway Infrastructure, Civil Engineering, Building Materials, Egyptian Company, Quality Products, ISO Certified, Infrastructure Development",
+    "home_description": "Siegwart - Building the Future with High-Quality Infrastructure Solutions. Leading Egyptian manufacturer of concrete pipes, railway sleepers, and cement products since 1932.",
+    "home_keywords": "Siegwart, Home, Infrastructure Solutions, Egyptian Manufacturer, Concrete Products",
+    "about_description": "Learn about Siegwart's 90+ years of excellence in manufacturing quality infrastructure products. Discover our history, mission, and commitment to Egypt's development.",
+    "about_keywords": "About Siegwart, Company History, Manufacturing Excellence, ISO Certified, Egyptian Company",
+    "products_description": "Explore Siegwart's comprehensive range of high-quality concrete products including railway sleepers, pipes, and infrastructure solutions.",
+    "products_keywords": "Siegwart Products, Concrete Pipes, Railway Sleepers, Infrastructure Products, Building Materials",
+    "projects_description": "Discover Siegwart's major infrastructure projects across Egypt. View our portfolio of successful railway and construction projects.",
+    "projects_keywords": "Siegwart Projects, Infrastructure Projects, Railway Projects, Construction Projects, Egypt",
+    "contact_description": "Contact Siegwart for quality infrastructure solutions. Get in touch with our team for inquiries, quotes, and project consultations.",
+    "contact_keywords": "Contact Siegwart, Get Quote, Sales Inquiry, Project Consultation, Customer Service",
+    "news_description": "Stay updated with the latest news, announcements, and developments from Siegwart. Read about our latest projects and company updates.",
+    "news_keywords": "Siegwart News, Company Updates, Latest News, Announcements, Press Releases"
+  },
+  "ar": {
+    "site_name": "سيجوارت",
+    "default_description": "سيجوارت - الشركة المصرية للأنابيب والمنتجات الخرسانية. مصنع وطني يدعم تطوير السكك الحديدية والبنية التحتية في مصر منذ عام 1932. المزود الرائد لمنتجات خرسانية عالية الجودة وروابط السكك الحديدية وحلول البنية التحتية.",
+    "default_keywords": "سيجوارت، بنية تحتية، أنابيب خرسانية، روابط سكك حديدية، منتجات أسمنتية، إنشاءات، مصر، تصنيع، حلول خرسانية، البنية التحتية للسكك الحديدية، الهندسة المدنية، مواد البناء، شركة مصرية، منتجات عالية الجودة، معتمد ISO، تطوير البنية التحتية",
+    "home_description": "سيجوارت - بناء المستقبل بحلول بنية تحتية عالية الجودة. المصنع المصري الرائد للأنابيب الخرسانية وروابط السكك الحديدية والمنتجات الأسمنتية منذ عام 1932.",
+    "home_keywords": "سيجوارت، الرئيسية، حلول البنية التحتية، مصنع مصري، منتجات خرسانية",
+    "about_description": "تعرف على أكثر من 90 عاماً من التميز لشركة سيجوارت في تصنيع منتجات البنية التحتية عالية الجودة. اكتشف تاريخنا ورسالتنا والتزامنا بتطوير مصر.",
+    "about_keywords": "عن سيجوارت، تاريخ الشركة، التميز في التصنيع، معتمد ISO، شركة مصرية",
+    "products_description": "استكشف مجموعة سيجوارت الشاملة من المنتجات الخرسانية عالية الجودة بما في ذلك روابط السكك الحديدية والأنابيب وحلول البنية التحتية.",
+    "products_keywords": "منتجات سيجوارت، أنابيب خرسانية، روابط سكك حديدية، منتجات البنية التحتية، مواد البناء",
+    "projects_description": "اكتشف مشاريع البنية التحتية الكبرى لشركة سيجوارت في جميع أنحاء مصر. شاهد محفظة مشاريعنا الناجحة في السكك الحديدية والإنشاءات.",
+    "projects_keywords": "مشاريع سيجوارت، مشاريع البنية التحتية، مشاريع السكك الحديدية، مشاريع البناء، مصر",
+    "contact_description": "تواصل مع سيجوارت للحصول على حلول بنية تحتية عالية الجودة. اتصل بفريقنا للاستفسارات وعروض الأسعار واستشارات المشاريع.",
+    "contact_keywords": "اتصل بسيجوارت، احصل على عرض سعر، استفسارات المبيعات، استشارات المشاريع، خدمة العملاء",
+    "news_description": "ابق على اطلاع بآخر الأخبار والإعلانات والتطورات من سيجوارت. اقرأ عن أحدث مشاريعنا وتحديثات الشركة.",
+    "news_keywords": "أخبار سيجوارت، تحديثات الشركة، آخر الأخبار، الإعلانات، البيانات الصحفية"
+  }
+}

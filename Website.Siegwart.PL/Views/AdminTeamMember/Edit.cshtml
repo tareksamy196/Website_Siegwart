@@ -1,0 +1,243 @@
+﻿@model Website.Siegwart.BLL.Dtos.Admin.TeamMember.UpdateTeamMemberDto
+
+@{
+    ViewData["Title"] = "Edit Team Member";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Form Header -->
+<div class="d-flex justify-content-between align-items-start mb-4">
+    <div>
+        <h2 class="mb-1">Edit Team Member</h2>
+        <p class="text-muted">Update team member details</p>
+    </div>
+    <a asp-controller="AdminTeamMember" asp-action="Index" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left"></i> Back to List
+    </a>
+</div>
+
+<!-- Form Card -->
+<div class="card">
+    <div class="card-body">
+        <!-- Validation Summary -->
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+        <form method="post"
+              asp-controller="AdminTeamMember"
+              asp-action="Edit"
+              asp-route-id="@Model.Id"
+              enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.ImageUrl)
+
+            <!-- Language Tabs -->
+            <ul class="nav nav-tabs mb-4" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-en" type="button">
+                        <i class="bi bi-flag-fill me-1"></i> English
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-ar" type="button">
+                        <i class="bi bi-flag-fill me-1"></i> العربية
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- English Tab -->
+                <div class="tab-pane fade show active" id="tab-en">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label asp-for="NameEn" class="form-label">Full Name (English)</label>
+                            <input asp-for="NameEn" class="form-control" placeholder="John Doe" autocomplete="off" />
+                            <span asp-validation-for="NameEn" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="TitleEn" class="form-label">Job Title (English)</label>
+                            <input asp-for="TitleEn" class="form-control" placeholder="Chief Executive Officer" autocomplete="off" />
+                            <span asp-validation-for="TitleEn" class="text-danger small"></span>
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="BioEn" class="form-label">Biography (English)</label>
+                            <textarea asp-for="BioEn" class="form-control" rows="4" placeholder="Brief biography..."></textarea>
+                            <span asp-validation-for="BioEn" class="text-danger small"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arabic Tab -->
+                <div class="tab-pane fade" id="tab-ar">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label asp-for="NameAr" class="form-label">الاسم الكامل (عربي)</label>
+                            <input asp-for="NameAr" class="form-control" dir="rtl" placeholder="جون دو" autocomplete="off" />
+                            <span asp-validation-for="NameAr" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="TitleAr" class="form-label">المسمى الوظيفي (عربي)</label>
+                            <input asp-for="TitleAr" class="form-control" dir="rtl" placeholder="الرئيس التنفيذي" autocomplete="off" />
+                            <span asp-validation-for="TitleAr" class="text-danger small"></span>
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="BioAr" class="form-label">السيرة الذاتية (عربي)</label>
+                            <textarea asp-for="BioAr" class="form-control" rows="4" dir="rtl" placeholder="نبذة مختصرة..."></textarea>
+                            <span asp-validation-for="BioAr" class="text-danger small"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4" />
+
+            <!-- Professional Details -->
+            <h5 class="mb-3">
+                <i class="bi bi-briefcase me-2"></i>Professional Details
+            </h5>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <label asp-for="Category" class="form-label">
+                        <i class="bi bi-tags me-1"></i>Category
+                    </label>
+                    <select asp-for="Category" class="form-select" asp-items="ViewBag.Categories">
+                        <option value="">-- Select Category --</option>
+                    </select>
+                    <span asp-validation-for="Category" class="text-danger small"></span>
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="Order" class="form-label">
+                        <i class="bi bi-sort-numeric-down me-1"></i>Display Order
+                    </label>
+                    <input asp-for="Order" type="number" min="1" class="form-control" />
+                    <div class="form-text">Lower numbers appear first</div>
+                    <span asp-validation-for="Order" class="text-danger small"></span>
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="YearsOfExperience" class="form-label">Years of Experience</label>
+                    <input asp-for="YearsOfExperience" type="number" min="0" max="50" class="form-control" />
+                    <span asp-validation-for="YearsOfExperience" class="text-danger small"></span>
+                </div>
+                <div class="col-md-3">
+                    <!-- Active Status -->
+                    <label class="form-label d-block mb-2">Status</label>
+                    <div class="form-check form-switch">
+                        <input asp-for="IsActive"
+                               class="form-check-input"
+                               id="isActiveSwitch"
+                               style="width: 48px; height: 24px;" />
+                        <label asp-for="IsActive"
+                               class="form-check-label fw-semibold ms-2"
+                               for="isActiveSwitch">
+                            Active Member
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Upload -->
+            <div class="row g-4 mt-2">
+                <div class="col-12">
+                    <label class="form-label">
+                        <i class="bi bi-image me-1"></i>Current Photo
+                    </label>
+                    @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+                    {
+                        <div class="mb-3">
+                            <img src="@Url.Content("~/" + Model.ImageUrl)"
+                                 alt="Current Photo"
+                                 style="max-width: 150px; max-height: 150px; object-fit: cover; border-radius: 50%; border: 3px solid #dee2e6;" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-muted mb-3">
+                            <i class="bi bi-person-circle fs-1"></i>
+                            <p>No photo uploaded</p>
+                        </div>
+                    }
+
+                    <label asp-for="ImageFile" class="form-label">Change Photo</label>
+                    <input asp-for="ImageFile"
+                           type="file"
+                           class="form-control"
+                           accept=".jpg,.jpeg,.png,.webp"
+                           id="imageInput" />
+                    <div class="form-text">
+                        <i class="bi bi-info-circle me-1"></i>JPG, PNG or WebP • Max 5MB • Recommended: Square image
+                    </div>
+                    <span asp-validation-for="ImageFile" class="text-danger small"></span>
+
+                    <!-- New Image Preview -->
+                    <div id="imagePreview" style="display: none; margin-top: 15px;">
+                        <label class="form-label">New Photo Preview:</label>
+                        <div>
+                            <img id="preview"
+                                 style="max-width: 150px; max-height: 150px; object-fit: cover; border-radius: 50%; border: 3px solid #0d6efd;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <h5 class="mt-4 mb-3">
+                <i class="bi bi-person-lines-fill me-2"></i>Contact Information
+            </h5>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <label asp-for="Email" class="form-label">
+                        <i class="bi bi-envelope me-1"></i>Email
+                    </label>
+                    <input asp-for="Email" type="email" class="form-control" placeholder="john@example.com" autocomplete="off" />
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="Phone" class="form-label">
+                        <i class="bi bi-telephone me-1"></i>Phone
+                    </label>
+                    <input asp-for="Phone" type="tel" class="form-control" placeholder="+1 234 567 8900" autocomplete="off" />
+                    <span asp-validation-for="Phone" class="text-danger small"></span>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="LinkedInUrl" class="form-label">
+                        <i class="bi bi-linkedin me-1"></i>LinkedIn Profile
+                    </label>
+                    <input asp-for="LinkedInUrl" type="url" class="form-control" placeholder="https://linkedin.com/in/..." autocomplete="off" />
+                    <span asp-validation-for="LinkedInUrl" class="text-danger small"></span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex gap-2 mt-4">
+                <button type="submit" class="btn btn-warning">
+                    <i class="bi bi-pencil-square"></i> Update Member
+                </button>
+                <a asp-controller="AdminTeamMember" asp-action="Index" class="btn btn-light">
+                    <i class="bi bi-x-circle"></i> Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        // Image preview
+        document.getElementById('imageInput')?.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('preview').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            } else {
+                document.getElementById('imagePreview').style.display = 'none';
+            }
+        });
+    </script>
+}

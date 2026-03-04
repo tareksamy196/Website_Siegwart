@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: /Admin
+Disallow: /AdminDashboard
+Disallow: /AdminCategories
+Disallow: /AdminNews
+Disallow: /AdminProducts
+Disallow: /AdminTeamMember
+Disallow: /AdminVideoMedia
+Disallow: /SuperAdmin
+Disallow: /Account/Login
+Disallow: /Account/ForgotPassword
+Disallow: /Account/ResetPassword
+
+# Sitemaps
+Sitemap: https://www.siegwarteg.com/sitemap.xml

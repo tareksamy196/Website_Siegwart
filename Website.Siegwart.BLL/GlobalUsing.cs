@@ -1,0 +1,10 @@
+﻿global using AutoMapper;
+global using Website.Siegwart.BLL.Dtos.User;
+global using Website.Siegwart.DAL.Models;
+global using Website.Siegwart.BLL.Dtos.Admin.ProductDtos;
+global using Microsoft.AspNetCore.Http;
+global using Website.Siegwart.BLL.Services.Interfaces;
+global using Website.Siegwart.DAL.Repositories.Interfaces;
+global using Website.Siegwart.BLL.Dtos.Admin.CategoryDtos;
+global using Microsoft.EntityFrameworkCore;
+global using Website.Siegwart.DAL.Data.Contexts;

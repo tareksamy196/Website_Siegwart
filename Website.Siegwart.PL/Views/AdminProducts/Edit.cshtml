@@ -1,0 +1,192 @@
+﻿@model Website.Siegwart.BLL.Dtos.Admin.ProductDtos.UpdateProductDto
+
+@{
+    ViewData["Title"] = "Edit Product";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Form Header -->
+<div class="d-flex justify-content-between align-items-start mb-4">
+    <div>
+        <h2 class="mb-1">Edit Product</h2>
+        <p class="text-muted">Update product details</p>
+    </div>
+    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-left"></i> Back to List
+    </a>
+</div>
+
+<!-- Form Card -->
+<div class="card">
+    <div class="card-body">
+        <!-- Validation Summary -->
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+        <form method="post" asp-action="Edit" asp-route-id="@Model.Id" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.ImageUrl)
+
+            <!-- Language Tabs -->
+            <ul class="nav nav-tabs mb-4" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-en" type="button">
+                        <i class="bi bi-flag-fill me-1"></i> English
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-ar" type="button">
+                        <i class="bi bi-flag-fill me-1"></i> العربية
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- English Tab -->
+                <div class="tab-pane fade show active" id="tab-en">
+                    <div class="mb-4">
+                        <label asp-for="TitleEn" class="form-label">Title (English)</label>
+                        <input asp-for="TitleEn"
+                               class="form-control"
+                               placeholder="Enter product title in English"
+                               autocomplete="off" />
+                        <span asp-validation-for="TitleEn" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-4">
+                        <label asp-for="DescriptionEn" class="form-label">Description (English)</label>
+                        <textarea asp-for="DescriptionEn"
+                                  class="form-control"
+                                  rows="4"
+                                  placeholder="Enter product description in English"></textarea>
+                        <span asp-validation-for="DescriptionEn" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <!-- Arabic Tab -->
+                <div class="tab-pane fade" id="tab-ar">
+                    <div class="mb-4">
+                        <label asp-for="TitleAr" class="form-label">العنوان (عربي)</label>
+                        <input asp-for="TitleAr"
+                               class="form-control"
+                               dir="rtl"
+                               placeholder="أدخل عنوان المنتج بالعربية"
+                               autocomplete="off" />
+                        <span asp-validation-for="TitleAr" class="text-danger small"></span>
+                    </div>
+                    <div class="mb-4">
+                        <label asp-for="DescriptionAr" class="form-label">الوصف (عربي)</label>
+                        <textarea asp-for="DescriptionAr"
+                                  class="form-control"
+                                  rows="4"
+                                  dir="rtl"
+                                  placeholder="أدخل وصف المنتج بالعربية"></textarea>
+                        <span asp-validation-for="DescriptionAr" class="text-danger small"></span>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4" />
+
+            <!-- Product Details -->
+            <div class="row g-4">
+                <!-- Image Upload -->
+                <div class="col-md-6">
+                    <label class="form-label">
+                        <i class="bi bi-image me-1"></i>Current Image
+                    </label>
+                    @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+                    {
+                        <div class="mb-3">
+                            <img src="@Url.Content("~/" + Model.ImageUrl)"
+                                 alt="Current Product"
+                                 style="max-width: 200px; max-height: 200px; object-fit: cover; border-radius: 8px; border: 2px solid #dee2e6;" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-muted mb-3">
+                            <i class="bi bi-image"></i> No image uploaded
+                        </div>
+                    }
+
+                    <label asp-for="ImageFile" class="form-label">Change Image</label>
+                    <input asp-for="ImageFile"
+                           type="file"
+                           class="form-control"
+                           accept=".jpg,.jpeg,.png,.webp"
+                           id="imageInput" />
+                    <div class="form-text">
+                        <i class="bi bi-info-circle me-1"></i>JPG, PNG or WebP • Max 5MB
+                    </div>
+                    <span asp-validation-for="ImageFile" class="text-danger small"></span>
+
+                    <!-- New Image Preview -->
+                    <div id="imagePreview" style="display: none; margin-top: 15px;">
+                        <label class="form-label">New Image Preview:</label>
+                        <div>
+                            <img id="preview"
+                                 style="max-width: 200px; max-height: 200px; object-fit: cover; border-radius: 8px; border: 2px solid #0d6efd;" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category -->
+                <div class="col-md-6">
+                    <label asp-for="CategoryId" class="form-label">
+                        <i class="bi bi-tags me-1"></i>Category
+                    </label>
+                    <select asp-for="CategoryId"
+                            class="form-select"
+                            asp-items="ViewBag.Categories">
+                        <option value="">-- Select Category --</option>
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger small"></span>
+
+                    <!-- Active Status -->
+                    <div class="form-check form-switch mt-4">
+                        <input asp-for="IsActive"
+                               class="form-check-input"
+                               id="isActiveSwitch" />
+                        <label asp-for="IsActive"
+                               class="form-check-label fw-semibold"
+                               for="isActiveSwitch">
+                            Product is Active
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex gap-2 mt-4">
+                <button type="submit" class="btn btn-warning">
+                    <i class="bi bi-pencil-square"></i> Update Product
+                </button>
+                <a asp-action="Index" class="btn btn-light">
+                    <i class="bi bi-x-circle"></i> Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        // Image preview
+        document.getElementById('imageInput')?.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('preview').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            } else {
+                document.getElementById('imagePreview').style.display = 'none';
+            }
+        });
+    </script>
+}

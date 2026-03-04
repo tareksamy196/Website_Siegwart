@@ -1,0 +1,189 @@
+﻿@using Website.Siegwart.BLL.Dtos.Admin.VideoMedia
+@using Website.Siegwart.PL.Helper
+@model VideoMediaListItemDto
+
+@{
+    var isAr = LocalizedText.IsArabic(Context);
+    var title = LocalizedText.Pick(Context, Model.TitleEn ?? "", Model.TitleAr ?? "");
+    var desc = LocalizedText.Pick(Context, Model.TitleAr ?? "", Model.TitleEn ?? "");
+    ViewData["Title"] = title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var currentUrl = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}";
+}
+
+<!-- ═══════════════════ BREADCRUMB ═══════════════════ -->
+<nav class="vm-breadcrumb" aria-label="breadcrumb">
+    <div class="container">
+        <ol class="vm-breadcrumb-list">
+            <li>
+                <a asp-controller="Home" asp-action="Index">
+                    @LocalizedText.Pick(Context, "Home", "الرئيسية")
+                </a>
+            </li>
+            <li class="vm-breadcrumb-sep" aria-hidden="true">›</li>
+            <li>
+                <a asp-controller="UserVideoMedia" asp-action="Index">
+                    @LocalizedText.Pick(Context, "Media Gallery", "معرض الوسائط")
+                </a>
+            </li>
+            <li class="vm-breadcrumb-sep" aria-hidden="true">›</li>
+            <li class="vm-breadcrumb-current" aria-current="page">@title</li>
+        </ol>
+    </div>
+</nav>
+
+<!-- ═══════════════════ VIDEO DETAIL ═══════════════════ -->
+<section class="vm-detail">
+    <div class="container">
+        <div class="vm-detail-card">
+
+            <!-- Video Player -->
+            <div class="vm-detail-player">
+                <iframe src="https://www.youtube.com/embed/@Model.VideoId?rel=0"
+                        title="@title"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                </iframe>
+            </div>
+
+            <!-- Info -->
+            <div class="vm-detail-info @(isAr ? "text-end" : "")">
+
+                <!-- Meta -->
+                <div class="vm-detail-meta">
+                    <span class="vm-detail-date">
+                        <i class="bi bi-calendar3" aria-hidden="true"></i>
+                        @Model.CreatedOn.ToString("dd MMMM yyyy")
+                    </span>
+                    <span class="vm-detail-badge">
+                        <i class="bi bi-youtube" aria-hidden="true"></i>
+                        YouTube
+                    </span>
+                </div>
+
+                <!-- Title -->
+                <h1 class="vm-detail-title">@title</h1>
+                <div class="vm-detail-divider"></div>
+
+                <!-- Description -->
+                @if (!string.IsNullOrWhiteSpace(desc))
+                {
+                    <p class="vm-detail-desc">@desc</p>
+                }
+
+                <!-- Actions -->
+                <div class="vm-detail-actions">
+                    <a asp-controller="UserVideoMedia" asp-action="Index" class="vm-btn vm-btn-primary">
+                        <i class="bi bi-arrow-@(isAr ? "right" : "left")" aria-hidden="true"></i>
+                        @LocalizedText.Pick(Context, "Back to Gallery", "العودة للمعرض")
+                    </a>
+
+                    <a href="https://www.youtube.com/watch?v=@Model.VideoId"
+                       target="_blank"
+                       rel="noopener"
+                       class="vm-btn vm-btn-youtube">
+                        <i class="bi bi-youtube" aria-hidden="true"></i>
+                        @LocalizedText.Pick(Context, "Watch on YouTube", "المشاهدة على يوتيوب")
+                    </a>
+
+                    <button class="vm-btn vm-btn-outline" id="shareVideoBtn" type="button">
+                        <i class="bi bi-share" aria-hidden="true"></i>
+                        @LocalizedText.Pick(Context, "Share", "مشاركة")
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════ SHARE MODAL ═══════════════════ -->
+<div class="modal fade vm-modal" id="shareVideoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content" style="background: var(--vm-white, #fff) !important; border-radius: 16px;">
+            <div class="modal-header" style="background: transparent; border-bottom: 1px solid var(--vm-fog, #eef1f7);">
+                <h5 class="modal-title" style="color: var(--vm-ink, #111827) !important; font-size: 1rem; font-weight: 700;">
+                    @LocalizedText.Pick(Context, "Share this video", "مشاركة الفيديو")
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="@LocalizedText.Pick(Context, "Close", "إغلاق")"></button>
+            </div>
+            <div class="modal-body" style="padding: 20px 24px 28px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=@Uri.EscapeDataString(currentUrl)"
+                       target="_blank" rel="noopener"
+                       style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 8px; background: #1877F2; color: #fff; font-size: .82rem; font-weight: 700; text-decoration: none;">
+                        <i class="bi bi-facebook"></i> Facebook
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?url=@Uri.EscapeDataString(currentUrl)&text=@Uri.EscapeDataString(title)"
+                       target="_blank" rel="noopener"
+                       style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 8px; background: #111; color: #fff; font-size: .82rem; font-weight: 700; text-decoration: none;">
+                        <i class="bi bi-twitter-x"></i> Twitter
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=@Uri.EscapeDataString(currentUrl)"
+                       target="_blank" rel="noopener"
+                       style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 8px; background: #0A66C2; color: #fff; font-size: .82rem; font-weight: 700; text-decoration: none;">
+                        <i class="bi bi-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://wa.me/?text=@Uri.EscapeDataString(title + " " + currentUrl)"
+                       target="_blank" rel="noopener"
+                       style="display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 8px; background: #25D366; color: #fff; font-size: .82rem; font-weight: 700; text-decoration: none;">
+                        <i class="bi bi-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                    <input type="text"
+                           id="videoShareLink"
+                           value="@currentUrl"
+                           readonly
+                           style="flex: 1; font-size: .8rem; padding: 10px 12px; border: 1.5px solid var(--vm-mist, #dde3ee); border-radius: 8px; background: var(--vm-fog, #eef1f7); color: var(--vm-slate, #4a5772); outline: none; min-width: 0;" />
+                    <button id="copyVideoLink"
+                            style="display: flex; align-items: center; gap: 6px; padding: 10px 16px; background: var(--vm-blue, #0096ff); color: #fff; border: none; border-radius: 8px; font-size: .8rem; font-weight: 700; cursor: pointer; white-space: nowrap;">
+                        <i class="bi bi-clipboard"></i>
+                        @LocalizedText.Pick(Context, "Copy", "نسخ")
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Videos.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script>
+        (() => {
+            // Share modal
+            const shareBtn = document.getElementById('shareVideoBtn');
+            const shareModalEl = document.getElementById('shareVideoModal');
+            if (shareBtn && shareModalEl && typeof bootstrap !== 'undefined') {
+                const shareModal = new bootstrap.Modal(shareModalEl);
+                shareBtn.addEventListener('click', () => shareModal.show());
+            }
+
+            // Copy link
+            const copyBtn = document.getElementById('copyVideoLink');
+            const copyInput = document.getElementById('videoShareLink');
+            if (copyBtn && copyInput) {
+                copyBtn.addEventListener('click', async () => {
+                    try {
+                        await navigator.clipboard.writeText(copyInput.value);
+                    } catch {
+                        copyInput.select();
+                        document.execCommand('copy');
+                    }
+                    const orig = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="bi bi-check-lg"></i> @LocalizedText.Pick(Context, "Copied!", "تم النسخ!")';
+                    copyBtn.style.background = '#16a34a';
+                    setTimeout(() => {
+                        copyBtn.innerHTML = orig;
+                        copyBtn.style.background = '';
+                    }, 2000);
+                });
+            }
+        })();
+    </script>
+}

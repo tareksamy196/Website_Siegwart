@@ -1,0 +1,188 @@
+{
+  "en": {
+    "title": "About Us",
+    "hero": {
+      "tag": "Established 1932",
+      "title": "About Siegwart",
+      "lead": "A national industrial entity contributing to Egypt's infrastructure development through quality-driven manufacturing.",
+      "badges": [ "ISO 9001", "ISO 14001", "ISO 45001" ]
+    },
+    "who_we_are": {
+      "title": "Who We Are",
+      "p1": "Since 1932, Siegwart has played a vital role in supporting national infrastructure projects through reliable industrial production.",
+      "p2": "Our work philosophy is based on consistency, responsibility, and long-term contribution to public development. We combine decades of experience with modern manufacturing practices to deliver excellence.",
+      "stats": [
+        {
+          "n": "90+",
+          "t": "Years of Excellence"
+        },
+        {
+          "n": "3",
+          "t": "Production Facilities"
+        },
+        {
+          "n": "100+",
+          "t": "Completed Projects"
+        }
+      ]
+    },
+    "vision": {
+      "title": "Our Vision",
+      "text": "To be the leading industrial manufacturer in Egypt, recognized for innovation, quality, and contribution to national infrastructure development."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "text": "To manufacture world-class products that meet international standards while supporting Egypt's infrastructure growth and creating sustainable value for all stakeholders."
+    },
+    "values": {
+      "title": "Our Values",
+      "text": "Quality, Integrity, Innovation, Safety, and Environmental Responsibility guide every decision we make and every product we manufacture."
+    },
+    "timeline": {
+      "title": "Our Journey",
+      "lead": "Decades of industrial excellence and continuous growth",
+      "items": [
+        {
+          "year": "1932",
+          "title": "Foundation",
+          "text": "Siegwart was established as a pioneering industrial entity in Egypt, laying the foundation for decades of manufacturing excellence."
+        },
+        {
+          "year": "1960s",
+          "title": "Expansion & Growth",
+          "text": "Expanded production capacity and diversified product lines to meet growing demand from national infrastructure projects."
+        },
+        {
+          "year": "1990s",
+          "title": "Modernization",
+          "text": "Invested heavily in modern manufacturing technologies and quality management systems to meet international standards."
+        },
+        {
+          "year": "2000s",
+          "title": "ISO Certifications",
+          "text": "Achieved ISO 9001, ISO 14001, and ISO 45001 certifications, demonstrating commitment to quality, environment, and safety."
+        },
+        {
+          "year": "Today",
+          "title": "Leading the Future",
+          "text": "Continuing to innovate and contribute to Egypt's mega infrastructure projects with cutting-edge manufacturing solutions."
+        }
+      ]
+    },
+    "cert": {
+      "title": "International Certifications",
+      "lead": "Internationally recognized certifications reflecting our commitment to quality, safety, and environmental responsibility.",
+      "list": [
+        "ISO 9001:2015 - Quality Management",
+        "ISO 14001:2015 - Environmental Management",
+        "ISO 45001:2018 - Occupational Health & Safety"
+      ],
+      "desc": [
+        "Quality Management System certification ensuring consistent production excellence and customer satisfaction.",
+        "Environmental Management System certification demonstrating our commitment to sustainable manufacturing practices.",
+        "Occupational Health & Safety Management System certification ensuring the wellbeing of our workforce."
+      ]
+    },
+    "cta": {
+      "title": "Ready to Partner With Us?",
+      "lead": "Join hundreds of satisfied clients who trust Siegwart for their industrial needs.",
+      "actions": {
+        "contact": "Contact Us",
+        "products": "View Products"
+      }
+    }
+  },
+  "ar": {
+    "title": "عن الشركة",
+    "hero": {
+      "tag": "تأسست 1932",
+      "title": "عن سيجوارت",
+      "lead": "كيان صناعي وطني يساهم في تطوير البنية التحتية لمصر من خلال تصنيع عالي الجودة.",
+      "badges": [ "ISO 9001", "ISO 14001", "ISO 45001" ]
+    },
+    "who_we_are": {
+      "title": "من نحن",
+      "p1": "منذ عام 1932 تلعب سيجوارت دوراً محورياً في دعم مشروعات البنية التحتية القومية من خلال إنتاج صناعي موثوق.",
+      "p2": "فلسفتنا في العمل قائمة على الثبات، والمسؤولية، والمساهمة التنموية طويلة الأمد. نجمع بين عقود من الخبرة وممارسات التصنيع الحديثة لتقديم التميز.",
+      "stats": [
+        {
+          "n": "90+",
+          "t": "عاماً من التميز"
+        },
+        {
+          "n": "3",
+          "t": "مواقع إنتاج"
+        },
+        {
+          "n": "100+",
+          "t": "مشروع منجز"
+        }
+      ]
+    },
+    "vision": {
+      "title": "رؤيتنا",
+      "text": "أن نكون الشركة الصناعية الرائدة في مصر، معترف بها للابتكار والجودة والمساهمة في تطوير البنية التحتية الوطنية."
+    },
+    "mission": {
+      "title": "مهمتنا",
+      "text": "تصنيع منتجات عالمية المستوى تلبي المعايير الدولية مع دعم نمو البنية التحتية لمصر وخلق قيمة مستدامة لجميع أصحاب المصلحة."
+    },
+    "values": {
+      "title": "قيمنا",
+      "text": "الجودة، النزاهة، الابتكار، السلامة، والمسؤولية البيئية تُوجه كل قرار نتخذه وكل منتج نصنعه."
+    },
+    "timeline": {
+      "title": "رحلتنا",
+      "lead": "عقود من التميز الصناعي والنمو المستمر",
+      "items": [
+        {
+          "year": "1932",
+          "title": "التأسيس",
+          "text": "تأسست سيجوارت ككيان صناعي رائد في مصر، وضعت الأساس لعقود من التميز الصناعي."
+        },
+        {
+          "year": "الستينات",
+          "title": "التوسع والنمو",
+          "text": "توسعت الطاقة الإنتاجية وتنوعت خطوط الإنتاج لتلبية الطلب المتزايد من مشاريع البنية التحتية الوطنية."
+        },
+        {
+          "year": "التسعينات",
+          "title": "التحديث",
+          "text": "استثمرت بكثافة في تقنيات التصنيع الحديثة وأنظمة إدارة الجودة لتلبية المعايير الدولية."
+        },
+        {
+          "year": "الألفينات",
+          "title": "شهادات الآيزو",
+          "text": "حصلت على شهادات ISO 9001 وISO 14001 وISO 45001، مما يدل على الالتزام بالجودة والبيئة والسلامة."
+        },
+        {
+          "year": "اليوم",
+          "title": "قيادة المستقبل",
+          "text": "نواصل الابتكار والمساهمة في المشاريع القومية الكبرى لمصر بحلول تصنيعية متطورة."
+        }
+      ]
+    },
+    "cert": {
+      "title": "الشهادات الدولية",
+      "lead": "شهادات دولية تعكس التزامنا بالجودة والسلامة والمسؤولية البيئية.",
+      "list": [
+        "ISO 9001:2015 - إدارة الجودة",
+        "ISO 14001:2015 - الإدارة البيئية",
+        "ISO 45001:2018 - الصحة والسلامة المهنية"
+      ],
+      "desc": [
+        "شهادة نظام إدارة الجودة التي تضمن تميز الإنتاج المستمر ورضا العملاء.",
+        "شهادة نظام الإدارة البيئية التي تثبت التزامنا بممارسات التصنيع المستدامة.",
+        "شهادة نظام إدارة الصحة والسلامة المهنية التي تضمن رفاهية القوى العاملة لدينا."
+      ]
+    },
+    "cta": {
+      "title": "هل أنت مستعد للشراكة معنا؟",
+      "lead": "انضم إلى مئات العملاء الراضين الذين يثقون في سيجوارت لاحتياجاتهم الصناعية.",
+      "actions": {
+        "contact": "تواصل معنا",
+        "products": "عرض المنتجات"
+      }
+    }
+  }
+}

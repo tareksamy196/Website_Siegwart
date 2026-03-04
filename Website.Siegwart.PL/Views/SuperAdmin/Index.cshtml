@@ -1,0 +1,157 @@
+﻿@model IEnumerable<Website.Siegwart.BLL.Dtos.Admin.SuperAdminAccount.UserListItemDto>
+
+@{
+    ViewData["Title"] = "Users";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Page Header -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="mb-1">
+            <i class="bi bi-people me-2"></i> Users
+        </h2>
+        <p class="text-muted mb-0">Manage admin accounts</p>
+    </div>
+
+    <div class="d-flex gap-2">
+        <div class="input-group" style="width: 260px;">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+            <input id="tableSearch" type="text" class="form-control" placeholder="Search users..." />
+        </div>
+
+        <a asp-controller="SuperAdmin" asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-person-plus"></i> Add Admin
+        </a>
+    </div>
+</div>
+
+<!-- Table Card -->
+<div class="card">
+    <div class="card-body">
+        @if (Model != null && Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="dataTable">
+                    <thead class="table-light">
+                        <tr>
+                            <th style="width: 80px;">ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th style="width: 180px;">Roles</th>
+                            <th style="width: 110px;">Confirmed</th>
+                            <th class="text-center" style="width: 170px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var u in Model)
+                        {
+                            <tr>
+                                <td class="text-muted">@u.Id</td>
+                                <td>@u.UserName</td>
+                                <td>@u.Email</td>
+                                <td>@string.Join(", ", u.Roles)</td>
+                                <td>
+                                    @if (u.EmailConfirmed)
+                                    {
+                                        <span class="badge bg-success">Yes</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">No</span>
+                                    }
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <a asp-action="Edit" asp-route-id="@u.Id" class="btn btn-outline-primary" title="Edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <a asp-action="ChangePassword" asp-route-id="@u.Id" class="btn btn-outline-warning" title="Change password">
+                                            <i class="bi bi-key"></i>
+                                        </a>
+                                        <button type="button"
+                                                class="btn btn-outline-danger"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#deleteModal"
+                                                data-id="@u.Id"
+                                                data-name="@u.UserName"
+                                                title="Delete">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="text-center py-5">
+                <i class="bi bi-people display-1 text-muted"></i>
+                <p class="mt-3 text-muted">
+                    No users yet. <a asp-controller="SuperAdmin" asp-action="Create" class="fw-bold">Add an admin</a>
+                </p>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Delete Modal (inline) -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete user</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" data-base-action="@Url.Action("Delete", "SuperAdmin")">
+                <div class="modal-body">
+                    @Html.AntiForgeryToken()
+                    <p>Are you sure you want to delete <strong class="item-name"></strong>?</p>
+                    <p class="text-muted small">This action cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Yes, delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Simple table search
+        document.getElementById('tableSearch')?.addEventListener('input', function () {
+            const q = this.value.toLowerCase();
+            document.querySelectorAll('#dataTable tbody tr').forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(q) ? '' : 'none';
+            });
+        });
+
+        // Populate delete modal (Bootstrap 5)
+        var deleteModal = document.getElementById('deleteModal');
+        if (deleteModal) {
+            deleteModal.addEventListener('show.bs.modal', function (event) {
+                var button = event.relatedTarget;
+                var id = button.getAttribute('data-id');
+                var name = button.getAttribute('data-name');
+
+                var modal = this;
+                var itemNameEl = modal.querySelector('.item-name');
+                if (itemNameEl) itemNameEl.textContent = name;
+
+                var form = modal.querySelector('form');
+                if (form) {
+                    var base = form.getAttribute('data-base-action') || form.getAttribute('action') || '';
+                    // ensure no trailing slash
+                    if (base.endsWith('/')) base = base.slice(0, -1);
+                    form.setAttribute('action', base + '/' + id);
+                }
+            });
+        }
+    </script>
+}

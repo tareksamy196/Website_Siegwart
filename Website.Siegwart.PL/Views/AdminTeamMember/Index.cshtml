@@ -1,0 +1,150 @@
+﻿@model IEnumerable<Website.Siegwart.BLL.Dtos.Admin.TeamMember.AdminTeamMemberDto>
+
+@{
+    ViewData["Title"] = "Team Members Management";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!-- Page Header -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="mb-1">
+            <i class="bi bi-people me-2"></i>Team Members
+        </h2>
+        <p class="text-muted mb-0">Manage your team members</p>
+    </div>
+    <div class="d-flex gap-2">
+        <!-- Search -->
+        <div class="input-group" style="width: 250px;">
+            <span class="input-group-text"><i class="bi bi-search"></i></span>
+            <input id="tableSearch" type="text" class="form-control" placeholder="Search team..." />
+        </div>
+        <a href="@Url.Action("Create")" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Add Member
+        </a>
+    </div>
+</div>
+
+<!-- Table Card -->
+<div class="card">
+    <div class="card-body">
+        @if (Model != null && Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" id="dataTable">
+                    <thead class="table-light">
+                        <tr>
+                            <th style="width: 70px;">ID</th>
+                            <th style="width: 80px;">Photo</th>
+                            <th style="width: 180px;">Name</th>
+                            <th style="width: 180px;">Title</th>
+                            <th style="width: 120px;">Category</th>
+                            <th style="width: 80px;" class="text-center">Order</th>
+                            <th style="width: 200px;">Contact</th>
+                            <th style="width: 120px;" class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var member in Model)
+                        {
+                            <tr>
+                                <td class="text-muted">@member.Id</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(member.ImageUrl))
+                                    {
+                                        <img src="@Url.Content("~/" + member.ImageUrl)"
+                                             alt="@member.NameEn"
+                                             style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%; border: 2px solid #dee2e6;" />
+                                    }
+                                    else
+                                    {
+                                        <div style="width: 60px; height: 60px; background: #f1f5f9; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #cbd5e0;">
+                                            <i class="bi bi-person fs-4"></i>
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    <strong>@member.NameEn</strong><br />
+                                    <small class="text-muted" dir="rtl">@member.NameAr</small>
+                                </td>
+                                <td>
+                                    @member.TitleEn<br />
+                                    <small class="text-muted" dir="rtl">@member.TitleAr</small>
+                                </td>
+                                <td>
+                                    <span class="badge bg-secondary">@member.CategoryName</span>
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge bg-light text-dark">@member.Order</span>
+                                </td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(member.Email))
+                                    {
+                                        <div class="mb-1">
+                                            <i class="bi bi-envelope text-primary me-1"></i>
+                                            <small>@member.Email</small>
+                                        </div>
+                                    }
+                                    @if (!string.IsNullOrEmpty(member.Phone))
+                                    {
+                                        <div>
+                                            <i class="bi bi-telephone text-success me-1"></i>
+                                            <small>@member.Phone</small>
+                                        </div>
+                                    }
+                                    @if (string.IsNullOrEmpty(member.Email) && string.IsNullOrEmpty(member.Phone))
+                                    {
+                                        <small class="text-muted">—</small>
+                                    }
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <a href="@Url.Action("Edit", new { id = member.Id })"
+                                           class="btn btn-outline-warning"
+                                           title="Edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <button type="button"
+                                                class="btn btn-outline-danger"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#deleteModal"
+                                                data-id="@member.Id"
+                                                data-name="@member.NameEn"
+                                                title="Delete">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="text-center py-5">
+                <i class="bi bi-people display-1 text-muted"></i>
+                <p class="mt-3 text-muted">
+                    No team members yet. <a href="@Url.Action("Create")" class="fw-bold">Add your first team member</a>
+                </p>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<partial name="_DeleteModalPartial" />
+
+@section Scripts {
+    <script>
+        // Simple table search
+        document.getElementById('tableSearch')?.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            document.querySelectorAll('#dataTable tbody tr').forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(query) ? '' : 'none';
+            });
+        });
+    </script>
+}

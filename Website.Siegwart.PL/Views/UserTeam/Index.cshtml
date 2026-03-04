@@ -1,0 +1,199 @@
+﻿@using Website.Siegwart.BLL.Dtos.User
+@using Website.Siegwart.PL.Helper
+@using Website.Siegwart.DAL.Enums
+@model IEnumerable<UserTeamMemberListDto>
+
+@{
+    ViewData["Title"] = LocalizedText.Pick(Context, "Our Team", "فريقنا");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var isAr = LocalizedText.IsArabic(Context);
+
+    // Group by category
+    var grouped = (Model ?? Enumerable.Empty<UserTeamMemberListDto>())
+        .GroupBy(m => m.Category)
+        .OrderBy(g => g.Key)
+        .ToList();
+}
+
+<!-- Hero Section -->
+<section class="team-hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                @LocalizedText.Pick(Context, "Meet Our Team", "تعرف على فريقنا")
+            </h1>
+            <p class="hero-subtitle">
+                @LocalizedText.Pick(Context,
+                "Dedicated professionals committed to excellence in railway and infrastructure manufacturing",
+                                "محترفون متفانون ملتزمون بالتميز في تصنيع السكك الحديدية والبنية التحتية")
+            </p>
+            <div class="hero-divider"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Content -->
+<section class="team-content">
+    <div class="container">
+        @if (grouped.Any())
+        {
+            @foreach (var category in grouped)
+            {
+                var categoryMembers = category.ToList();
+                var categoryEnum = (TeamCategory)category.Key;
+                var categoryName = TeamCategoryHelper.GetLocalizedName(categoryEnum, isAr);
+                var categoryId = $"team-carousel-{category.Key}";
+
+                <div class="category-section">
+                    <!-- Category Header -->
+                    <div class="category-header">
+                        <div class="category-badge">
+                            <i class="bi bi-@(GetCategoryIcon(categoryEnum))"></i>
+                        </div>
+                        <h2 class="category-title">
+                            @categoryName
+                        </h2>
+                        <div class="category-meta">
+                            <span class="member-count">
+                                <i class="bi bi-person-badge"></i>
+                                @categoryMembers.Count
+                                @LocalizedText.Pick(Context,
+                                categoryMembers.Count == 1 ? "Member" : "Members",
+                                                categoryMembers.Count == 1 ? "عضو" : "أعضاء")
+                    </span>
+                </div>
+                <div class="category-line"></div>
+            </div>
+
+            <!-- Team Carousel Container -->
+            <div class="team-carousel-container" data-team-count="@categoryMembers.Count">
+                <!-- Navigation Arrows -->
+                <button class="carousel-arrow carousel-arrow-prev"
+                        data-carousel-id="@categoryId"
+                        data-direction="prev"
+                        aria-label="@LocalizedText.Pick(Context, "Previous members", "الأعضاء السابقون")"
+                        style="display: none;">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+
+                <button class="carousel-arrow carousel-arrow-next"
+                        data-carousel-id="@categoryId"
+                        data-direction="next"
+                        aria-label="@LocalizedText.Pick(Context, "Next members", "الأعضاء التاليون")"
+                        style="display: none;">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+
+                <!-- Carousel Viewport -->
+                <div class="team-carousel-viewport">
+                    <div class="team-carousel-track" id="@categoryId">
+                        @foreach (var member in categoryMembers)
+                                {
+                                    <article class="team-card">
+                                        <a asp-action="Details"
+                                           asp-route-id="@member.Id"
+                                           class="team-card-link">
+                                            <!-- Photo -->
+                                            <div class="team-photo-wrapper">
+                                                @if (!string.IsNullOrEmpty(member.ImageUrl))
+                                                {
+                                                    <img src="@Url.Content("~/" + member.ImageUrl)"
+                                                         alt="@LocalizedText.Pick(Context, member.NameEn, member.NameAr)"
+                                                         class="team-photo"
+                                                         loading="lazy" />
+                                                }
+                                                else
+                                                {
+                                                    <div class="team-no-photo">
+                                                        <i class="bi bi-person-circle"></i>
+                                                    </div>
+                                                }
+                                                <div class="team-overlay">
+                                                    <span class="view-profile">
+                                                        <i class="bi bi-arrow-right-circle-fill"></i>
+                                                        @LocalizedText.Pick(Context, "View Profile", "عرض الملف")
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Info -->
+                                            <div class="team-info @(isAr ? "text-end" : "")">
+                                                <h3 class="team-name">
+                                                    @LocalizedText.Pick(Context, member.NameEn, member.NameAr)
+                                                </h3>
+                                                <p class="team-title">
+                                                    @LocalizedText.Pick(Context, member.TitleEn, member.TitleAr)
+                                                </p>
+
+                                                @if (!string.IsNullOrEmpty(member.Email) || !string.IsNullOrEmpty(member.Phone))
+                                                {
+                                                    <div class="team-contact">
+                                                        @if (!string.IsNullOrEmpty(member.Email))
+                                                        {
+                                                            <span class="contact-icon" title="@member.Email">
+                                                                <i class="bi bi-envelope-fill"></i>
+                                                            </span>
+                                                        }
+                                                        @if (!string.IsNullOrEmpty(member.Phone))
+                                                        {
+                                                            <span class="contact-icon" title="@member.Phone">
+                                                                <i class="bi bi-telephone-fill"></i>
+                                                            </span>
+                                                        }
+                                                    </div>
+                                                }
+                                            </div>
+                                        </a>
+                                    </article>
+                                }
+                            </div>
+                        </div>
+
+                        <!-- Carousel Dots -->
+                        <div class="carousel-dots" data-carousel-dots="@categoryId" style="display: none;"></div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <!-- Empty State -->
+            <div class="empty-state">
+                <div class="empty-icon">
+                    <i class="bi bi-people"></i>
+                </div>
+                <h3>@LocalizedText.Pick(Context, "No Team Members", "لا يوجد أعضاء فريق")</h3>
+                <p>@LocalizedText.Pick(Context, "Team information will be available soon", "ستتوفر معلومات الفريق قريباً")</p>
+            </div>
+        }
+    </div>
+</section>
+
+@functions {
+    string GetCategoryIcon(TeamCategory category)
+    {
+        return category switch
+        {
+            TeamCategory.TopManagement => "person-badge-fill",
+            TeamCategory.DepartmentManager => "people-fill",
+            TeamCategory.TechnicalExpert => "gear-fill",
+            TeamCategory.AdminSupport => "clipboard-check-fill",
+            _ => "people-fill"
+        };
+    }
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Team.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script src="~/js/team.js" asp-append-version="true"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.TeamCarousel) {
+                window.TeamCarousel.init();
+            }
+        });
+    </script>
+}

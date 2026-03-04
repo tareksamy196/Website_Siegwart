@@ -1,0 +1,52 @@
+﻿@model dynamic
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger">
+                    <i class="bi bi-exclamation-triangle me-1"></i> Confirm Delete
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-muted small">You are about to delete:</div>
+                <div class="mt-2 p-3 rounded border bg-light">
+                    <div id="deleteItemName" class="fw-bold"></div>
+                </div>
+                <div class="text-muted small mt-2">This action cannot be undone.</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                <form id="deleteModalForm" method="post" class="m-0">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-trash me-1"></i> Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById('deleteModal');
+        const form = document.getElementById('deleteModalForm');
+        const nameEl = document.getElementById('deleteItemName');
+
+        modal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const id = button.getAttribute('data-id');
+            const name = button.getAttribute('data-name');
+
+            const currentPath = window.location.pathname.split('/')[1] + '/' + window.location.pathname.split('/')[2];
+            const deleteUrl = '/' + currentPath + '/delete/' + id;
+
+            form.action = deleteUrl;
+            nameEl.textContent = name;
+
+            console.log('Delete URL:', deleteUrl);
+        });
+    });
+</script>
